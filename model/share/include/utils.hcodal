@@ -1,0 +1,41 @@
+/**
+* Copyright (c) 2017 Keith Graham
+*
+* Permission is granted to anyone to use this software for any purpose,
+* including commercial applications, and to alter it and redistribute it
+* freely, subject to the following restrictions:
+*
+* 1. The origin of this software must not be misrepresented; you must not
+*    claim that you wrote the original software.
+* 2. Altered source versions must be plainly marked as such, and must not be
+*    misrepresented as being the original software.
+* 3. This notice may not be removed or altered from any source distribution.
+*/
+
+// -------------------------------------------------------------
+// Include statements
+// -------------------------------------------------------------
+
+#include "config.hcodal"
+
+// -------------------------------------------------------------
+// Definitions and constructs
+// -------------------------------------------------------------
+
+#define DEF_OPC(name, syntax, opc) \
+    element opc_##name \
+    { \
+        assembler { syntax }; \
+        binary { opc }; \
+        return { opc }; \
+    };
+
+#define DEF_XPR(index) \
+    element x_##index\
+    { \
+        assembler { STRINGIZE(x##index) }; \
+        binary { index:bit[RF_XPR_W] }; \
+        return { index }; \
+    };
+
+#define REMAINING_BITS(bw) UNUSED:bit[RISCV_INSTR_W - (bw)]

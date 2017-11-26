@@ -1,0 +1,8 @@
+Scanning dependencies of target disassembler_shared
+Scanning dependencies of target disassembler
+[ 50%] Built target disassembler
+[100%] Built target disassembler_shared
+Install the project...
+-- Install configuration: "Release"
+-- Installing: c:/users/boskin/codasip/risc_v5/work/ia/sdk/bin/RISC_V5-ia-disassembler.exe
+-- Installing: c:/users/boskin/codasip/risc_v5/work/ia/sdk/bin/libRISC_V5-ia-disassembler.dll

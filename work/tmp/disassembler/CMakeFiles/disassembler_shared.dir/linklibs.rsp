@@ -1,0 +1,1 @@
+ -LC:/Codasip/Studio-6.8.2/tools/lib -ldsmutilsl -lobjreaderl -lelfreadl -lgetoptl -lfilesysteml -lthreadsl -lutility -llicappl -static-libgcc -static-libstdc++ -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

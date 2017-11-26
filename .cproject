@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.codasip.core.config.bare.404499200">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.codasip.core.config.bare.404499200" moduleId="org.eclipse.cdt.core.settings" name="Default (Using Make)">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration buildProperties="" description="" id="com.codasip.core.config.bare.404499200" name="Default (Using Make)" parent="com.codasip.core.config.bare">
+					<folderInfo id="com.codasip.core.config.bare.404499200." name="/" resourcePath="">
+						<toolChain id="com.codasip.core.toolchain.bare.1975758455" name="Codasip Bare Toolchain" superClass="com.codasip.core.toolchain.bare">
+							<targetPlatform id="com.codasip.core.config.bare.404499200..1379914519" name=""/>
+							<builder enableCleanBuild="false" enabledIncrementalBuild="false" id="com.codasip.core.builder.bare.1525549068" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="com.codasip.core.builder.bare"/>
+							<tool id="com.codasip.core.tool.settings.holder.1705674393" name="C/C++ Settings Holder" superClass="com.codasip.core.tool.settings.holder">
+								<inputType id="com.codasip.core.input.c.709085005" superClass="com.codasip.core.input.c"/>
+								<inputType id="com.codasip.core.input.cxx.1688661332" superClass="com.codasip.core.input.cxx"/>
+								<inputType id="com.codasip.core.input.asm.999996539" superClass="com.codasip.core.input.asm"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="model"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="ECEN4593.com.codasip.core.project.bare.2096096161" name="" projectType="com.codasip.core.project.bare"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope"/>
+</cproject>

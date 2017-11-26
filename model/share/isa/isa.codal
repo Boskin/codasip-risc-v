@@ -1,0 +1,1026 @@
+/**
+* Copyright (c) 2017 Keith Graham
+*
+* Portions of this code is credited to Shivasankar Gunasekaran
+*
+* Permission is granted to anyone to use this software for any purpose,
+* including commercial applications, and to alter it and redistribute it
+* freely, subject to the following restrictions:
+*
+* 1. The origin of this software must not be misrepresented; you must not
+*    claim that you wrote the original software.
+* 2. Altered source versions must be plainly marked as such, and must not be
+*    misrepresented as being the original software.
+* 3. This notice may not be removed or altered from any source distribution.
+*/
+
+// -------------------------------------------------------------
+// Include statements
+// -------------------------------------------------------------
+
+#include "utils.hcodal"
+#include "config.hcodal"
+#include "opcodes.hcodal"
+
+// -------------------------------------------------------------
+// Instruction Set Architecture
+// -------------------------------------------------------------
+
+set riscv_isa = i_nop_alias,
+                i_halt,
+                i_syscall,
+                i_alu,
+                i_shift,
+                i_alu_i,
+                i_branch,
+                i_jal,
+                i_jalr,
+                i_upper_imm,
+                i_load,
+                i_store,
+                i_li_alias,
+                i_mv_alias,
+                i_not_alias,
+                i_neg_alias,
+                i_seqz_alias,
+                i_snez_alias,
+                i_sltz_alias,
+                i_sgtz_alias,
+                i_beqz_alias,
+                i_bnez_alias,
+                i_blez_alias,
+                i_bgez_alias,
+                i_bltz_alias,
+                i_bgtz_alias,
+                i_bgt_alias,
+                i_ble_alias,
+                i_bgtu_alias,
+                i_bleu_alias,
+                i_j_alias,
+                i_jr_alias,
+                i_ret_alias,
+                i_call_alias,
+                i_call_reg_alias;
+
+// -------------------------------------------------------------
+// Start section
+// -------------------------------------------------------------
+// Describes the top level construct for the isa grammer for assembly and binary
+
+start
+{
+    roots = { riscv_isa };
+    emulations = { e_movi32 };
+};
+
+
+// -------------------------------------------------------------
+// HALT instruction
+// -------------------------------------------------------------
+
+DEF_OPC(halt, "halt", OPC_HALT)
+
+element i_halt
+{
+    use opc_halt as opc;
+
+    assembler { opc };
+    binary { UNUSED:bit[(RISCV_INSTR_W - UTYPE_OPC_W)] OPCODE(opc) };
+
+    semantics
+    {
+        codasip_halt();
+    };
+};
+
+// -------------------------------------------------------------
+// Syscall instruction (for simulator)
+// -------------------------------------------------------------
+
+DEF_OPC(syscall, "syscall", OPC_SYSCALL)
+
+element i_syscall
+{
+    use opc_syscall as opc;
+
+    assembler { opc };
+    binary { 0:bit[7] XPR_RES_REG:bit[RF_XPR_W] 0:bit[13] OPCODE(opc) };
+
+    semantics
+    {
+        codasip_compiler_unused();
+
+        // Using a reserved register to pass the address of a structure that
+        // contains information about the requested syscall.
+        codasip_syscall(rf_xpr_read(XPR_RES_REG));
+    };
+/*
+    assembler { opc };
+    binary { UNUSED:bit[(RISCV_INSTR_W - UTYPE_OPC_W)] OPCODE(opc) };
+
+    semantics
+    {
+        codasip_compiler_unused();
+
+        // Using a reserved register to pass the address of a structure that
+        // contains information about the requested syscall.
+        codasip_syscall(rf_xpr_read(XPR_RES_REG));
+    };
+*/
+};
+
+// -------------------------------------------------------------
+// Arithmetic instruction
+// -------------------------------------------------------------
+
+// Op-codes for R-type arithematic functions
+DEF_OPC(add, "add", OPC_ADD)
+DEF_OPC(slt, "slt", OPC_SLT)
+DEF_OPC(sltu, "sltu", OPC_SLTU)
+DEF_OPC(and, "and", OPC_AND)
+DEF_OPC(or, "or", OPC_OR)
+DEF_OPC(xor, "xor", OPC_XOR)
+DEF_OPC(sll, "sll", OPC_SLL)
+DEF_OPC(srl, "srl", OPC_SRL)
+DEF_OPC(sub, "sub", OPC_SUB)
+DEF_OPC(sra, "sra", OPC_SRA)
+
+// Group these r-type functions into the set opc_alu
+set opc_alu = opc_add, opc_slt, opc_sltu, opc_and, opc_or, opc_xor, opc_sll, opc_srl, opc_sub, opc_sra;
+
+element i_alu
+{
+    use opc_alu as opc;
+    use xpr_all as xpr_rd, xpr_rs1, xpr_rs2;
+
+    assembler { opc xpr_rd "," xpr_rs1 "," xpr_rs2 };
+    binary { FUNCT7(opc) xpr_rs2 xpr_rs1 FUNCT3(opc) xpr_rd OPCODE(opc) };
+
+    semantics
+    {
+        uint32 src1, src2, result;
+
+        src1 = rf_xpr_read(xpr_rs1);
+        src2 = rf_xpr_read(xpr_rs2);
+
+        result = alu(opc, src1, src2);
+
+        // store result
+        rf_xpr_write(result, xpr_rd);
+    };
+};
+
+// -------------------------------------------------------------
+// Shift Immediate instruction
+// -------------------------------------------------------------
+DEF_OPC(slli, "slli", OPC_SLLI)
+DEF_OPC(srli, "srli", OPC_SRLI)
+DEF_OPC(srai, "srai", OPC_SRAI)
+
+// Group these r-type shift immediate functions into the set opc_shift
+set opc_shift = opc_slli, opc_srli, opc_srai;
+
+element i_shift
+{
+    use opc_shift as opc;
+    use xpr_all as xpr_rd, xpr_rs1;
+    use shamt;
+
+    assembler { opc xpr_rd "," xpr_rs1 "," shamt };
+    binary { FUNCT7(opc) shamt xpr_rs1 FUNCT3(opc) xpr_rd OPCODE(opc) };
+
+    semantics
+    {
+        uint32 src1, src2, result;
+
+        src1 = rf_xpr_read(xpr_rs1);
+        src2 = (uint32) shamt;
+
+        result = alu(opc, src1, src2);
+
+        // store result
+        rf_xpr_write(result, xpr_rd);
+    };
+};
+
+// -------------------------------------------------------------
+// Immediate arithematic instruction
+// -------------------------------------------------------------
+DEF_OPC(addi, "addi", OPC_ADDI)
+DEF_OPC(slti, "slti", OPC_SLTI)
+DEF_OPC(sltiu, "sltiu", OPC_SLTIU)
+DEF_OPC(andi, "andi", OPC_ANDI)
+DEF_OPC(ori, "ori", OPC_ORI)
+DEF_OPC(xori, "xori", OPC_XORI)
+
+// Group these arithmetic i-type functions into the set opc_alu_i
+set opc_alu_i = opc_addi, opc_slti, opc_sltiu, opc_andi, opc_ori, opc_xori;
+
+element i_alu_i
+{
+    use opc_alu_i as opc;
+    use xpr_all as xpr_rd, xpr_rs1;
+    use simm12 as simm;
+
+    assembler { opc xpr_rd "," xpr_rs1 "," simm };
+    binary { simm xpr_rs1 FUNCT3(opc) xpr_rd OPCODE(opc) };
+
+    semantics
+    {
+        uint32 src1, src2, result;
+
+        src1 = rf_xpr_read(xpr_rs1);
+        src2 = simm;
+
+        result = alu(opc, src1, src2);
+
+        rf_xpr_write(result, xpr_rd);
+    };
+};
+
+// -------------------------------------------------------------
+// Conditional branch instruction
+// -------------------------------------------------------------
+
+DEF_OPC(beq, "beq", OPC_BEQ)
+DEF_OPC(bne, "bne", OPC_BNE)
+DEF_OPC(blt, "blt", OPC_BLT)
+DEF_OPC(bltu, "bltu", OPC_BLTU)
+DEF_OPC(bge, "bge", OPC_BGE)
+DEF_OPC(bgeu, "bgeu", OPC_BGEU)
+
+// Group these conditional b-type functions into the set opc_branch
+set opc_branch = opc_beq, opc_bne, opc_blt, opc_bltu, opc_bge, opc_bgeu;
+
+element i_branch
+{
+    use opc_branch as opc;
+    use xpr_all as xpr_rs1, xpr_rs2;
+    use rel_addr12 as rel_addr;
+
+    assembler { opc xpr_rs1 "," xpr_rs2 "," rel_addr };
+    binary { rel_addr[11..11] rel_addr[9..4] xpr_rs2 xpr_rs1 FUNCT3(opc) rel_addr[3..0] rel_addr[10..10] OPCODE(opc) };
+
+    semantics
+    {
+        int32 branch, src1, src2;
+
+        src1 = rf_xpr_read(xpr_rs1);
+        src2 = rf_xpr_read(xpr_rs2);
+
+        branch = alu(opc, src1, src2);
+
+        if (branch != 0)
+        {
+            // RISCV_INSTR_SIZE is subtracted due to PC already incremented in the main event
+            set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);
+        }
+    };
+};
+
+// -------------------------------------------------------------
+// Jump and Link instruction
+// -------------------------------------------------------------
+DEF_OPC(jal, "jal", OPC_JAL)
+
+element i_jal
+{
+    use opc_jal as opc;
+    use xpr_all as xpr_rd;
+    use rel_addr20 as rel_addr;
+
+    assembler { opc xpr_rd "," rel_addr };
+    binary { rel_addr[19..19] rel_addr[9..0] rel_addr[10..10] rel_addr[18..11] xpr_rd OPCODE(opc) };
+
+    semantics
+    {
+        rf_xpr_write(r_pc, xpr_rd);    // PC was already incremented in main event, so current pc is pointing to next instruction
+
+        set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);  // RISCV_INSTR_SIZE is subtracted due to PC already incremented in the main event
+    };
+};
+
+// -------------------------------------------------------------
+// Jump and Link Register instruction
+// -------------------------------------------------------------
+
+DEF_OPC(jalr, "jalr", OPC_JALR)
+
+element i_jalr
+{
+    use opc_jalr as opc;
+    use xpr_all as xpr_rd, xpr_rs1;
+    use rel_jalr_addr12 as rel_addr;
+
+    assembler { opc xpr_rd "," rel_addr"("xpr_rs1")" };
+    binary {rel_addr[11..0] xpr_rs1 FUNCT3(opc) xpr_rd OPCODE(opc) };
+
+    semantics
+    {
+        uint32 base_address;
+
+        base_address = rf_xpr_read(xpr_rs1);
+
+        rf_xpr_write(r_pc, xpr_rd);  // PC was already incremented in main event, so current pc is pointing to next instruction
+
+        set_pc(base_address + rel_addr);  // JALR is not half-word aligned, but LAU / byte aligned
+    };
+};
+
+
+// -------------------------------------------------------------
+// Upper Immediate instructions
+// -------------------------------------------------------------
+DEF_OPC(lui, "lui", OPC_LUI)
+DEF_OPC(auipc, "auipc", OPC_AUIPC)
+
+// Group these conditional u-type functions into the set opc_upper_imm
+set opc_upper_imm = opc_lui, opc_auipc;
+
+element i_upper_imm
+{
+    use opc_upper_imm as opc;
+    use xpr_all as xpr_rd;
+    use simm20 as simm;
+
+    assembler { opc xpr_rd "," simm };
+    binary { simm[19..0] xpr_rd OPCODE(opc) };
+
+    semantics
+    {
+        int7 imm_opcode;
+        int32 src1, imm32, result;
+
+        imm_opcode = OPCODE(opc);
+        imm32 = (uint32)simm << 12;             // align the immediate to the left
+
+        if (OPCODE(opc) == OPCODE(OPC_LUI)) src1 = 0;
+        else src1 = r_pc - RISCV_INSTR_SIZE;
+
+        result = alu(opc, src1, imm32);
+
+        rf_xpr_write(result, xpr_rd);
+
+    };
+};
+
+
+// -------------------------------------------------------------
+// Load instructions
+// -------------------------------------------------------------
+DEF_OPC(lb, "lb", OPC_LB)
+DEF_OPC(lh, "lh", OPC_LH)
+DEF_OPC(lw, "lw", OPC_LW)
+DEF_OPC(lbu, "lbu", OPC_LBU)
+DEF_OPC(lhu, "lhu", OPC_LHU)
+
+// Group these load i-type functions into the set opc_load
+set opc_load = opc_lb, opc_lh, opc_lw, opc_lbu, opc_lhu;
+
+element i_load
+{
+    use opc_load as opc;
+    use xpr_all as xpr_rd, xpr_rs1;
+    use simm12 as simm;
+
+    assembler { opc xpr_rd "," simm"("xpr_rs1")" };
+    binary {simm[11..0] xpr_rs1 FUNCT3(opc) xpr_rd OPCODE(opc) };
+
+    semantics{
+        uint32 address, result;
+
+        // set latency for compiler to properly schedule the loads
+        codasip_compiler_schedule_class(sc_load);
+
+        address = rf_xpr_read(xpr_rs1) + simm;
+        result = load(FUNCT3(opc), address);
+        rf_xpr_write(result, xpr_rd);
+    };
+};
+
+
+// -------------------------------------------------------------
+// Store instructions
+// -------------------------------------------------------------
+DEF_OPC(sb, "sb", OPC_SB)
+DEF_OPC(sh, "sh", OPC_SH)
+DEF_OPC(sw, "sw", OPC_SW)
+
+// Group these store s-type functions into the set opc_store
+set opc_store = opc_sb, opc_sh, opc_sw;
+
+element i_store
+{
+    use opc_store as opc;
+    use xpr_all as xpr_rs1, xpr_rs2;
+    use simm12 as simm;
+
+    assembler { opc xpr_rs2 "," simm"("xpr_rs1")" };
+    binary { simm[11..5] xpr_rs2 xpr_rs1 FUNCT3(opc) simm[4..0] OPCODE(opc) };
+
+    semantics
+    {
+        uint32 address, result;
+
+        address = rf_xpr_read(xpr_rs1) + simm;
+        result = rf_xpr_read(xpr_rs2);
+        store(FUNCT3(opc), address, result);
+    };
+};
+
+
+// -------------------------------------------------------------
+// NOP instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_nop_alias : assembler_alias(i_alu_i), compiler_alias(i_alu_i)  // in RISC-V, NOP equates to addi x0, x0, 0
+{
+    assembler { "nop" };
+    binary { ZERO_IMM12 ZERO_REG FUNCT3(OPC_ADDI) ZERO_REG OPCODE(OPC_ADDI) };
+
+    semantics
+    {
+        codasip_nop();
+    };
+};
+
+// -------------------------------------------------------------
+// Load immediate (li) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_li_alias : assembler_alias(i_alu_i), compiler_alias(i_alu_i)    // in RISC-V, li rd, immediate equates to addi rd, x0, immediate
+{
+    use xpr_all as xpr_rd;
+    use simm12 as simm;
+
+    assembler { "li" xpr_rd "," simm };
+    binary { simm ZERO_REG FUNCT3(OPC_ADDI) xpr_rd OPCODE(OPC_ADDI) };
+
+    semantics
+    {
+        uint32 result;
+
+        result = simm;
+        rf_xpr_write(result, xpr_rd);
+
+    };
+};
+
+// -------------------------------------------------------------
+// Move (mv) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_mv_alias : assembler_alias(i_alu_i), compiler_alias(i_alu_i)     // in RISC-V, mv rd, rs equates to addi rd, rs1, 0
+{
+    use xpr_all as xpr_rd, xpr_rs1;
+
+    assembler { "mv" xpr_rd "," xpr_rs1 };
+    binary { ZERO_IMM12 xpr_rs1 FUNCT3(OPC_ADDI) xpr_rd OPCODE(OPC_ADDI) };
+
+    semantics
+    {
+        uint32 result;
+
+        result = rf_xpr_read(xpr_rs1);
+        rf_xpr_write(result, xpr_rd);                   // moving value from xpr_rs1 to xpr_rd
+    };
+};
+
+// -------------------------------------------------------------
+// NOT (not) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_not_alias : assembler_alias(i_alu_i), compiler_alias(i_alu_i)    // in RISC-V, not rd, rs equates to xori rd, rs1, -1
+{
+    use xpr_all as xpr_rd, xpr_rs1;
+
+    assembler { "not" xpr_rd "," xpr_rs1 };
+    binary { MINUS_ONE_12 xpr_rs1 FUNCT3(OPC_XORI) xpr_rd OPCODE(OPC_XORI) };
+
+    semantics
+    {
+        uint32 result;
+
+        result = rf_xpr_read(xpr_rs1);
+        result = ~result;                           // implementing 1's complement, inverting each bit
+        rf_xpr_write(result, xpr_rd);
+    };
+};
+
+
+// -------------------------------------------------------------
+// NEG (neg) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_neg_alias : assembler_alias(i_alu), compiler_alias(i_alu_i)       // in RISC-V, neg rd, rs equates to sub rd, x0, rs2
+{
+    use xpr_all as xpr_rd, xpr_rs2;
+
+    assembler { "neg" xpr_rd "," xpr_rs2 };
+    binary { FUNCT7(OPC_SUB) xpr_rs2 ZERO_REG FUNCT3(OPC_SUB) xpr_rd OPCODE(OPC_SUB) };
+
+    semantics
+    {
+        uint32 result;
+
+        result = rf_xpr_read(xpr_rs2);
+        result = ~result + 1;                       // implementing 2's complement
+        rf_xpr_write(result, xpr_rd);
+    };
+};
+
+// -------------------------------------------------------------
+// Set if = zero (seqz) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_seqz_alias : assembler_alias(i_alu_i), compiler_alias(i_alu_i)        // in RISC-V, seqz rd, rs equates to sltiu rd, rs1, 1
+{
+    use xpr_all as xpr_rd, xpr_rs1;
+
+    assembler { "seqz" xpr_rd "," xpr_rs1};
+    binary { ONE_IMM12 xpr_rs1 FUNCT3(OPC_SLTIU) xpr_rd OPCODE(OPC_SLTIU) };
+
+    semantics
+    {
+        uint32 value, result;
+
+        value = rf_xpr_read(xpr_rs1);
+        if (value == 0) result = 1;         // if value == 0, then set destination register to 1, else set to 0;
+        else result = 0;
+
+        rf_xpr_write(result, xpr_rd);
+
+
+    };
+};
+
+// -------------------------------------------------------------
+// Set if != zero (snez) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_snez_alias : assembler_alias(i_alu), compiler_alias(i_alu)       // in RISC-V, snez rd, rs equates to sltu rd, x0, rs2
+{
+    use xpr_all as xpr_rd, xpr_rs1;
+
+    assembler { "snez" xpr_rd "," xpr_rs1};
+    binary { FUNCT7(OPC_SLTU) xpr_rs1 ZERO_REG FUNCT3(OPC_SLTU) xpr_rd OPCODE(OPC_SLTU) };
+
+    semantics
+    {
+        uint32 value, result;
+
+        value = rf_xpr_read(xpr_rs1);           // if value != 0, then set destination register to 1, else set to 0;
+        if (value != 0) result = 1;
+        else result = 0;
+
+        rf_xpr_write(result, xpr_rd);
+    };
+};
+
+// -------------------------------------------------------------
+// Set if < zero (sltz) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_sltz_alias : assembler_alias(i_alu), compiler_alias(i_alu)       // in RISC-V, sltz rd, rs equates to slt rd, rs1, x0
+{
+    use xpr_all as xpr_rd, xpr_rs1;
+
+    assembler { "sltz" xpr_rd "," xpr_rs1};
+    binary { FUNCT7(OPC_SLT) ZERO_REG xpr_rs1 FUNCT3(OPC_SLT) xpr_rd OPCODE(OPC_SLT) };
+
+    semantics
+    {
+        uint32 result;
+        int32 value;
+
+        value = (int32)rf_xpr_read(xpr_rs1);           // if value < 0, then set destination register to 1, else set to 0;
+        if (value < 0) result = 1;
+        else result = 0;
+
+        rf_xpr_write(result, xpr_rd);
+    };
+
+};
+
+// -------------------------------------------------------------
+// Set if > zero (sgtz) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_sgtz_alias : assembler_alias(i_alu), compiler_alias(i_alu)         // in RISC-V, sgtz rd, rs equates to slt rd, x0, rs2
+{
+    use xpr_all as xpr_rd, xpr_rs1;
+
+    assembler { "sgtz" xpr_rd "," xpr_rs1};
+    binary { FUNCT7(OPC_SLT) xpr_rs1 ZERO_REG FUNCT3(OPC_SLT) xpr_rd OPCODE(OPC_SLT) };
+
+    semantics
+    {
+        uint32 result;
+        int32 value;
+
+        value = (int32)rf_xpr_read(xpr_rs1);
+        if(value > 0) result = 1; // if value < 0, then set destination register to 1, else set to 0;
+        else result = 0;
+
+        rf_xpr_write(result, xpr_rd);
+    };
+
+};
+
+// -------------------------------------------------------------
+// Set if rs1 >= rs2 setge instruction pseudo instruction
+// -------------------------------------------------------------
+/*
+element i_setge_alias : assembler_alias(i_alu), compiler_alias(i_alu)   // in RISC-V, setge rd, rs1, rs2 equates to slt rd, rs2, rs1
+{
+    use xpr_all as xpr_rd, xpr_rs1, xpr_rs2;
+
+    assembler { "setge" xpr_rd "," xpr_rs1 "," xpr_rs2};
+    binary { FUNCT7(OPC_SLT) xpr_rs1 xpr_rs2 FUNCT3(OPC_SLT) xpr_rd OPCODE(OPC_SLT) };
+
+    semantics
+    {
+        uint32 result;
+        int32 src1, src2;
+
+        src1 = (int32)rf_xpr_read(xpr_rs1);
+        src2 = (int32)rf_xpr_read(xpr_rs2);
+
+        if (src1 >= src2) result = 1;        // if rs1 >= rs2, then set destination register to 1, else set to 0;
+        else result = 0;
+
+        rf_xpr_write(result, xpr_rd);
+    };
+};
+*/
+// -------------------------------------------------------------
+// Branch if = 0 (beqz) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_beqz_alias : assembler_alias(i_branch), compiler_alias(i_branch)        // in RISC-V, bqez rs, offset equates to beq rs1, x0, offset
+{
+    use xpr_all as xpr_rs1;
+    use rel_addr12 as rel_addr;
+
+    assembler { "beqz" xpr_rs1 "," rel_addr };
+    binary { rel_addr[11..11] rel_addr[9..4] ZERO_REG xpr_rs1 FUNCT3(OPC_BEQ) rel_addr[3..0] rel_addr[10..10] OPCODE(OPC_BEQ) };
+
+    semantics
+    {
+        int32 result;
+
+        result = (int32) rf_xpr_read(xpr_rs1);        // if rs == 0, branch to offset, else, do nothing
+        if (result == 0) set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);
+    };
+};
+
+// -------------------------------------------------------------
+// Branch if != 0 (bnez) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_bnez_alias : assembler_alias(i_branch), compiler_alias(i_branch)    // in RISC-V, bnez rs, offset equates to bne rs1, x0, offset
+{
+    use xpr_all as xpr_rs1;
+    use rel_addr12 as rel_addr;
+
+    assembler { "bnez" xpr_rs1 "," rel_addr };
+    binary { rel_addr[11..11] rel_addr[9..4] ZERO_REG xpr_rs1 FUNCT3(OPC_BNE) rel_addr[3..0] rel_addr[10..10] OPCODE(OPC_BNE) };
+
+    semantics
+    {
+        int32 result;
+
+        result = (int32) rf_xpr_read(xpr_rs1);      // if rs != 0, branch to offset, else, do nothing
+        if (result != 0) set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);
+    };
+};
+
+// -------------------------------------------------------------
+// Branch if <= 0 (blez) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_blez_alias : assembler_alias(i_branch), compiler_alias(i_branch)   // in RISC-V, blez rs, offset equates to bge x0, rs2, offset
+{
+    use xpr_all as xpr_rs1;
+    use rel_addr12 as rel_addr;
+
+    assembler { "blez" xpr_rs1 "," rel_addr };
+    binary { rel_addr[11..11] rel_addr[9..4] xpr_rs1 ZERO_REG FUNCT3(OPC_BGE) rel_addr[3..0] rel_addr[10..10] OPCODE(OPC_BGE) };
+
+    semantics
+    {
+        int32 result;
+
+        result = (int32)rf_xpr_read(xpr_rs1);       // if rs <= 0, branch to offset, else, do nothing
+        if (result <= 0) set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);
+    };
+};
+
+// -------------------------------------------------------------
+// Branch if >= 0 (blez) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_bgez_alias : assembler_alias(i_branch), compiler_alias(i_branch)   // in RISC-V, bgez rs, offset equates to bge rs1, x0, offset
+{
+    use xpr_all as xpr_rs1;
+    use rel_addr12 as rel_addr;
+
+    assembler { "bgez" xpr_rs1 "," rel_addr };
+    binary { rel_addr[11..11] rel_addr[9..4] ZERO_REG xpr_rs1 FUNCT3(OPC_BGE) rel_addr[3..0] rel_addr[10..10] OPCODE(OPC_BGE) };
+
+    semantics
+    {
+        int32 result;
+
+        result = (int32) rf_xpr_read(xpr_rs1);      // if rs >= 0, branch to offset, else, do nothing
+        if (result >= 0) set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);
+    };
+};
+
+// -------------------------------------------------------------
+// Branch if < 0 (bltz) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_bltz_alias : assembler_alias(i_branch), compiler_alias(i_branch)     // in RISC-V, bltz rs, offset equates to blt rs1, x0, offset
+{
+    use xpr_all as xpr_rs1;
+    use rel_addr12 as rel_addr;
+
+    assembler { "bltz" xpr_rs1 "," rel_addr };
+    binary { rel_addr[11..11] rel_addr[9..4] ZERO_REG xpr_rs1 FUNCT3(OPC_BLT) rel_addr[3..0] rel_addr[10..10] OPCODE(OPC_BLT) };
+
+    semantics
+    {
+        int32 result;
+
+        result = (int32) rf_xpr_read(xpr_rs1);      // if rs < 0, branch to offset, else, do nothing
+        if (result < 0) set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);
+    };
+};
+
+// -------------------------------------------------------------
+// Branch if > 0 (bgtz) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_bgtz_alias : assembler_alias(i_branch), compiler_alias(i_branch)    // in RISC-V, bgtz rs, offset equates to blt x0, rs2, offset
+{
+    use xpr_all as xpr_rs2;
+    use rel_addr12 as rel_addr;
+
+    assembler { "bgtz" xpr_rs2 "," rel_addr };
+    binary { rel_addr[11..11] rel_addr[9..4] xpr_rs2 ZERO_REG FUNCT3(OPC_BLT) rel_addr[3..0] rel_addr[10..10] OPCODE(OPC_BLT) };
+
+    semantics
+    {
+        int32 result;
+
+        result = (int32) rf_xpr_read(xpr_rs2);      // if rs > 0, branch to offset, else, do nothing
+        if (result > 0) set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);
+    };
+};
+
+// -------------------------------------------------------------
+// Branch if > than (bgt) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_bgt_alias : assembler_alias(i_branch), compiler_alias(i_branch)     // in RISC-V, bgt rs1, rs2, offset equates to blt rs2, rs1, offset
+{
+    use xpr_all as xpr_rs1, xpr_rs2;
+    use rel_addr12 as rel_addr;
+
+    assembler { "bgt" xpr_rs1 "," xpr_rs2 "," rel_addr };
+    binary { rel_addr[11..11] rel_addr[9..4] xpr_rs1 xpr_rs2 FUNCT3(OPC_BLT) rel_addr[3..0] rel_addr[10..10] OPCODE(OPC_BLT) };
+
+    semantics
+    {
+        int32 src1, src2;
+
+        src1 = (int32) rf_xpr_read(xpr_rs1);        // if rs1 > rs2, branch to offset, else, do nothing
+        src2 = (int32) rf_xpr_read(xpr_rs2);
+        if (src1 > src2) set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);
+    };
+};
+
+// -------------------------------------------------------------
+// Branch if <= than (ble) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_ble_alias : assembler_alias(i_branch), compiler_alias(i_branch)         // in RISC-V, ble rs1, rs2, offset equates to bge rs2, rs1, offset
+{
+    use xpr_all as xpr_rs1, xpr_rs2;
+    use rel_addr12 as rel_addr;
+
+    assembler { "ble" xpr_rs1 "," xpr_rs2 "," rel_addr };
+    binary { rel_addr[11..11] rel_addr[9..4] xpr_rs1 xpr_rs2 FUNCT3(OPC_BGE) rel_addr[3..0] rel_addr[10..10] OPCODE(OPC_BGE) };
+
+    semantics
+    {
+        int32 src1, src2;
+
+        src1 = (int32) rf_xpr_read(xpr_rs1);        // if rs1 < rs2, branch to offset, else, do nothing
+        src2 = (int32) rf_xpr_read(xpr_rs2);
+        if (src1 <= src2) set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);
+    };
+};
+
+// -------------------------------------------------------------
+// Branch if > than unsigned (bgtu) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_bgtu_alias : assembler_alias(i_branch), compiler_alias(i_branch)      // in RISC-V, bgtu rs1, rs2, offset equates to bltu rs2, rs1, offset
+{
+    use xpr_all as xpr_rs1, xpr_rs2;
+    use rel_addr12 as rel_addr;
+
+    assembler { "bgtu" xpr_rs1 "," xpr_rs2 "," rel_addr };
+    binary { rel_addr[11..11] rel_addr[9..4] xpr_rs1 xpr_rs2 FUNCT3(OPC_BLTU) rel_addr[3..0] rel_addr[10..10] OPCODE(OPC_BLTU) };
+
+    semantics
+    {
+        uint32 src1, src2;
+
+        src1 = rf_xpr_read(xpr_rs1);        // if rs1 > rs2, branch to offset, else, do nothing
+        src2 = rf_xpr_read(xpr_rs2);
+        if (src1 > src2) set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);
+    };
+};
+
+// -------------------------------------------------------------
+// Branch if <= than unsigned (bleu) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_bleu_alias : assembler_alias(i_branch), compiler_alias(i_branch)     // in RISC-V, bleu rs1, rs2, offset equates to bgeu rs2, rs1, offset
+{
+    use xpr_all as xpr_rs1, xpr_rs2;
+    use rel_addr12 as rel_addr;
+
+    assembler { "bleu" xpr_rs1 "," xpr_rs2 "," rel_addr };
+    binary { rel_addr[11..11] rel_addr[9..4] xpr_rs1 xpr_rs2 FUNCT3(OPC_BGEU) rel_addr[3..0] rel_addr[10..10] OPCODE(OPC_BGEU) };
+
+    semantics
+    {
+        uint32 src1, src2;
+
+        src1 = rf_xpr_read(xpr_rs1);        // if rs1 < rs2, branch to offset, else, do nothing
+        src2 = rf_xpr_read(xpr_rs2);
+        if (src1 < src2) set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);
+    };
+};
+
+// -------------------------------------------------------------
+// Jump (j) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_j_alias : assembler_alias(i_jal), compiler_alias(i_jal)         // in RISC-V, j offset equates to jal x0, offset
+{
+    use rel_addr20 as rel_addr;
+
+    assembler { "j" rel_addr };
+    binary { rel_addr[19..19] rel_addr[9..0] rel_addr[10..10] rel_addr[18..11] ZERO_REG OPCODE(OPC_JAL) };
+
+    semantics{
+
+        set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);  // RISCV_INSTR_SIZE is subtracted due to PC already incremented in the main event
+
+    };
+};
+
+// -------------------------------------------------------------
+// Jump register (jr) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_jr_alias : assembler_alias(i_jalr), compiler_alias(i_jalr)   // in RISC-V, jr rs equates to jalr x0, rs, 0
+{
+    use xpr_all as xpr_rs1;
+
+    assembler { "jr" xpr_rs1 };
+    binary {ZERO_IMM12 xpr_rs1 FUNCT3(OPC_JALR) ZERO_REG OPCODE(OPC_JALR) };
+
+    semantics
+    {
+        uint32 jump_address;
+
+        jump_address = rf_xpr_read(xpr_rs1);
+        set_pc(jump_address);
+    };
+};
+
+// -------------------------------------------------------------
+// Return (ret) instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_ret_alias : assembler_alias(i_jalr), compiler_alias(i_jalr)         // in RISC-V, ret equates to jalr, x0, x1, 0
+{
+    assembler { "ret" };
+    binary {ZERO_IMM12 ONE_REG FUNCT3(OPC_JALR) ZERO_REG OPCODE(OPC_JALR) };
+
+    semantics
+    {
+        uint32 jump_address;
+
+        jump_address = rf_xpr_read(XPR_RA);
+        set_pc(jump_address);
+    };
+
+};
+
+// -------------------------------------------------------------
+// Call instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_call_alias : assembler_alias(i_jal), compiler_alias(i_jal)   // in RISC-V, call offset equates to jal offset, rd = Return Addrr register
+{
+    use rel_addr20 as rel_addr;
+
+    assembler { "call" rel_addr};
+    binary { rel_addr[19..19] rel_addr[9..0] rel_addr[10..10] rel_addr[18..11] RET_REG OPCODE(OPC_JAL) };
+
+    semantics
+    {
+        rf_xpr_write(r_pc, XPR_RA);    // PC was already incremented in main event, so current pc is pointing to next instruction
+
+        set_pc(r_pc + ((int32)rel_addr << HALF_ALIGN) - RISCV_INSTR_SIZE);  // RISCV_INSTR_SIZE is subtracted due to PC already incremented in the main event
+    };
+};
+
+// -------------------------------------------------------------
+// Call Register instruction pseudo instruction
+// -------------------------------------------------------------
+
+element i_call_reg_alias : assembler_alias(i_jalr), compiler_alias(i_jalr)   // in RISC-V, call offset equates to jal offset, rd = Return Addrr register
+{
+    use xpr_all as xpr_rs1;
+
+    assembler { "call_reg" xpr_rs1};
+    binary {ZERO_IMM12 xpr_rs1 FUNCT3(OPC_JALR) ONE_REG OPCODE(OPC_JALR) };
+
+    semantics
+    {
+        uint32 jump_address;
+
+        rf_xpr_write(r_pc, XPR_RA);
+        jump_address = rf_xpr_read(xpr_rs1) & BUS_MASK;       // Make half-word aligned per RISC-V standard
+        set_pc(jump_address);
+    };
+};
+
+// -------------------------------------------------------------
+// 32-bit constant load emulation instrucion
+// -------------------------------------------------------------
+
+emulation e_movi32
+{
+    use i_upper_imm as i_lui;
+    use i_alu as i_or;
+    use i_alu_i as i_ori;
+    use i_shift as i_slli, i_srli;
+
+    unsigned attribute bit[32] imm;
+
+    instructions
+    {
+        // load upper 20-bits into the destination register
+        i_lui(opc = opc_lui, xpr_rd = xpr, simm = simm20(val = imm[31..12]));
+        // bring in the lower 12-bits into the destination register
+        i_ori(opc = opc_ori, xpr_rd = x_28, xpr_rs1 = x_0, simm = simm12(val = imm[11..0]));
+        // shift 20-bits to the left to remove any signed extended bits - making lower 12-bit immediate unsigned
+        i_slli(opc = opc_slli, xpr_rd = x_28, xpr_rs1 = x_28, shamt.val = 20);
+        // now, put the 12-bit immediate back into the lower 12 bits
+        i_srli(opc = opc_srli, xpr_rd = x_28, xpr_rs1 = x_28, shamt.val = 20);
+        // use or to combine the two unsigned immediates into the destination register
+        i_or(opc = opc_or, xpr_rs1 = i_lui.xpr_rd, xpr_rs2 = x_28, xpr_rd = xpr);
+    };
+
+    semantics
+    {
+        rf_xpr[i_or.xpr_rd] = imm;
+    };
+};
+
+// -------------------------------------------------------------
+// Call far away routine
+// -------------------------------------------------------------
+/*
+emulation e_call                                             // how to assign a label to this e_call address location?
+{
+    use i_upper_imm as i_auipc;
+    use i_jalr;
+
+    unsigned attribute bit[32] jump_addr;
+
+    instructions
+    {
+        // load upper 20-bits of register
+        i_auipc(opc = opc_auipc, xpr_rd = xpr, simm = simm20(val = jump_addr[31..12]));
+        // use addi to load lower 12 bits
+        i_jalr(xpr_rd = i_auipc(xpr_rd), xpr_rs1 = i_auipc(xpr_rd), opc = opc_jalr, rel_addr = rel_jalr_addr12(val = jump_addr[11..00]));
+    };
+
+    semantics
+    {
+        rf_xpr_write(r_pc, XPR_RA);
+
+        set_pc(jump_addr);
+    };
+};
+*/

@@ -1,0 +1,273 @@
+/**
+* Copyright (c) 2017 Keith Graham
+*
+* Permission is granted to anyone to use this software for any purpose,
+* including commercial applications, and to alter it and redistribute it
+* freely, subject to the following restrictions:
+*
+* 1. The origin of this software must not be misrepresented; you must not
+*    claim that you wrote the original software.
+* 2. Altered source versions must be plainly marked as such, and must not be
+*    misrepresented as being the original software.
+* 3. This notice may not be removed or altered from any source distribution.
+*/
+
+
+// -------------------------------------------------------------
+// Include statements
+// -------------------------------------------------------------
+
+#include "config.hcodal"
+#include "debug.hcodal"
+#include "opcodes.hcodal"
+
+
+// -------------------------------------------------------------
+// General Purpose Register File Access
+// -------------------------------------------------------------
+
+inline uint32 rf_xpr_read(const uint5 index)
+{
+    if (index == 0) return 0;   // Register 0 always returns a 0
+    else return rf_xpr[index];
+}
+
+inline void rf_xpr_write(const uint32 val, const uint5 index)
+{
+    if(index == 0) return;
+    else rf_xpr[index] = val;
+    codasip_info(INFO_RF_WRITE, "rf_xpr[%d] = 0x%x", index, val);
+}
+
+// -------------------------------------------------------------
+// Branching / Jumping to new addreess
+// -------------------------------------------------------------
+
+
+inline void set_pc(const uint32 val)
+{
+    r_pc = val;
+    codasip_info(INFO_PC_WRITE, "Jumping to 0x%x", val);
+}
+
+// -------------------------------------------------------------
+// ALU
+// -------------------------------------------------------------
+
+uint32 alu(const uint32 opc, const uint32 src1, const uint32 src2)
+{
+    uint32 result;
+
+    switch(opc)
+    {
+        case OPC_LUI:
+        case OPC_AUIPC:
+        case OPC_ADDI:
+        case OPC_ADD:
+            result = src1 + src2;
+            break;
+        case OPC_SLTI:
+        case OPC_SLT:
+            if ((int32) src1 < (int32) src2) result = 1;
+            else result = 0;
+            break;
+        case OPC_SLTIU:
+        case OPC_SLTU:
+            if (src1 < src2) result = 1;
+            else result = 0;
+            break;
+        case OPC_ANDI:
+        case OPC_AND:
+            result = src1 & src2;
+            break;
+        case OPC_ORI:
+        case OPC_OR:
+            result = src1 | src2;
+            break;
+        case OPC_XORI:
+        case OPC_XOR:
+            result = src1 ^ src2;
+            break;
+        case OPC_SLLI:
+        case OPC_SLL:
+            result = src1 << (uint5) src2;   // shift register by lower 5-bits of the src2 register
+            break;
+        case OPC_SRLI:
+        case OPC_SRL:
+            result = src1 >> (int5) src2;  // shift register by lower 5-bits of the src2 register
+            break;
+        case OPC_SUB:
+            result = src1 - src2;
+            break;
+        case OPC_SRAI:
+        case OPC_SRA:
+            result = (int32) src1 >> (uint5) src2;  // shift register by lower 5-bits of the src2 register
+            break;
+        case OPC_BEQ:
+            if (src1 == src2) result = 1; else result = 0;
+            break;
+        case OPC_BNE:
+            if (src1 != src2) result = 1; else result = 0;
+            break;
+        case OPC_BLT:
+            if ((int32) src1 < (int32) src2) result = 1; else result = 0;
+            break;
+        case OPC_BLTU:
+            if (src1 < src2) result = 1; else result = 0;
+            break;
+        case OPC_BGE:
+            if ((int32) src1 >= (int32) src2) result = 1; else result = 0;
+            break;
+        case OPC_BGEU:
+            if (src1 >= src2) result = 1; else result = 0;
+            break;
+        default:
+            result = 0;
+            codasip_assert(false, "Defualt case: %d\n", opc);
+    }
+    return result;
+}
+
+// -------------------------------------------------------------
+// Load function
+// -------------------------------------------------------------
+
+uint32 load(const uint3 funct3, const uint32 address)
+{
+    uint32 result, num_of_bytes;
+
+    switch(funct3)
+    {
+        case FUNCT3_LBU:
+        case FUNCT3_LB:
+            num_of_bytes = 1;
+            break;
+        case FUNCT3_LHU:
+        case FUNCT3_LH:
+            num_of_bytes = 2;
+            break;
+        case FUNCT3_LW:
+            num_of_bytes = 4;
+            break;
+        default:
+            num_of_bytes = 0;
+            codasip_assert(false, "Default case: %d\n", funct3);
+            break;
+    }
+
+    result = if_data_read(address, num_of_bytes);
+
+    switch(funct3)
+    {
+        case FUNCT3_LB:
+            return (int32)(int8) result;
+        case FUNCT3_LH:
+            return (int32)(int16) result;
+        case FUNCT3_LBU:
+        case FUNCT3_LHU:
+        case FUNCT3_LW:
+            return result;
+        default:
+            codasip_assert(false, "Default case: %d\n", funct3);
+            return 0;
+    }
+}
+
+// -------------------------------------------------------------
+// Store function
+// -------------------------------------------------------------
+
+void store(const uint3 funct3, const uint32 address, const uint32 result)
+{
+    uint32 num_of_bytes;
+
+    switch(funct3)
+    {
+        case FUNCT3_SB:
+            num_of_bytes = 1;
+            break;
+        case FUNCT3_SH:
+            num_of_bytes = 2;
+            break;
+        case FUNCT3_SW:
+            num_of_bytes = 4;
+            break;
+        default:
+            num_of_bytes = 0;
+            codasip_assert(false, "Default case: %d\n", funct3);
+            break;
+    }
+
+    if_data_write(result, address, num_of_bytes);
+
+}
+
+// -------------------------------------------------------------
+// Data Interface Access
+// -------------------------------------------------------------
+
+uint32 if_data_read(const uint32 address, const uint32 num_of_bytes)
+{
+    uint32 aligned_address, byte_offset;
+    uint32 result;
+
+    // Currently the model only supports aligned memory accesses.  For RISC-V compatibility, unaligned
+    // memory access will need to be added.  For the memory aligned model, address of sub-word has to be
+    // split innto a word aligned address and the offset into the word
+
+    aligned_address = address & BUS_MASK;
+    byte_offset = address & ~BUS_MASK;
+
+    switch(num_of_bytes)
+    {
+        case 1:     // byte
+            result = if_data.read(aligned_address, byte_offset, 1);
+            break;
+        case 2:     // half-word
+            result = if_data.read(aligned_address, byte_offset, 2);
+            break;
+        case 4:     // word
+            result = if_data.read(aligned_address, byte_offset, 4);
+            break;
+        default:
+            result = 0;
+            codasip_assert(false, "Default case:  %d\n", 0);
+            break;
+    }
+
+    codasip_info(INFO_INTERFACE, "Load from memory:  address = 0x%x (%d), value = 0x%x (%d)\n",
+                 address, address, result, result);
+
+    return result;
+}
+
+void if_data_write(const uint32 result, const uint32 address, const uint32 num_of_bytes)
+{
+    uint32 aligned_address, byte_offset;
+
+    // Currently the model only supports aligned memory accesses.  For RISC-V compatibility, unaligned
+    // memory access will need to be added.  For the memory aligned model, address of sub-word has to be
+    // split innto a word aligned address and the offset into the word
+
+    aligned_address = address & BUS_MASK;
+    byte_offset = address & ~BUS_MASK;
+
+    switch(num_of_bytes)
+    {
+        case 1:     // byte store
+            if_data.write(result, aligned_address, byte_offset, 1);
+            break;
+        case 2:     // half-word store
+            if_data.write(result, aligned_address, byte_offset, 2);
+            break;
+        case 4:     // word store
+            if_data.write(result, aligned_address, byte_offset, 4);
+            break;
+        default:
+            codasip_assert(false, "Default case: %d\n", 0);
+            break;
+    }
+
+    codasip_info(INFO_INTERFACE, "Store to memory: address = 0x%x (%d), value = 0x%x (%d)\n",
+                 address, address, result, result);
+}

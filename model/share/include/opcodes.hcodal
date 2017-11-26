@@ -1,0 +1,166 @@
+/**
+* Copyright (c) 2017 Keith Graham
+*
+* Portions of this code is credited to Shivasankar Gunasekaran
+*
+* Permission is granted to anyone to use this software for any purpose,
+* including commercial applications, and to alter it and redistribute it
+* freely, subject to the following restrictions:
+*
+* 1. The origin of this software must not be misrepresented; you must not
+*    claim that you wrote the original software.
+* 2. Altered source versions must be plainly marked as such, and must not be
+*    misrepresented as being the original software.
+* 3. This notice may not be removed or altered from any source distribution.
+*/
+
+
+// -------------------------------------------------------------
+// Defines to break down extended opcodes
+// -------------------------------------------------------------
+
+#define FUNCT7(opc)     opc[16..10]
+#define FUNCT3(opc)     opc[9..7]
+#define OPCODE(opc)     opc[6..0]
+
+#define UJ_OP_MASK(opc) (opc & 0x0007f)
+#define R_OP_MASK(opc) (opc & 0x1ffff)
+#define ISB_OP_MASK(opc) (opc & 0x003ff)
+
+
+// -------------------------------------------------------------
+// Funct7 definitions per extended opcode
+// -------------------------------------------------------------
+
+#define FUNCT7_SLLI    (0b0000000)
+#define FUNCT7_SRLI    (0b0000000)
+#define FUNCT7_SRAI    (0b0100000)
+
+#define FUNCT7_ADD     (0b0000000)
+#define FUNCT7_SLT     (0b0000000)
+#define FUNCT7_SLTU    (0b0000000)
+#define FUNCT7_AND     (0b0000000)
+#define FUNCT7_OR      (0b0000000)
+#define FUNCT7_XOR     (0b0000000)
+#define FUNCT7_SLL     (0b0000000)
+#define FUNCT7_SRL     (0b0000000)
+#define FUNCT7_SUB     (0b0100000)
+#define FUNCT7_SRA     (0b0100000)
+
+// -------------------------------------------------------------
+// Funct3 definitions per extended opcode
+// -------------------------------------------------------------
+
+#define FUNCT3_SLLI    (0b001)
+#define FUNCT3_SRLI    (0b101)
+#define FUNCT3_SRAI    (0b101)
+
+#define FUNCT3_ADD     (0b000)
+#define FUNCT3_SLT     (0b010)
+#define FUNCT3_SLTU    (0b011)
+#define FUNCT3_AND     (0b111)
+#define FUNCT3_OR      (0b110)
+#define FUNCT3_XOR     (0b100)
+#define FUNCT3_SLL     (0b001)
+#define FUNCT3_SRL     (0b101)
+#define FUNCT3_SUB     (0b000)
+#define FUNCT3_SRA     (0b101)
+
+#define FUNCT3_ADDI    (0b000)
+#define FUNCT3_SLTI    (0b010)
+#define FUNCT3_SLTIU   (0b011)
+#define FUNCT3_ANDI    (0b111)
+#define FUNCT3_ORI     (0b110)
+#define FUNCT3_XORI    (0b100)
+
+#define FUNCT3_BEQ     (0b000)
+#define FUNCT3_BNE     (0b001)
+#define FUNCT3_BLT     (0b100)
+#define FUNCT3_BLTU    (0b110)
+#define FUNCT3_BGE     (0b101)
+#define FUNCT3_BGEU    (0b111)
+
+#define FUNCT3_LB      (0b000)
+#define FUNCT3_LH      (0b001)
+#define FUNCT3_LW      (0b010)
+#define FUNCT3_LBU     (0b100)
+#define FUNCT3_LHU     (0b101)
+
+#define FUNCT3_SB      (0b000)
+#define FUNCT3_SH      (0b001)
+#define FUNCT3_SW      (0b010)
+
+#define FUNCT3_JALR    (0b000)
+
+#define FUNCT3_CSRRW   (0b001)
+#define FUNCT3_CSRRS   (0b010)
+#define FUNCT3_CSRRC   (0b011)
+#define FUNCT3_CSRRWI  (0b101)
+#define FUNCT3_CSRRSI  (0b110)
+#define FUNCT3_CSRRCI  (0b111)
+
+
+// -------------------------------------------------------------
+// Opcodes definitions
+// -------------------------------------------------------------
+
+enum uj_type_opcode : uint7
+{
+    // NOP and HALT are temporary until pseudo instructions can be developed
+    OPC_NOP     = 0b0011111,
+    OPC_HALT    = 0b0111111,
+    OPC_SYSCALL = 0b1011111,
+
+    OPC_LUI     = 0b0110111,
+    OPC_AUIPC   = 0b0010111,
+
+    OPC_JAL     = 0b1101111
+};
+
+enum rtype_opcode : uint17
+{
+    OPC_SLLI    = (FUNCT7_SLLI << 10) + (FUNCT3_SLLI << 7) + 0b0010011,
+    OPC_SRLI    = (FUNCT7_SRLI << 10) + (FUNCT3_SRLI << 7) + 0b0010011,
+    OPC_SRAI    = (FUNCT7_SRAI << 10) + (FUNCT3_SRAI << 7) + 0b0010011,
+
+    OPC_ADD     = (FUNCT7_ADD << 10) + (FUNCT3_ADD << 7) + 0b0110011,
+    OPC_SLT     = (FUNCT7_SLT << 10) + (FUNCT3_SLT << 7) + 0b0110011,
+    OPC_SLTU    = (FUNCT7_SLTU << 10) + (FUNCT3_SLTU << 7) + 0b0110011,
+    OPC_AND     = (FUNCT7_AND << 10) + (FUNCT3_AND << 7) + 0b0110011,
+    OPC_OR      = (FUNCT7_OR << 10) + (FUNCT3_OR << 7) + 0b0110011,
+    OPC_XOR     = (FUNCT7_XOR << 10) + (FUNCT3_XOR << 7) + 0b0110011,
+    OPC_SLL     = (FUNCT7_SLL << 10) + (FUNCT3_SLL << 7) + 0b0110011,
+    OPC_SRL     = (FUNCT7_SRL << 10) + (FUNCT3_SRL << 7) + 0b0110011,
+    OPC_SUB     = (FUNCT7_SUB << 10) + (FUNCT3_SUB << 7) + 0b0110011,
+    OPC_SRA     = (FUNCT7_SRA << 10) + (FUNCT3_SRA << 7) + 0b0110011
+};
+
+enum isb_type_opcode : uint10
+{
+    OPC_ADDI    = (FUNCT3_ADDI << 7) + 0b0010011,
+    OPC_SLTI    = (FUNCT3_SLTI << 7) + 0b0010011,
+    OPC_SLTIU   = (FUNCT3_SLTIU << 7) + 0b0010011,
+    OPC_ANDI    = (FUNCT3_ANDI << 7) + 0b0010011,
+    OPC_ORI     = (FUNCT3_ORI << 7) + 0b0010011,
+    OPC_XORI    = (FUNCT3_XORI << 7) + 0b0010011,
+
+    OPC_BEQ     = (FUNCT3_BEQ << 7) + 0b1100011,
+    OPC_BNE     = (FUNCT3_BNE << 7) + 0b1100011,
+    OPC_BLT     = (FUNCT3_BLT << 7) + 0b1100011,
+    OPC_BLTU    = (FUNCT3_BLTU << 7) + 0b1100011,
+    OPC_BGE     = (FUNCT3_BGE << 7) + 0b1100011,
+    OPC_BGEU    = (FUNCT3_BGEU << 7) + 0b1100011,
+
+    OPC_LB      = (FUNCT3_LB << 7) + 0b0000011,
+    OPC_LH      = (FUNCT3_LH << 7) + 0b0000011,
+    OPC_LW      = (FUNCT3_LW << 7) + 0b0000011,
+    OPC_LBU     = (FUNCT3_LBU << 7) + 0b0000011,
+    OPC_LHU     = (FUNCT3_LHU << 7) + 0b0000011,
+
+    OPC_SB      = (FUNCT3_SB << 7) + 0b0100011,
+    OPC_SH      = (FUNCT3_SH << 7) + 0b0100011,
+    OPC_SW      = (FUNCT3_SW << 7) + 0b0100011,
+
+    OPC_JALR    = (FUNCT3_JALR << 7) + 0b1100111
+
+};

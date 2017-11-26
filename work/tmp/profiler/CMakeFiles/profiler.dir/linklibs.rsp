@@ -1,0 +1,1 @@
+ -LC:/Codasip/Studio-6.8.2/tools/lib  -lprofilerl -ldbgl -lcodasip-dwarf -lcoml -ldumpl -ldsmutilsl -lloaderl -lobjreaderl -lelfreadl -lsimbasel -lgetoptl -ltinyxml2 -lthreadsl -lfilesysteml -lutility -lws2_32 -lz -llicappl -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

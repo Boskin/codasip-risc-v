@@ -1,0 +1,6 @@
+;name, operands, instructions
+e_movi32__, {(regop, xpr_0, 0, 0), (immop, imm_1, 1, uint32)}, {(true, "i_upper_imm__opc_lui__xpr__simm20__ xpr_0 = %0, imm_1 = imm_1 " >> 12 & 0xfffff"
+i_alu_i__opc_ori__xpr__x_0__simm12__ xpr_0 = reg(rf_xpr,28), imm_1 = imm_1 " & 0xfff"
+i_shift__opc_slli__xpr__xpr__shamt__ xpr_0 = reg(rf_xpr,28), xpr_1 = reg(rf_xpr,28), imm_2 = 20
+i_shift__opc_srli__xpr__xpr__shamt__ xpr_0 = reg(rf_xpr,28), xpr_1 = reg(rf_xpr,28), imm_2 = 20
+i_alu__opc_or__xpr__xpr__xpr__ xpr_0 = xpr_0, xpr_1 = %0, xpr_2 = reg(rf_xpr,28)")}

@@ -1,0 +1,7 @@
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/simulator/CMakeFiles/isimulator.dir
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/simulator/CMakeFiles/edit_cache.dir
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/simulator/CMakeFiles/rebuild_cache.dir
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/simulator/CMakeFiles/install.dir
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/simulator/CMakeFiles/list_install_components.dir
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/simulator/CMakeFiles/install/local.dir
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/simulator/CMakeFiles/install/strip.dir

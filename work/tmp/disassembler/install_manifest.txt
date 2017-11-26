@@ -1,0 +1,2 @@
+c:/users/boskin/codasip/risc_v5/work/ia/sdk/bin/RISC_V5-ia-disassembler.exe
+c:/users/boskin/codasip/risc_v5/work/ia/sdk/bin/libRISC_V5-ia-disassembler.dll

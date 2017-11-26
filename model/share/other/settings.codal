@@ -1,0 +1,61 @@
+/**
+* Copyright (c) 2017 Keith Graham
+*
+* Portions of this code is credited to Shivasankar Gunasekaran
+*
+* Permission is granted to anyone to use this software for any purpose,
+* including commercial applications, and to alter it and redistribute it
+* freely, subject to the following restrictions:
+*
+* 1. The origin of this software must not be misrepresented; you must not
+*    claim that you wrote the original software.
+* 2. Altered source versions must be plainly marked as such, and must not be
+*    misrepresented as being the original software.
+* 3. This notice may not be removed or altered from any source distribution.
+*/
+
+// -------------------------------------------------------------
+// Include statements
+// -------------------------------------------------------------
+
+#include "config.hcodal"
+
+
+
+settings
+{
+    compiler
+    {
+        pointer_size = MADDR_W;
+
+        stack_pointer = rf_xpr[XPR_SP];
+        base_pointer = rf_xpr[XPR_FP];
+        auxiliary_register = rf_xpr[XPR_RES_REG];
+        return_address = rf_xpr[XPR_RA];
+
+        function_result = {                         // Note RISC-V defines 2 return register.  Have defined
+            rf_xpr[XPR_RET_ARG],                    // 4 registers to remove warnings during compiler generation
+            rf_xpr[XPR_RET_ARG + 1],                // of possible too few return registers
+            rf_xpr[XPR_RET_ARG + 2],
+            rf_xpr[XPR_RET_ARG + 3],
+        };
+
+        function_params = {
+            rf_xpr[XPR_FUNC_ARG],
+            rf_xpr[XPR_FUNC_ARG + 1],
+            rf_xpr[XPR_FUNC_ARG + 2],
+            rf_xpr[XPR_FUNC_ARG + 3],
+            rf_xpr[XPR_FUNC_ARG + 4],
+            rf_xpr[XPR_FUNC_ARG + 5],
+            rf_xpr[XPR_FUNC_ARG + 6],
+            rf_xpr[XPR_FUNC_ARG + 7],
+        };
+
+        unused_registers = {
+            rf_xpr[XPR_RES_REG],
+            rf_xpr[28]
+        };
+
+    };
+};
+

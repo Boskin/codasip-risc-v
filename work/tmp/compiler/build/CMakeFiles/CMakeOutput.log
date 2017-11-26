@@ -1,0 +1,1322 @@
+The system is: Windows - 6.1.7601 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/Codasip/MinGW-1.5.1/bin/gcc.exe 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+
+The C compiler identification is GNU, found in "C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/3.6.2/CompilerIdC/a.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: C:/Codasip/MinGW-1.5.1/bin/g++.exe 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+
+The CXX compiler identification is GNU, found in "C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/3.6.2/CompilerIdCXX/a.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_d7e70/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d7e70.dir/build.make CMakeFiles/cmTC_d7e70.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d7e70.dir/testCCompiler.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_d7e70.dir/testCCompiler.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_d7e70.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_d7e70.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_d7e70.dir/objects.a @CMakeFiles/cmTC_d7e70.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_d7e70.dir/objects.a -Wl,--no-whole-archive  -o cmTC_d7e70.exe -Wl,--out-implib,libcmTC_d7e70.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_d7e70.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_88635/fast"
+/usr/bin/make -f CMakeFiles/cmTC_88635.dir/build.make CMakeFiles/cmTC_88635.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_88635.dir/CMakeCCompilerABI.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_88635.dir/CMakeCCompilerABI.c.obj   -c /C/Codasip/MinGW-1.5.1/share/cmake-3.6/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_88635.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_88635.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_88635.dir/objects.a @CMakeFiles/cmTC_88635.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe      -v -Wl,--whole-archive CMakeFiles/cmTC_88635.dir/objects.a -Wl,--no-whole-archive  -o cmTC_88635.exe -Wl,--out-implib,libcmTC_88635.dll.a -Wl,--major-image-version,0,--minor-image-version,0  
+Using built-in specs.
+COLLECT_GCC=c:\Codasip\MinGW-1.5.1\bin\gcc.exe
+COLLECT_LTO_WRAPPER=c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/lto-wrapper.exe
+Target: x86_64-w64-mingw32
+Configured with: ../source/gcc-4.8.3/configure --build=x86_64-unknown-linux-gnu --target=x86_64-w64-mingw32 --host=i686-w64-mingw32 --disable-shared --enable-static --disable-nls --disable-multilib --prefix=/home/hendrik/mingw/target/mingw-w64-x86_64 --with-sysroot=/home/hendrik/mingw/target/mingw-w64-x86_64 --with-mpc=/home/hendrik/mingw/target/pkgs/mpc/mpc-1.0.2-x86_64 --with-mpfr=/home/hendrik/mingw/target/pkgs/mpfr/mpfr-3.1.2-x86_64 --with-gmp=/home/hendrik/mingw/target/pkgs/gmp/gmp-5.1.3-x86_64 --with-host-libstdcxx='-lstdc++ ' --with-cloog=/home/hendrik/mingw/target/pkgs/cloog/cloog-0.18.0-x86_64 --with-isl=/home/hendrik/mingw/target/pkgs/isl/isl-0.11.1-x86_64 --enable-languages=c,c++ --enable-threads=win32 --enable-fully-dynamic-string --enable-lto
+Thread model: win32
+gcc version 4.8.3 (GCC) 
+COMPILER_PATH=c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/;c:/codasip/mingw-1.5.1/bin/../libexec/gcc/;c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/bin/
+LIBRARY_PATH=c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/;c:/codasip/mingw-1.5.1/bin/../lib/gcc/;c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/;c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_88635.exe' '-mtune=generic' '-march=x86-64'
+ c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/collect2.exe --sysroot=/home/hendrik/mingw/target/mingw-w64-x86_64 -m i386pep -Bdynamic -o cmTC_88635.exe c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crtbegin.o -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3 -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib --whole-archive CMakeFiles/cmTC_88635.dir/objects.a --no-whole-archive --out-implib libcmTC_88635.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crtend.o
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.exe|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_88635/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_88635.dir/build.make CMakeFiles/cmTC_88635.dir/build]
+  ignore line: [make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_88635.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_88635.dir/CMakeCCompilerABI.c.obj   -c /C/Codasip/MinGW-1.5.1/share/cmake-3.6/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_88635.exe]
+  ignore line: [/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_88635.dir/objects.a]
+  ignore line: [/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_88635.dir/objects.a @CMakeFiles/cmTC_88635.dir/objects1.rsp]
+  ignore line: [/C/Codasip/MinGW-1.5.1/bin/gcc.exe      -v -Wl,--whole-archive CMakeFiles/cmTC_88635.dir/objects.a -Wl,--no-whole-archive  -o cmTC_88635.exe -Wl,--out-implib,libcmTC_88635.dll.a -Wl,--major-image-version,0,--minor-image-version,0  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=c:\Codasip\MinGW-1.5.1\bin\gcc.exe]
+  ignore line: [COLLECT_LTO_WRAPPER=c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/lto-wrapper.exe]
+  ignore line: [Target: x86_64-w64-mingw32]
+  ignore line: [Configured with: ../source/gcc-4.8.3/configure --build=x86_64-unknown-linux-gnu --target=x86_64-w64-mingw32 --host=i686-w64-mingw32 --disable-shared --enable-static --disable-nls --disable-multilib --prefix=/home/hendrik/mingw/target/mingw-w64-x86_64 --with-sysroot=/home/hendrik/mingw/target/mingw-w64-x86_64 --with-mpc=/home/hendrik/mingw/target/pkgs/mpc/mpc-1.0.2-x86_64 --with-mpfr=/home/hendrik/mingw/target/pkgs/mpfr/mpfr-3.1.2-x86_64 --with-gmp=/home/hendrik/mingw/target/pkgs/gmp/gmp-5.1.3-x86_64 --with-host-libstdcxx='-lstdc++ ' --with-cloog=/home/hendrik/mingw/target/pkgs/cloog/cloog-0.18.0-x86_64 --with-isl=/home/hendrik/mingw/target/pkgs/isl/isl-0.11.1-x86_64 --enable-languages=c,c++ --enable-threads=win32 --enable-fully-dynamic-string --enable-lto]
+  ignore line: [Thread model: win32]
+  ignore line: [gcc version 4.8.3 (GCC) ]
+  ignore line: [COMPILER_PATH=c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/]
+  ignore line: [c:/codasip/mingw-1.5.1/bin/../libexec/gcc/]
+  ignore line: [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/bin/]
+  ignore line: [LIBRARY_PATH=c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/]
+  ignore line: [c:/codasip/mingw-1.5.1/bin/../lib/gcc/]
+  ignore line: [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/]
+  ignore line: [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_88635.exe' '-mtune=generic' '-march=x86-64']
+  link line: [ c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/collect2.exe --sysroot=/home/hendrik/mingw/target/mingw-w64-x86_64 -m i386pep -Bdynamic -o cmTC_88635.exe c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crtbegin.o -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3 -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib --whole-archive CMakeFiles/cmTC_88635.dir/objects.a --no-whole-archive --out-implib libcmTC_88635.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crtend.o]
+    arg [c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/collect2.exe] ==> ignore
+    arg [--sysroot=/home/hendrik/mingw/target/mingw-w64-x86_64] ==> ignore
+    arg [-m] ==> ignore
+    arg [i386pep] ==> ignore
+    arg [-Bdynamic] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_88635.exe] ==> ignore
+    arg [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> ignore
+    arg [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crtbegin.o] ==> ignore
+    arg [-Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3] ==> dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3]
+    arg [-Lc:/codasip/mingw-1.5.1/bin/../lib/gcc] ==> dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc]
+    arg [-Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib] ==> dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib]
+    arg [-Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib] ==> dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib]
+    arg [--whole-archive] ==> ignore
+    arg [CMakeFiles/cmTC_88635.dir/objects.a] ==> ignore
+    arg [--no-whole-archive] ==> ignore
+    arg [--out-implib] ==> ignore
+    arg [libcmTC_88635.dll.a] ==> ignore
+    arg [--major-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [--minor-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [-lmingw32] ==> lib [mingw32]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [-ladvapi32] ==> lib [advapi32]
+    arg [-lshell32] ==> lib [shell32]
+    arg [-luser32] ==> lib [user32]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [-lmingw32] ==> lib [mingw32]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crtend.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc]
+  collapse library dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3] ==> [C:/Codasip/MinGW-1.5.1/lib/gcc/x86_64-w64-mingw32/4.8.3]
+  collapse library dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc] ==> [C:/Codasip/MinGW-1.5.1/lib/gcc]
+  collapse library dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib] ==> [C:/Codasip/MinGW-1.5.1/x86_64-w64-mingw32/lib]
+  collapse library dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib] ==> [C:/Codasip/MinGW-1.5.1/x86_64-w64-mingw32/lib]
+  implicit libs: [mingw32;moldname;mingwex;msvcrt;advapi32;shell32;user32;kernel32;mingw32;moldname;mingwex;msvcrt]
+  implicit dirs: [C:/Codasip/MinGW-1.5.1/lib/gcc/x86_64-w64-mingw32/4.8.3;C:/Codasip/MinGW-1.5.1/lib/gcc;C:/Codasip/MinGW-1.5.1/x86_64-w64-mingw32/lib]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_9df59/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9df59.dir/build.make CMakeFiles/cmTC_9df59.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9df59.dir/feature_tests.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe    -std=c11 -o CMakeFiles/cmTC_9df59.dir/feature_tests.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_9df59.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_9df59.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_9df59.dir/objects.a @CMakeFiles/cmTC_9df59.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_9df59.dir/objects.a -Wl,--no-whole-archive  -o cmTC_9df59.exe -Wl,--out-implib,libcmTC_9df59.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_9df59.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_736e9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_736e9.dir/build.make CMakeFiles/cmTC_736e9.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_736e9.dir/feature_tests.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe    -std=c99 -o CMakeFiles/cmTC_736e9.dir/feature_tests.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_736e9.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_736e9.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_736e9.dir/objects.a @CMakeFiles/cmTC_736e9.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_736e9.dir/objects.a -Wl,--no-whole-archive  -o cmTC_736e9.exe -Wl,--out-implib,libcmTC_736e9.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_736e9.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_03f52/fast"
+/usr/bin/make -f CMakeFiles/cmTC_03f52.dir/build.make CMakeFiles/cmTC_03f52.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_03f52.dir/feature_tests.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe    -std=c90 -o CMakeFiles/cmTC_03f52.dir/feature_tests.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_03f52.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_03f52.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_03f52.dir/objects.a @CMakeFiles/cmTC_03f52.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_03f52.dir/objects.a -Wl,--no-whole-archive  -o cmTC_03f52.exe -Wl,--out-implib,libcmTC_03f52.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_03f52.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_f26c5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f26c5.dir/build.make CMakeFiles/cmTC_f26c5.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f26c5.dir/testCXXCompiler.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe      -o CMakeFiles/cmTC_f26c5.dir/testCXXCompiler.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_f26c5.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_f26c5.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_f26c5.dir/objects.a @CMakeFiles/cmTC_f26c5.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe       -Wl,--whole-archive CMakeFiles/cmTC_f26c5.dir/objects.a -Wl,--no-whole-archive  -o cmTC_f26c5.exe -Wl,--out-implib,libcmTC_f26c5.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_f26c5.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_1ac55/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1ac55.dir/build.make CMakeFiles/cmTC_1ac55.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_1ac55.dir/CMakeCXXCompilerABI.cpp.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe      -o CMakeFiles/cmTC_1ac55.dir/CMakeCXXCompilerABI.cpp.obj -c /C/Codasip/MinGW-1.5.1/share/cmake-3.6/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_1ac55.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_1ac55.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_1ac55.dir/objects.a @CMakeFiles/cmTC_1ac55.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe      -v -Wl,--whole-archive CMakeFiles/cmTC_1ac55.dir/objects.a -Wl,--no-whole-archive  -o cmTC_1ac55.exe -Wl,--out-implib,libcmTC_1ac55.dll.a -Wl,--major-image-version,0,--minor-image-version,0  
+Using built-in specs.
+COLLECT_GCC=c:\Codasip\MinGW-1.5.1\bin\g++.exe
+COLLECT_LTO_WRAPPER=c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/lto-wrapper.exe
+Target: x86_64-w64-mingw32
+Configured with: ../source/gcc-4.8.3/configure --build=x86_64-unknown-linux-gnu --target=x86_64-w64-mingw32 --host=i686-w64-mingw32 --disable-shared --enable-static --disable-nls --disable-multilib --prefix=/home/hendrik/mingw/target/mingw-w64-x86_64 --with-sysroot=/home/hendrik/mingw/target/mingw-w64-x86_64 --with-mpc=/home/hendrik/mingw/target/pkgs/mpc/mpc-1.0.2-x86_64 --with-mpfr=/home/hendrik/mingw/target/pkgs/mpfr/mpfr-3.1.2-x86_64 --with-gmp=/home/hendrik/mingw/target/pkgs/gmp/gmp-5.1.3-x86_64 --with-host-libstdcxx='-lstdc++ ' --with-cloog=/home/hendrik/mingw/target/pkgs/cloog/cloog-0.18.0-x86_64 --with-isl=/home/hendrik/mingw/target/pkgs/isl/isl-0.11.1-x86_64 --enable-languages=c,c++ --enable-threads=win32 --enable-fully-dynamic-string --enable-lto
+Thread model: win32
+gcc version 4.8.3 (GCC) 
+COMPILER_PATH=c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/;c:/codasip/mingw-1.5.1/bin/../libexec/gcc/;c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/bin/
+LIBRARY_PATH=c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/;c:/codasip/mingw-1.5.1/bin/../lib/gcc/;c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/;c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_1ac55.exe' '-mtune=generic' '-march=x86-64'
+ c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/collect2.exe --sysroot=/home/hendrik/mingw/target/mingw-w64-x86_64 -m i386pep -Bdynamic -o cmTC_1ac55.exe c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crtbegin.o -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3 -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib --whole-archive CMakeFiles/cmTC_1ac55.dir/objects.a --no-whole-archive --out-implib libcmTC_1ac55.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crtend.o
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.exe|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_1ac55/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_1ac55.dir/build.make CMakeFiles/cmTC_1ac55.dir/build]
+  ignore line: [make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_1ac55.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [/C/Codasip/MinGW-1.5.1/bin/g++.exe      -o CMakeFiles/cmTC_1ac55.dir/CMakeCXXCompilerABI.cpp.obj -c /C/Codasip/MinGW-1.5.1/share/cmake-3.6/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_1ac55.exe]
+  ignore line: [/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_1ac55.dir/objects.a]
+  ignore line: [/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_1ac55.dir/objects.a @CMakeFiles/cmTC_1ac55.dir/objects1.rsp]
+  ignore line: [/C/Codasip/MinGW-1.5.1/bin/g++.exe      -v -Wl,--whole-archive CMakeFiles/cmTC_1ac55.dir/objects.a -Wl,--no-whole-archive  -o cmTC_1ac55.exe -Wl,--out-implib,libcmTC_1ac55.dll.a -Wl,--major-image-version,0,--minor-image-version,0  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=c:\Codasip\MinGW-1.5.1\bin\g++.exe]
+  ignore line: [COLLECT_LTO_WRAPPER=c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/lto-wrapper.exe]
+  ignore line: [Target: x86_64-w64-mingw32]
+  ignore line: [Configured with: ../source/gcc-4.8.3/configure --build=x86_64-unknown-linux-gnu --target=x86_64-w64-mingw32 --host=i686-w64-mingw32 --disable-shared --enable-static --disable-nls --disable-multilib --prefix=/home/hendrik/mingw/target/mingw-w64-x86_64 --with-sysroot=/home/hendrik/mingw/target/mingw-w64-x86_64 --with-mpc=/home/hendrik/mingw/target/pkgs/mpc/mpc-1.0.2-x86_64 --with-mpfr=/home/hendrik/mingw/target/pkgs/mpfr/mpfr-3.1.2-x86_64 --with-gmp=/home/hendrik/mingw/target/pkgs/gmp/gmp-5.1.3-x86_64 --with-host-libstdcxx='-lstdc++ ' --with-cloog=/home/hendrik/mingw/target/pkgs/cloog/cloog-0.18.0-x86_64 --with-isl=/home/hendrik/mingw/target/pkgs/isl/isl-0.11.1-x86_64 --enable-languages=c,c++ --enable-threads=win32 --enable-fully-dynamic-string --enable-lto]
+  ignore line: [Thread model: win32]
+  ignore line: [gcc version 4.8.3 (GCC) ]
+  ignore line: [COMPILER_PATH=c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/]
+  ignore line: [c:/codasip/mingw-1.5.1/bin/../libexec/gcc/]
+  ignore line: [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/bin/]
+  ignore line: [LIBRARY_PATH=c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/]
+  ignore line: [c:/codasip/mingw-1.5.1/bin/../lib/gcc/]
+  ignore line: [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/]
+  ignore line: [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_1ac55.exe' '-mtune=generic' '-march=x86-64']
+  link line: [ c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/collect2.exe --sysroot=/home/hendrik/mingw/target/mingw-w64-x86_64 -m i386pep -Bdynamic -o cmTC_1ac55.exe c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crtbegin.o -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3 -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib -Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib --whole-archive CMakeFiles/cmTC_1ac55.dir/objects.a --no-whole-archive --out-implib libcmTC_1ac55.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lmsvcrt c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crtend.o]
+    arg [c:/codasip/mingw-1.5.1/bin/../libexec/gcc/x86_64-w64-mingw32/4.8.3/collect2.exe] ==> ignore
+    arg [--sysroot=/home/hendrik/mingw/target/mingw-w64-x86_64] ==> ignore
+    arg [-m] ==> ignore
+    arg [i386pep] ==> ignore
+    arg [-Bdynamic] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_1ac55.exe] ==> ignore
+    arg [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> ignore
+    arg [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crtbegin.o] ==> ignore
+    arg [-Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3] ==> dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3]
+    arg [-Lc:/codasip/mingw-1.5.1/bin/../lib/gcc] ==> dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc]
+    arg [-Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib] ==> dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib]
+    arg [-Lc:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib] ==> dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib]
+    arg [--whole-archive] ==> ignore
+    arg [CMakeFiles/cmTC_1ac55.dir/objects.a] ==> ignore
+    arg [--no-whole-archive] ==> ignore
+    arg [--out-implib] ==> ignore
+    arg [libcmTC_1ac55.dll.a] ==> ignore
+    arg [--major-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [--minor-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lmingw32] ==> lib [mingw32]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [-ladvapi32] ==> lib [advapi32]
+    arg [-lshell32] ==> lib [shell32]
+    arg [-luser32] ==> lib [user32]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [-lmingw32] ==> lib [mingw32]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib/crtend.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc]
+  collapse library dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3] ==> [C:/Codasip/MinGW-1.5.1/lib/gcc/x86_64-w64-mingw32/4.8.3]
+  collapse library dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc] ==> [C:/Codasip/MinGW-1.5.1/lib/gcc]
+  collapse library dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib/../lib] ==> [C:/Codasip/MinGW-1.5.1/x86_64-w64-mingw32/lib]
+  collapse library dir [c:/codasip/mingw-1.5.1/bin/../lib/gcc/x86_64-w64-mingw32/4.8.3/../../../../x86_64-w64-mingw32/lib] ==> [C:/Codasip/MinGW-1.5.1/x86_64-w64-mingw32/lib]
+  implicit libs: [stdc++;mingw32;moldname;mingwex;msvcrt;advapi32;shell32;user32;kernel32;mingw32;moldname;mingwex;msvcrt]
+  implicit dirs: [C:/Codasip/MinGW-1.5.1/lib/gcc/x86_64-w64-mingw32/4.8.3;C:/Codasip/MinGW-1.5.1/lib/gcc;C:/Codasip/MinGW-1.5.1/x86_64-w64-mingw32/lib]
+  implicit fwks: []
+
+
+
+
+Detecting CXX [-std=c++1y] compiler features compiled with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_5d0fb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5d0fb.dir/build.make CMakeFiles/cmTC_5d0fb.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_5d0fb.dir/feature_tests.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -std=c++1y -o CMakeFiles/cmTC_5d0fb.dir/feature_tests.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_5d0fb.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_5d0fb.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_5d0fb.dir/objects.a @CMakeFiles/cmTC_5d0fb.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe       -Wl,--whole-archive CMakeFiles/cmTC_5d0fb.dir/objects.a -Wl,--no-whole-archive  -o cmTC_5d0fb.exe -Wl,--out-implib,libcmTC_5d0fb.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_5d0fb.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++11] compiler features compiled with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_6a3bf/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6a3bf.dir/build.make CMakeFiles/cmTC_6a3bf.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_6a3bf.dir/feature_tests.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -std=c++11 -o CMakeFiles/cmTC_6a3bf.dir/feature_tests.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_6a3bf.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_6a3bf.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_6a3bf.dir/objects.a @CMakeFiles/cmTC_6a3bf.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe       -Wl,--whole-archive CMakeFiles/cmTC_6a3bf.dir/objects.a -Wl,--no-whole-archive  -o cmTC_6a3bf.exe -Wl,--out-implib,libcmTC_6a3bf.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_6a3bf.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++98] compiler features compiled with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_2c57a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2c57a.dir/build.make CMakeFiles/cmTC_2c57a.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_2c57a.dir/feature_tests.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -std=c++98 -o CMakeFiles/cmTC_2c57a.dir/feature_tests.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_2c57a.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_2c57a.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_2c57a.dir/objects.a @CMakeFiles/cmTC_2c57a.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe       -Wl,--whole-archive CMakeFiles/cmTC_2c57a.dir/objects.a -Wl,--no-whole-archive  -o cmTC_2c57a.exe -Wl,--out-implib,libcmTC_2c57a.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_2c57a.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:0cxx_alias_templates
+    Feature record: CXX_FEATURE:0cxx_alignas
+    Feature record: CXX_FEATURE:0cxx_alignof
+    Feature record: CXX_FEATURE:0cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:0cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:0cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:0cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:0cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:0cxx_default_function_template_args
+    Feature record: CXX_FEATURE:0cxx_defaulted_functions
+    Feature record: CXX_FEATURE:0cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:0cxx_delegating_constructors
+    Feature record: CXX_FEATURE:0cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:0cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:0cxx_explicit_conversions
+    Feature record: CXX_FEATURE:0cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:0cxx_extern_templates
+    Feature record: CXX_FEATURE:0cxx_final
+    Feature record: CXX_FEATURE:0cxx_func_identifier
+    Feature record: CXX_FEATURE:0cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:0cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:0cxx_inline_namespaces
+    Feature record: CXX_FEATURE:0cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:0cxx_local_type_template_args
+    Feature record: CXX_FEATURE:0cxx_long_long_type
+    Feature record: CXX_FEATURE:0cxx_noexcept
+    Feature record: CXX_FEATURE:0cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:0cxx_nullptr
+    Feature record: CXX_FEATURE:0cxx_override
+    Feature record: CXX_FEATURE:0cxx_range_for
+    Feature record: CXX_FEATURE:0cxx_raw_string_literals
+    Feature record: CXX_FEATURE:0cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:0cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:0cxx_rvalue_references
+    Feature record: CXX_FEATURE:0cxx_sizeof_member
+    Feature record: CXX_FEATURE:0cxx_static_assert
+    Feature record: CXX_FEATURE:0cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:0cxx_thread_local
+    Feature record: CXX_FEATURE:0cxx_trailing_return_types
+    Feature record: CXX_FEATURE:0cxx_unicode_literals
+    Feature record: CXX_FEATURE:0cxx_uniform_initialization
+    Feature record: CXX_FEATURE:0cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:0cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:0cxx_variadic_macros
+    Feature record: CXX_FEATURE:0cxx_variadic_templates
+Determining if the include file dirent.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_ca73f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ca73f.dir/build.make CMakeFiles/cmTC_ca73f.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ca73f.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_ca73f.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_ca73f.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_ca73f.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_ca73f.dir/objects.a @CMakeFiles/cmTC_ca73f.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_ca73f.dir/objects.a -Wl,--no-whole-archive  -o cmTC_ca73f.exe -Wl,--out-implib,libcmTC_ca73f.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_ca73f.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file errno.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_c0424/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c0424.dir/build.make CMakeFiles/cmTC_c0424.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c0424.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_c0424.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_c0424.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_c0424.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_c0424.dir/objects.a @CMakeFiles/cmTC_c0424.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_c0424.dir/objects.a -Wl,--no-whole-archive  -o cmTC_c0424.exe -Wl,--out-implib,libcmTC_c0424.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_c0424.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file fcntl.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_9e40c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9e40c.dir/build.make CMakeFiles/cmTC_9e40c.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9e40c.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_9e40c.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_9e40c.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_9e40c.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_9e40c.dir/objects.a @CMakeFiles/cmTC_9e40c.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_9e40c.dir/objects.a -Wl,--no-whole-archive  -o cmTC_9e40c.exe -Wl,--out-implib,libcmTC_9e40c.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_9e40c.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file inttypes.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_d95bc/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d95bc.dir/build.make CMakeFiles/cmTC_d95bc.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d95bc.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_d95bc.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_d95bc.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_d95bc.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_d95bc.dir/objects.a @CMakeFiles/cmTC_d95bc.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_d95bc.dir/objects.a -Wl,--no-whole-archive  -o cmTC_d95bc.exe -Wl,--out-implib,libcmTC_d95bc.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_d95bc.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file malloc.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_f04a1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f04a1.dir/build.make CMakeFiles/cmTC_f04a1.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f04a1.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_f04a1.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_f04a1.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_f04a1.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_f04a1.dir/objects.a @CMakeFiles/cmTC_f04a1.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_f04a1.dir/objects.a -Wl,--no-whole-archive  -o cmTC_f04a1.exe -Wl,--out-implib,libcmTC_f04a1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_f04a1.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file signal.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_f67e5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f67e5.dir/build.make CMakeFiles/cmTC_f67e5.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f67e5.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_f67e5.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_f67e5.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_f67e5.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_f67e5.dir/objects.a @CMakeFiles/cmTC_f67e5.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_f67e5.dir/objects.a -Wl,--no-whole-archive  -o cmTC_f67e5.exe -Wl,--out-implib,libcmTC_f67e5.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_f67e5.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_13858/fast"
+/usr/bin/make -f CMakeFiles/cmTC_13858.dir/build.make CMakeFiles/cmTC_13858.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_13858.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_13858.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_13858.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_13858.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_13858.dir/objects.a @CMakeFiles/cmTC_13858.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_13858.dir/objects.a -Wl,--no-whole-archive  -o cmTC_13858.exe -Wl,--out-implib,libcmTC_13858.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_13858.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/param.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_cd446/fast"
+/usr/bin/make -f CMakeFiles/cmTC_cd446.dir/build.make CMakeFiles/cmTC_cd446.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cd446.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_cd446.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_cd446.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_cd446.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_cd446.dir/objects.a @CMakeFiles/cmTC_cd446.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_cd446.dir/objects.a -Wl,--no-whole-archive  -o cmTC_cd446.exe -Wl,--out-implib,libcmTC_cd446.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_cd446.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/stat.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_0b16f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0b16f.dir/build.make CMakeFiles/cmTC_0b16f.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0b16f.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_0b16f.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_0b16f.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_0b16f.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_0b16f.dir/objects.a @CMakeFiles/cmTC_0b16f.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_0b16f.dir/objects.a -Wl,--no-whole-archive  -o cmTC_0b16f.exe -Wl,--out-implib,libcmTC_0b16f.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_0b16f.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/time.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_f0174/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f0174.dir/build.make CMakeFiles/cmTC_f0174.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f0174.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_f0174.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_f0174.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_f0174.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_f0174.dir/objects.a @CMakeFiles/cmTC_f0174.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_f0174.dir/objects.a -Wl,--no-whole-archive  -o cmTC_f0174.exe -Wl,--out-implib,libcmTC_f0174.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_f0174.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_2fece/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2fece.dir/build.make CMakeFiles/cmTC_2fece.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2fece.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_2fece.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_2fece.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_2fece.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_2fece.dir/objects.a @CMakeFiles/cmTC_2fece.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_2fece.dir/objects.a -Wl,--no-whole-archive  -o cmTC_2fece.exe -Wl,--out-implib,libcmTC_2fece.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_2fece.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_462f0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_462f0.dir/build.make CMakeFiles/cmTC_462f0.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_462f0.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_462f0.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_462f0.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_462f0.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_462f0.dir/objects.a @CMakeFiles/cmTC_462f0.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_462f0.dir/objects.a -Wl,--no-whole-archive  -o cmTC_462f0.exe -Wl,--out-implib,libcmTC_462f0.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_462f0.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file zlib.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_aecf0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_aecf0.dir/build.make CMakeFiles/cmTC_aecf0.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_aecf0.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_aecf0.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_aecf0.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_aecf0.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_aecf0.dir/objects.a @CMakeFiles/cmTC_aecf0.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_aecf0.dir/objects.a -Wl,--no-whole-archive  -o cmTC_aecf0.exe -Wl,--out-implib,libcmTC_aecf0.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_aecf0.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file fenv.h exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_dbb5a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_dbb5a.dir/build.make CMakeFiles/cmTC_dbb5a.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_dbb5a.dir/CheckIncludeFile.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_dbb5a.dir/CheckIncludeFile.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_dbb5a.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_dbb5a.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_dbb5a.dir/objects.a @CMakeFiles/cmTC_dbb5a.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_dbb5a.dir/objects.a -Wl,--no-whole-archive  -o cmTC_dbb5a.exe -Wl,--out-implib,libcmTC_dbb5a.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_dbb5a.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the FE_ALL_EXCEPT exist passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_1b362/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1b362.dir/build.make CMakeFiles/cmTC_1b362.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1b362.dir/CheckSymbolExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_1b362.dir/CheckSymbolExists.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_1b362.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_1b362.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_1b362.dir/objects.a @CMakeFiles/cmTC_1b362.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_1b362.dir/objects.a -Wl,--no-whole-archive  -o cmTC_1b362.exe -Wl,--out-implib,libcmTC_1b362.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_1b362.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+File C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <fenv.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef FE_ALL_EXCEPT
+  return ((int*)(&FE_ALL_EXCEPT))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the FE_INEXACT exist passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_9afa9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9afa9.dir/build.make CMakeFiles/cmTC_9afa9.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9afa9.dir/CheckSymbolExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_9afa9.dir/CheckSymbolExists.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_9afa9.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_9afa9.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_9afa9.dir/objects.a @CMakeFiles/cmTC_9afa9.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_9afa9.dir/objects.a -Wl,--no-whole-archive  -o cmTC_9afa9.exe -Wl,--out-implib,libcmTC_9afa9.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_9afa9.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+File C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <fenv.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef FE_INEXACT
+  return ((int*)(&FE_INEXACT))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the _Unwind_Backtrace exist passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_98dbd/fast"
+/usr/bin/make -f CMakeFiles/cmTC_98dbd.dir/build.make CMakeFiles/cmTC_98dbd.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_98dbd.dir/CheckSymbolExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_98dbd.dir/CheckSymbolExists.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_98dbd.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_98dbd.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_98dbd.dir/objects.a @CMakeFiles/cmTC_98dbd.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_98dbd.dir/objects.a -Wl,--no-whole-archive  -o cmTC_98dbd.exe -Wl,--out-implib,libcmTC_98dbd.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_98dbd.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+File C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <unwind.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _Unwind_Backtrace
+  return ((int*)(&_Unwind_Backtrace))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the isatty exist passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_16726/fast"
+/usr/bin/make -f CMakeFiles/cmTC_16726.dir/build.make CMakeFiles/cmTC_16726.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_16726.dir/CheckSymbolExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_16726.dir/CheckSymbolExists.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_16726.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_16726.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_16726.dir/objects.a @CMakeFiles/cmTC_16726.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_16726.dir/objects.a -Wl,--no-whole-archive  -o cmTC_16726.exe -Wl,--out-implib,libcmTC_16726.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_16726.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+File C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <unistd.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef isatty
+  return ((int*)(&isatty))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the lseek64 exist passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_aa158/fast"
+/usr/bin/make -f CMakeFiles/cmTC_aa158.dir/build.make CMakeFiles/cmTC_aa158.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_aa158.dir/CheckSymbolExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe  -D_LARGEFILE64_SOURCE   -o CMakeFiles/cmTC_aa158.dir/CheckSymbolExists.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_aa158.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_aa158.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_aa158.dir/objects.a @CMakeFiles/cmTC_aa158.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_aa158.dir/objects.a -Wl,--no-whole-archive  -o cmTC_aa158.exe -Wl,--out-implib,libcmTC_aa158.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_aa158.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+File C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <sys/types.h>
+#include <unistd.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef lseek64
+  return ((int*)(&lseek64))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the mktemp exist passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_3c727/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3c727.dir/build.make CMakeFiles/cmTC_3c727.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3c727.dir/CheckSymbolExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_3c727.dir/CheckSymbolExists.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_3c727.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_3c727.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_3c727.dir/objects.a @CMakeFiles/cmTC_3c727.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_3c727.dir/objects.a -Wl,--no-whole-archive  -o cmTC_3c727.exe -Wl,--out-implib,libcmTC_3c727.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_3c727.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+File C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+#include <unistd.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef mktemp
+  return ((int*)(&mktemp))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the getcwd exist passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_602a8/fast"
+/usr/bin/make -f CMakeFiles/cmTC_602a8.dir/build.make CMakeFiles/cmTC_602a8.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_602a8.dir/CheckSymbolExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_602a8.dir/CheckSymbolExists.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_602a8.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_602a8.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_602a8.dir/objects.a @CMakeFiles/cmTC_602a8.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_602a8.dir/objects.a -Wl,--no-whole-archive  -o cmTC_602a8.exe -Wl,--out-implib,libcmTC_602a8.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_602a8.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+File C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <unistd.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef getcwd
+  return ((int*)(&getcwd))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the gettimeofday exist passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_3c848/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3c848.dir/build.make CMakeFiles/cmTC_3c848.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3c848.dir/CheckSymbolExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_3c848.dir/CheckSymbolExists.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_3c848.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_3c848.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_3c848.dir/objects.a @CMakeFiles/cmTC_3c848.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_3c848.dir/objects.a -Wl,--no-whole-archive  -o cmTC_3c848.exe -Wl,--out-implib,libcmTC_3c848.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_3c848.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+File C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <sys/time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef gettimeofday
+  return ((int*)(&gettimeofday))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the strtoll exist passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_4ba2f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4ba2f.dir/build.make CMakeFiles/cmTC_4ba2f.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4ba2f.dir/CheckSymbolExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_4ba2f.dir/CheckSymbolExists.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_4ba2f.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_4ba2f.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_4ba2f.dir/objects.a @CMakeFiles/cmTC_4ba2f.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_4ba2f.dir/objects.a -Wl,--no-whole-archive  -o cmTC_4ba2f.exe -Wl,--out-implib,libcmTC_4ba2f.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_4ba2f.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+File C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef strtoll
+  return ((int*)(&strtoll))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the strerror exist passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_58c8b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_58c8b.dir/build.make CMakeFiles/cmTC_58c8b.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_58c8b.dir/CheckSymbolExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe     -o CMakeFiles/cmTC_58c8b.dir/CheckSymbolExists.c.obj   -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_58c8b.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_58c8b.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_58c8b.dir/objects.a @CMakeFiles/cmTC_58c8b.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe       -Wl,--whole-archive CMakeFiles/cmTC_58c8b.dir/objects.a -Wl,--no-whole-archive  -o cmTC_58c8b.exe -Wl,--out-implib,libcmTC_58c8b.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_58c8b.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+File C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <string.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef strerror
+  return ((int*)(&strerror))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function __alloca exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_39ae3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_39ae3.dir/build.make CMakeFiles/cmTC_39ae3.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_39ae3.dir/CheckFunctionExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe    -DCHECK_FUNCTION_EXISTS=__alloca   -o CMakeFiles/cmTC_39ae3.dir/CheckFunctionExists.c.obj   -c /C/Codasip/MinGW-1.5.1/share/cmake-3.6/Modules/CheckFunctionExists.c
+Linking C executable cmTC_39ae3.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_39ae3.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_39ae3.dir/objects.a @CMakeFiles/cmTC_39ae3.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe   -DCHECK_FUNCTION_EXISTS=__alloca    -Wl,--whole-archive CMakeFiles/cmTC_39ae3.dir/objects.a -Wl,--no-whole-archive  -o cmTC_39ae3.exe -Wl,--out-implib,libcmTC_39ae3.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_39ae3.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function ___chkstk exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_e90a2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e90a2.dir/build.make CMakeFiles/cmTC_e90a2.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e90a2.dir/CheckFunctionExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe    -DCHECK_FUNCTION_EXISTS=___chkstk   -o CMakeFiles/cmTC_e90a2.dir/CheckFunctionExists.c.obj   -c /C/Codasip/MinGW-1.5.1/share/cmake-3.6/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e90a2.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_e90a2.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_e90a2.dir/objects.a @CMakeFiles/cmTC_e90a2.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe   -DCHECK_FUNCTION_EXISTS=___chkstk    -Wl,--whole-archive CMakeFiles/cmTC_e90a2.dir/objects.a -Wl,--no-whole-archive  -o cmTC_e90a2.exe -Wl,--out-implib,libcmTC_e90a2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_e90a2.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function ___chkstk_ms exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_26341/fast"
+/usr/bin/make -f CMakeFiles/cmTC_26341.dir/build.make CMakeFiles/cmTC_26341.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_26341.dir/CheckFunctionExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe    -DCHECK_FUNCTION_EXISTS=___chkstk_ms   -o CMakeFiles/cmTC_26341.dir/CheckFunctionExists.c.obj   -c /C/Codasip/MinGW-1.5.1/share/cmake-3.6/Modules/CheckFunctionExists.c
+Linking C executable cmTC_26341.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_26341.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_26341.dir/objects.a @CMakeFiles/cmTC_26341.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe   -DCHECK_FUNCTION_EXISTS=___chkstk_ms    -Wl,--whole-archive CMakeFiles/cmTC_26341.dir/objects.a -Wl,--no-whole-archive  -o cmTC_26341.exe -Wl,--out-implib,libcmTC_26341.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_26341.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function __main exists passed with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_8012b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8012b.dir/build.make CMakeFiles/cmTC_8012b.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8012b.dir/CheckFunctionExists.c.obj
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe    -DCHECK_FUNCTION_EXISTS=__main   -o CMakeFiles/cmTC_8012b.dir/CheckFunctionExists.c.obj   -c /C/Codasip/MinGW-1.5.1/share/cmake-3.6/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8012b.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_8012b.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_8012b.dir/objects.a @CMakeFiles/cmTC_8012b.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/gcc.exe   -DCHECK_FUNCTION_EXISTS=__main    -Wl,--whole-archive CMakeFiles/cmTC_8012b.dir/objects.a -Wl,--no-whole-archive  -o cmTC_8012b.exe -Wl,--out-implib,libcmTC_8012b.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_8012b.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+
+Performing C++ SOURCE FILE Test HAVE_INT64_T succeeded with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_d486e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d486e.dir/build.make CMakeFiles/cmTC_d486e.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d486e.dir/src.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -DHAVE_INT64_T   -o CMakeFiles/cmTC_d486e.dir/src.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_d486e.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_d486e.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_d486e.dir/objects.a @CMakeFiles/cmTC_d486e.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe   -DHAVE_INT64_T    -Wl,--whole-archive CMakeFiles/cmTC_d486e.dir/objects.a -Wl,--no-whole-archive  -o cmTC_d486e.exe -Wl,--out-implib,libcmTC_d486e.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_d486e.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+    #include<sys/types.h>
+#include<inttypes.h>
+#include<stdint.h>
+ int64_t typeVar;
+    int main() {
+        return 0;
+    }
+    
+Performing C++ SOURCE FILE Test HAVE_UINT64_T succeeded with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_790d4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_790d4.dir/build.make CMakeFiles/cmTC_790d4.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_790d4.dir/src.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -DHAVE_UINT64_T   -o CMakeFiles/cmTC_790d4.dir/src.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_790d4.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_790d4.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_790d4.dir/objects.a @CMakeFiles/cmTC_790d4.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe   -DHAVE_UINT64_T    -Wl,--whole-archive CMakeFiles/cmTC_790d4.dir/objects.a -Wl,--no-whole-archive  -o cmTC_790d4.exe -Wl,--out-implib,libcmTC_790d4.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_790d4.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+    #include<sys/types.h>
+#include<inttypes.h>
+#include<stdint.h>
+ uint64_t typeVar;
+    int main() {
+        return 0;
+    }
+    
+Performing C++ SOURCE FILE Test HAVE_CXX_ATOMICS_WITHOUT_LIB succeeded with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_2e006/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2e006.dir/build.make CMakeFiles/cmTC_2e006.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_2e006.dir/src.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -DHAVE_CXX_ATOMICS_WITHOUT_LIB -std=c++11   -o CMakeFiles/cmTC_2e006.dir/src.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_2e006.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_2e006.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_2e006.dir/objects.a @CMakeFiles/cmTC_2e006.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe   -DHAVE_CXX_ATOMICS_WITHOUT_LIB -std=c++11    -Wl,--whole-archive CMakeFiles/cmTC_2e006.dir/objects.a -Wl,--no-whole-archive  -o cmTC_2e006.exe -Wl,--out-implib,libcmTC_2e006.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_2e006.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <atomic>
+std::atomic<int> x;
+int main() {
+  return x;
+}
+
+Performing C++ SOURCE FILE Test HAVE_CXX_ATOMICS64_WITHOUT_LIB succeeded with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_2f705/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2f705.dir/build.make CMakeFiles/cmTC_2f705.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_2f705.dir/src.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -DHAVE_CXX_ATOMICS64_WITHOUT_LIB -std=c++11   -o CMakeFiles/cmTC_2f705.dir/src.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_2f705.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_2f705.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_2f705.dir/objects.a @CMakeFiles/cmTC_2f705.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe   -DHAVE_CXX_ATOMICS64_WITHOUT_LIB -std=c++11    -Wl,--whole-archive CMakeFiles/cmTC_2f705.dir/objects.a -Wl,--no-whole-archive  -o cmTC_2f705.exe -Wl,--out-implib,libcmTC_2f705.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_2f705.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <atomic>
+#include <cstdint>
+std::atomic<uint64_t> x (0);
+int main() {
+  uint64_t i = x.load(std::memory_order_relaxed);
+  return 0;
+}
+
+Performing C++ SOURCE FILE Test LLVM_HAS_ATOMICS succeeded with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_4a346/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4a346.dir/build.make CMakeFiles/cmTC_4a346.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4a346.dir/src.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -DLLVM_HAS_ATOMICS   -o CMakeFiles/cmTC_4a346.dir/src.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_4a346.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_4a346.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_4a346.dir/objects.a @CMakeFiles/cmTC_4a346.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe   -DLLVM_HAS_ATOMICS    -Wl,--whole-archive CMakeFiles/cmTC_4a346.dir/objects.a -Wl,--no-whole-archive  -o cmTC_4a346.exe -Wl,--out-implib,libcmTC_4a346.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_4a346.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#ifdef _MSC_VER
+#include <Intrin.h> /* Workaround for PR19898. */
+#include <windows.h>
+#endif
+int main() {
+#ifdef _MSC_VER
+        volatile LONG val = 1;
+        MemoryBarrier();
+        InterlockedCompareExchange(&val, 0, 1);
+        InterlockedIncrement(&val);
+        InterlockedDecrement(&val);
+#else
+        volatile unsigned long val = 1;
+        __sync_synchronize();
+        __sync_val_compare_and_swap(&val, 1, 0);
+        __sync_add_and_fetch(&val, 1);
+        __sync_sub_and_fetch(&val, 1);
+#endif
+        return 0;
+      }
+
+Performing C++ SOURCE FILE Test SUPPORTS_VARIADIC_MACROS_FLAG succeeded with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_f2e5f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f2e5f.dir/build.make CMakeFiles/cmTC_f2e5f.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f2e5f.dir/src.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -DSUPPORTS_VARIADIC_MACROS_FLAG   -Wvariadic-macros -o CMakeFiles/cmTC_f2e5f.dir/src.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_f2e5f.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_f2e5f.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_f2e5f.dir/objects.a @CMakeFiles/cmTC_f2e5f.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe   -DSUPPORTS_VARIADIC_MACROS_FLAG    -Wl,--whole-archive CMakeFiles/cmTC_f2e5f.dir/objects.a -Wl,--no-whole-archive  -o cmTC_f2e5f.exe -Wl,--out-implib,libcmTC_f2e5f.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_f2e5f.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAS_MAYBE_UNINITIALIZED succeeded with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_36d61/fast"
+/usr/bin/make -f CMakeFiles/cmTC_36d61.dir/build.make CMakeFiles/cmTC_36d61.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_36d61.dir/src.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -DHAS_MAYBE_UNINITIALIZED   -Wmaybe-uninitialized -o CMakeFiles/cmTC_36d61.dir/src.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_36d61.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_36d61.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_36d61.dir/objects.a @CMakeFiles/cmTC_36d61.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe   -DHAS_MAYBE_UNINITIALIZED    -Wl,--whole-archive CMakeFiles/cmTC_36d61.dir/objects.a -Wl,--no-whole-archive  -o cmTC_36d61.exe -Wl,--out-implib,libcmTC_36d61.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_36d61.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_MISSING_FIELD_INITIALIZERS_FLAG succeeded with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_02a2f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_02a2f.dir/build.make CMakeFiles/cmTC_02a2f.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_02a2f.dir/src.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -Wall -W -Wno-unused-parameter -Wwrite-strings -Wcast-qual -DCXX_SUPPORTS_MISSING_FIELD_INITIALIZERS_FLAG   -Wmissing-field-initializers -o CMakeFiles/cmTC_02a2f.dir/src.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_02a2f.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_02a2f.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_02a2f.dir/objects.a @CMakeFiles/cmTC_02a2f.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe   -Wall -W -Wno-unused-parameter -Wwrite-strings -Wcast-qual -DCXX_SUPPORTS_MISSING_FIELD_INITIALIZERS_FLAG   -Wl,--stack,16777216  -Wl,--whole-archive CMakeFiles/cmTC_02a2f.dir/objects.a -Wl,--no-whole-archive  -o cmTC_02a2f.exe -Wl,--out-implib,libcmTC_02a2f.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_02a2f.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_DELETE_NON_VIRTUAL_DTOR_FLAG succeeded with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_bf26e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_bf26e.dir/build.make CMakeFiles/cmTC_bf26e.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_bf26e.dir/src.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -Wall -W -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -pedantic -Wno-long-long -Wno-maybe-uninitialized -DCXX_SUPPORTS_DELETE_NON_VIRTUAL_DTOR_FLAG   -Werror -Wdelete-non-virtual-dtor -o CMakeFiles/cmTC_bf26e.dir/src.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_bf26e.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_bf26e.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_bf26e.dir/objects.a @CMakeFiles/cmTC_bf26e.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe   -Wall -W -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -pedantic -Wno-long-long -Wno-maybe-uninitialized -DCXX_SUPPORTS_DELETE_NON_VIRTUAL_DTOR_FLAG   -Wl,--stack,16777216  -Wl,--whole-archive CMakeFiles/cmTC_bf26e.dir/objects.a -Wl,--no-whole-archive  -o cmTC_bf26e.exe -Wl,--out-implib,libcmTC_bf26e.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_bf26e.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CXX_SUPPORTS_CXX11 succeeded with the following output:
+Change Dir: C:/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Codasip/MinGW-1.5.1/bin/make.exe" "cmTC_edb9c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_edb9c.dir/build.make CMakeFiles/cmTC_edb9c.dir/build
+make[1]: Entering directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_edb9c.dir/src.cxx.obj
+/C/Codasip/MinGW-1.5.1/bin/g++.exe     -Wall -W -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -pedantic -Wno-long-long -Wno-maybe-uninitialized -Wdelete-non-virtual-dtor -Wno-comment -DCXX_SUPPORTS_CXX11   -std=c++11 -o CMakeFiles/cmTC_edb9c.dir/src.cxx.obj -c /C/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_edb9c.exe
+/C/Codasip/MinGW-1.5.1/bin/cmake.exe -E remove -f CMakeFiles/cmTC_edb9c.dir/objects.a
+/C/Codasip/MinGW-1.5.1/bin/ar.exe cr CMakeFiles/cmTC_edb9c.dir/objects.a @CMakeFiles/cmTC_edb9c.dir/objects1.rsp
+/C/Codasip/MinGW-1.5.1/bin/g++.exe   -Wall -W -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -pedantic -Wno-long-long -Wno-maybe-uninitialized -Wdelete-non-virtual-dtor -Wno-comment -DCXX_SUPPORTS_CXX11   -Wl,--stack,16777216  -Wl,--whole-archive CMakeFiles/cmTC_edb9c.dir/objects.a -Wl,--no-whole-archive  -o cmTC_edb9c.exe -Wl,--out-implib,libcmTC_edb9c.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_edb9c.dir/linklibs.rsp
+make[1]: Leaving directory `/c/Users/Boskin/codasip/RISC_V5/work/tmp/compiler/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0; }

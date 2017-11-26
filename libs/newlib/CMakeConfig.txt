@@ -1,0 +1,14 @@
+# Enable debug build
+# DEBUG=ON
+
+# Enable target port of libc
+# TARGET_LIBC=OFF
+
+# Enable target port of libm
+# TARGET_LIBM=ON
+
+# Enable startup objects
+# STARTUP_OBJ=OFF
+
+# Enable saving of temporary files during compilation
+# SAVE_TEMPS=ON

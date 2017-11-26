@@ -1,0 +1,2 @@
+C:/Codasip/MinGW-1.5.1/bin/ar.exe qc ../../../libLLVMCodasipDesc.a  CMakeFiles/LLVMCodasipDesc.dir/CodasipMCAsmInfo.cpp.obj CMakeFiles/LLVMCodasipDesc.dir/CodasipMCTargetDesc.cpp.obj
+C:/Codasip/MinGW-1.5.1/bin/ranlib.exe ../../../libLLVMCodasipDesc.a

@@ -1,0 +1,140 @@
+#include "config.hcodal"
+#include "ca_defines.hcodal"
+
+pipeline pipe {
+    FE,
+    ID,
+    EX,
+    ME,
+    WB
+};
+
+/************/
+/* FE stage */
+/************/
+signal bit[1] s_fe_stall;
+signal bit[1] s_fe_clear;
+
+signal bit[RISCV_INSTR_W] s_fe_instr;
+
+/************/
+/* ID stage */
+/************/
+signal bit[1] s_id_stall;
+signal bit[1] s_id_clear;
+
+register bit[MADDR_W] r_id_pc {pipeline = pipe.ID;};
+register bit[RISCV_INSTR_W] r_id_instr {pipeline = pipe.ID;};
+
+// Opcode (use to identify instruction type)
+signal bit[OPC_W] s_id_opcode;
+// Full extended opcode for any instruction, padded with 0's for unused fields
+signal bit[RTYPE_OPC_W] s_id_extended_opcode;
+// Opcodes combined with other fields to help identify instructions
+signal bit[RTYPE_OPC_W] s_id_rtype_opcode;
+signal bit[ITYPE_OPC_W] s_id_itype_opcode;
+signal bit[STYPE_OPC_W] s_id_stype_opcode;
+signal bit[UTYPE_OPC_W] s_id_utype_opcode;
+// Register A
+signal bit[RF_XPR_W] s_id_xpr_a;
+// Register B
+signal bit[RF_XPR_W] s_id_xpr_b;
+// Destination register
+signal bit[RF_XPR_W] s_id_xpr_dest;
+
+// Immediate values
+// 5-bit shift immediate for shift instructions only
+signal bit[SHAMT5_W] s_id_shamnt5;
+signal bit[IMM12_W] s_id_itype_simm12;
+signal bit[IMM12_W] s_id_stype_simm12;
+// Shifted version of 12-bit immediate
+signal bit[IMM12_W] s_id_btype_simm12;
+signal bit[IMM20_W] s_id_jtype_simm20;
+// Shifted version of 20-bit immediate
+signal bit[IMM20_W] s_id_utype_uimm20;
+
+signal bit[MWORD_W] s_id_imm;
+
+// For CSR instructions
+signal bit[CSR_W] s_id_csr;
+signal bit[ZIMM_W] s_id_zimm;
+
+// Control signals to be assigned in the decoder
+signal bit[SRC_A_MUX_W] s_id_src_a_mux;
+signal bit[SRC_B_MUX_W] s_id_src_b_mux;
+// ALU OP
+signal bit[ALU_OP_W] s_id_alu_op;
+// Memory op
+signal bit[MEM_OP_W] s_id_mem_op;
+signal bit[JUMP_OP_W] s_id_jump_op;
+// Register file write control
+signal bit[WRITE_OP_W] s_id_xpr_dest_src;
+
+/*****************/
+/* Execute stage */
+/*****************/
+signal bit[1] s_ex_stall;
+signal bit[1] s_ex_clear;
+
+register bit[MADDR_W] r_ex_pc {pipeline = pipe.EX;};
+register bit[RISCV_INSTR_W] r_ex_instr {pipeline = pipe.EX;};
+register bit[RF_XPR_W] r_ex_xpr_dest {pipeline = pipe.EX;};
+register bit[RF_XPR_W] r_ex_xpr_dest_src {pipeline = pipe.EX;};
+
+register bit[ALU_OP_W] r_ex_alu_op {pipeline = pipe.EX;};
+register bit[MEM_OP_W] r_ex_mem_op {pipeline = pipe.EX;};
+register bit[JUMP_OP_W] r_ex_jump_op {pipeline = pipe.EX;};
+
+register bit[RF_XPR_W] r_ex_xpr_a {pipeline = pipe.EX;};
+register bit[RF_XPR_W] r_ex_xpr_b {pipeline = pipe.EX;};
+register bit[SRC_A_MUX_W] r_ex_src_a_mux {pipeline = pipe.EX;};
+register bit[SRC_B_MUX_W] r_ex_src_b_mux {pipeline = pipe.EX;};
+
+signal bit[EX_FORWARD_MUX_W] s_ex_forward_a;
+signal bit[MWORD_W] s_ex_xpr_data_a_forward;
+signal bit[MWORD_W] s_ex_alu_in_a;
+signal bit[EX_FORWARD_MUX_W] s_ex_forward_b;
+// Register data in register b after the forward
+signal bit[MWORD_W] s_ex_xpr_data_b_forward;
+signal bit[MWORD_W] s_ex_alu_in_b;
+
+register bit[MWORD_W] r_ex_xpr_data_a {pipeline = pipe.EX;};
+register bit[MWORD_W] r_ex_xpr_data_b {pipeline = pipe.EX;};
+register bit[MWORD_W] r_ex_imm {pipeline = pipe.EX;};
+
+signal bit[MWORD_W] s_ex_alu_out;
+
+signal bit[MADDR_W] s_ex_branch_target;
+signal bit[1] s_ex_zero;
+signal bit[1] s_ex_take_branch;
+
+/****************/
+/* Memory stage */
+/****************/
+signal bit[1] s_me_stall;
+signal bit[1] s_me_clear;
+
+register bit[MADDR_W] r_me_pc {pipeline = pipe.ME;};
+register bit[RISCV_INSTR_W] r_me_instr {pipeline = pipe.ME;};
+register bit[MWORD_W] r_me_alu_data_b {pipeline = pipe.ME;};
+register bit[RF_XPR_W] r_me_xpr_dest {pipeline = pipe.ME;};
+register bit[WRITE_OP_W] r_me_xpr_dest_src {pipeline = pipe.ME;};
+register bit[MEM_OP_W] r_me_mem_op {pipeline = pipe.ME;};
+register bit[MWORD_W] r_me_alu_out {pipeline = pipe.ME;};
+signal bit[MWORD_W] s_me_mem_read_raw;
+signal bit[MWORD_W] s_me_mem_read;
+signal bit[MWORD_W] s_me_data_out;
+
+/********************/
+/* Write-back stage */
+/********************/
+signal bit[1] s_wb_stall;
+signal bit[1] s_wb_clear;
+
+register bit[MADDR_W] r_wb_pc {pipeline = pipe.WB;};
+register bit[RISCV_INSTR_W] r_wb_instr {pipeline = pipe.WB;};
+register bit[RF_XPR_W] r_wb_xpr_dest {pipeline = pipe.WB;};
+register bit[WRITE_OP_W] r_wb_xpr_dest_src {pipeline = pipe.WB;};
+register bit[MWORD_W] r_wb_data_out {pipeline = pipe.WB;};
+register bit[MWORD_W] r_wb_alu_out {pipeline = pipe.WB;};
+register bit[MWORD_W] r_wb_mem_read {pipeline = pipe.WB;};

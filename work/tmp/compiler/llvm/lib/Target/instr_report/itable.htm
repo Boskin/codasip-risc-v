@@ -1,0 +1,1941 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+ <meta http-equiv="content-type" content="text/html;">
+ <title>RISC_V5.ia</title>
+ <script type="text/javascript" src="CodasipScript.js"></script>
+ <script type="text/javascript" src="script.js"></script>
+<link rel=stylesheet href="CodasipStyle.css" type="text/css">
+</head>
+
+<body onload="RefreshItab()">
+
+<h1>RISC_V5.ia instruction set</h1>
+<br>
+
+<!-- menu -->
+<hr>
+<a href="index.htm">SUMMARY</a> |
+<a href="itable.htm">INSTRUCTION TABLE</a> |
+<a href="semantic.htm">IR SEMANTICS</a>
+<hr>
+
+<!--CONTENT-->
+
+<p>Filter by status:</p>
+<input type=checkbox id=ch1 checked onchange="HideOrShowStatus(0)">usable<br>
+<input type=checkbox id=ch3 checked onchange="HideOrShowStatus(3)">unusable<br>
+<input type=checkbox id=ch4 checked onchange="HideOrShowStatus(1);HideOrShowStatus(2)">marked unused/undefined<br>
+<br>
+
+<table class=table>
+<tr>
+ <th>Syntax <a class=fake_a_off id=syn_sort onclick="Sort('syn')">&and;</a></th>
+ <th>Status <a class=fake_a id=stat_sort onclick="Sort('stat')">&or;</a></th>
+ <th>Instruction Id <a class=fake_a id=iid_exp onclick="ExpandOrCollapseIDs()">+</a> <a class=fake_a_off id=id_sort onclick="Sort('id')">&and;</a></th>
+ <th>log</th>
+ 
+ <th>Codal Elements</th>
+</tr>
+<tbody id=tbody>
+<tr class=r0 name=status0>
+ <td>call_reg $xpr_0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_call_reg_alias__xpr__'><span name=idots>i_call_reg_ali...</span><span name=iname style='display:none'>i_call_reg_alias__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_call_reg_alias'>i_call_reg_alias</a>(<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>jr $xpr_0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_jr_alias__xpr__'><span name=idots>i_jr_alias__xp...</span><span name=iname style='display:none'>i_jr_alias__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_jr_alias'>i_jr_alias</a>(<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>ret</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_ret_alias__'><span name=idots>i_ret_alias__</span><span name=iname style='display:none'>i_ret_alias__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_ret_alias'>i_ret_alias</a>  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>call $imm_0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_call_alias__rel_addr20__'><span name=idots>i_call_alias__...</span><span name=iname style='display:none'>i_call_alias__rel_addr20__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_call_alias'>i_call_alias</a>(<a href='el:rel_addr20'>rel_addr20</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>j $imm_0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_j_alias__rel_addr20__'><span name=idots>i_j_alias__rel...</span><span name=iname style='display:none'>i_j_alias__rel_addr20__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_j_alias'>i_j_alias</a>(<a href='el:rel_addr20'>rel_addr20</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>jal x0, $imm_0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_jal__opc_jal__x_0__rel_addr20__'><span name=idots>i_jal__opc_jal...</span><span name=iname style='display:none'>i_jal__opc_jal__x_0__rel_addr20__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_jal'>i_jal</a>(<a href='el:opc_jal'>opc_jal</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr20'>rel_addr20</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>jal $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_jal__opc_jal__xpr__rel_addr20__'><span name=idots>i_jal__opc_jal...</span><span name=iname style='display:none'>i_jal__opc_jal__xpr__rel_addr20__</span></a></td>
+ <td><a class=fake_a onclick="HideOrShowByName('i_jal__opc_jal__xpr__rel_addr20___messages')">log</a></td>
+ <td> <a href='el:i_jal'>i_jal</a>(<a href='el:opc_jal'>opc_jal</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr20'>rel_addr20</a>)  </td>
+</tr>
+<tr class=r0 name=status0><td style='display:none' colspan=5 name=i_jal__opc_jal__xpr__rel_addr20___messages>note: (BGN545): The instruction contains invalid operation ('CurPC') even after the high-level analysis. The semantic pattern will be commented out.</td></tr>
+<tr class=r1 name=status0>
+ <td>beqz x0, $imm_0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_beqz_alias__x_0__rel_addr12__'><span name=idots>i_beqz_alias__...</span><span name=iname style='display:none'>i_beqz_alias__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_beqz_alias'>i_beqz_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>beqz $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_beqz_alias__xpr__rel_addr12__'><span name=idots>i_beqz_alias__...</span><span name=iname style='display:none'>i_beqz_alias__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_beqz_alias'>i_beqz_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bgez x0, $imm_0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgez_alias__x_0__rel_addr12__'><span name=idots>i_bgez_alias__...</span><span name=iname style='display:none'>i_bgez_alias__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgez_alias'>i_bgez_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bgez $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgez_alias__xpr__rel_addr12__'><span name=idots>i_bgez_alias__...</span><span name=iname style='display:none'>i_bgez_alias__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgez_alias'>i_bgez_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bgt x0, $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgt_alias__x_0__xpr__rel_addr12__'><span name=idots>i_bgt_alias__x...</span><span name=iname style='display:none'>i_bgt_alias__x_0__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgt_alias'>i_bgt_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bgt $xpr_0, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgt_alias__xpr__x_0__rel_addr12__'><span name=idots>i_bgt_alias__x...</span><span name=iname style='display:none'>i_bgt_alias__xpr__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgt_alias'>i_bgt_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bgt $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgt_alias__xpr__xpr__rel_addr12__'><span name=idots>i_bgt_alias__x...</span><span name=iname style='display:none'>i_bgt_alias__xpr__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgt_alias'>i_bgt_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bgt $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgt_alias__xpr__xpr__rel_addr12__swappedCmpClone0__'><span name=idots>i_bgt_alias__x...</span><span name=iname style='display:none'>i_bgt_alias__xpr__xpr__rel_addr12__swappedCmpClone0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgt_alias'>i_bgt_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bgtu $xpr_0, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgtu_alias__xpr__x_0__rel_addr12__'><span name=idots>i_bgtu_alias__...</span><span name=iname style='display:none'>i_bgtu_alias__xpr__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgtu_alias'>i_bgtu_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bgtu $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgtu_alias__xpr__xpr__rel_addr12__'><span name=idots>i_bgtu_alias__...</span><span name=iname style='display:none'>i_bgtu_alias__xpr__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgtu_alias'>i_bgtu_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bgtu $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgtu_alias__xpr__xpr__rel_addr12__swappedCmpClone0__'><span name=idots>i_bgtu_alias__...</span><span name=iname style='display:none'>i_bgtu_alias__xpr__xpr__rel_addr12__swappedCmpClone0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgtu_alias'>i_bgtu_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bgtz $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgtz_alias__xpr__rel_addr12__'><span name=idots>i_bgtz_alias__...</span><span name=iname style='display:none'>i_bgtz_alias__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgtz_alias'>i_bgtz_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>ble x0, x0, $imm_0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_ble_alias__x_0__x_0__rel_addr12__'><span name=idots>i_ble_alias__x...</span><span name=iname style='display:none'>i_ble_alias__x_0__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_ble_alias'>i_ble_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>ble x0, $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_ble_alias__x_0__xpr__rel_addr12__'><span name=idots>i_ble_alias__x...</span><span name=iname style='display:none'>i_ble_alias__x_0__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_ble_alias'>i_ble_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>ble $xpr_0, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_ble_alias__xpr__x_0__rel_addr12__'><span name=idots>i_ble_alias__x...</span><span name=iname style='display:none'>i_ble_alias__xpr__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_ble_alias'>i_ble_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>ble $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_ble_alias__xpr__xpr__rel_addr12__'><span name=idots>i_ble_alias__x...</span><span name=iname style='display:none'>i_ble_alias__xpr__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_ble_alias'>i_ble_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>ble $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_ble_alias__xpr__xpr__rel_addr12__swappedCmpClone0__'><span name=idots>i_ble_alias__x...</span><span name=iname style='display:none'>i_ble_alias__xpr__xpr__rel_addr12__swappedCmpClone0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_ble_alias'>i_ble_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bleu x0, $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bleu_alias__x_0__xpr__rel_addr12__'><span name=idots>i_bleu_alias__...</span><span name=iname style='display:none'>i_bleu_alias__x_0__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bleu_alias'>i_bleu_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bleu $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bleu_alias__xpr__xpr__rel_addr12__'><span name=idots>i_bleu_alias__...</span><span name=iname style='display:none'>i_bleu_alias__xpr__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bleu_alias'>i_bleu_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bleu $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bleu_alias__xpr__xpr__rel_addr12__swappedCmpClone0__'><span name=idots>i_bleu_alias__...</span><span name=iname style='display:none'>i_bleu_alias__xpr__xpr__rel_addr12__swappedCmpClone0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bleu_alias'>i_bleu_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>blez x0, $imm_0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_blez_alias__x_0__rel_addr12__'><span name=idots>i_blez_alias__...</span><span name=iname style='display:none'>i_blez_alias__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_blez_alias'>i_blez_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>blez $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_blez_alias__xpr__rel_addr12__'><span name=idots>i_blez_alias__...</span><span name=iname style='display:none'>i_blez_alias__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_blez_alias'>i_blez_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bltz $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bltz_alias__xpr__rel_addr12__'><span name=idots>i_bltz_alias__...</span><span name=iname style='display:none'>i_bltz_alias__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bltz_alias'>i_bltz_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bnez $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bnez_alias__xpr__rel_addr12__'><span name=idots>i_bnez_alias__...</span><span name=iname style='display:none'>i_bnez_alias__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bnez_alias'>i_bnez_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>beq x0, x0, $imm_0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_beq__x_0__x_0__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_beq__x_0__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_beq'>opc_beq</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>beq x0, $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_beq__x_0__xpr__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_beq__x_0__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_beq'>opc_beq</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>beq $xpr_0, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_beq__xpr__x_0__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_beq__xpr__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_beq'>opc_beq</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>beq $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_beq__xpr__xpr__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_beq__xpr__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_beq'>opc_beq</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bge x0, x0, $imm_0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bge__x_0__x_0__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bge__x_0__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bge'>opc_bge</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bge x0, $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bge__x_0__xpr__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bge__x_0__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bge'>opc_bge</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bge $xpr_0, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bge__xpr__x_0__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bge__xpr__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bge'>opc_bge</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bge $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bge__xpr__xpr__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bge__xpr__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bge'>opc_bge</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bge $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bge__xpr__xpr__rel_addr12__swappedCmpClone0__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bge__xpr__xpr__rel_addr12__swappedCmpClone0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bge'>opc_bge</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bgeu x0, x0, $imm_0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bgeu__x_0__x_0__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bgeu__x_0__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bgeu'>opc_bgeu</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bgeu x0, $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bgeu__x_0__xpr__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bgeu__x_0__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bgeu'>opc_bgeu</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bgeu x1, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bgeu__xpr__x_0__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bgeu__xpr__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bgeu'>opc_bgeu</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bgeu $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bgeu__xpr__xpr__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bgeu__xpr__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bgeu'>opc_bgeu</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bgeu $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bgeu__xpr__xpr__rel_addr12__swappedCmpClone0__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bgeu__xpr__xpr__rel_addr12__swappedCmpClone0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bgeu'>opc_bgeu</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>blt x0, $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_blt__x_0__xpr__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_blt__x_0__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_blt'>opc_blt</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>blt $xpr_0, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_blt__xpr__x_0__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_blt__xpr__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_blt'>opc_blt</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>blt $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_blt__xpr__xpr__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_blt__xpr__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_blt'>opc_blt</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>blt $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_blt__xpr__xpr__rel_addr12__swappedCmpClone0__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_blt__xpr__xpr__rel_addr12__swappedCmpClone0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_blt'>opc_blt</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bltu x0, $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bltu__x_0__xpr__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bltu__x_0__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bltu'>opc_bltu</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bltu $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bltu__xpr__xpr__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bltu__xpr__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bltu'>opc_bltu</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bltu $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bltu__xpr__xpr__rel_addr12__swappedCmpClone0__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bltu__xpr__xpr__rel_addr12__swappedCmpClone0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bltu'>opc_bltu</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bne x0, $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bne__x_0__xpr__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bne__x_0__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bne'>opc_bne</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bne $xpr_0, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bne__xpr__x_0__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bne__xpr__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bne'>opc_bne</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bne $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bne__xpr__xpr__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bne__xpr__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bne'>opc_bne</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>jalr x0, $imm_0 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_jalr__opc_jalr__x_0__rel_jalr_addr12__x_0__'><span name=idots>i_jalr__opc_ja...</span><span name=iname style='display:none'>i_jalr__opc_jalr__x_0__rel_jalr_addr12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_jalr'>i_jalr</a>(<a href='el:opc_jalr'>opc_jalr</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_jalr_addr12'>rel_jalr_addr12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>jalr $xpr_0, $imm_1 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_jalr__opc_jalr__xpr__rel_jalr_addr12__x_0__'><span name=idots>i_jalr__opc_ja...</span><span name=iname style='display:none'>i_jalr__opc_jalr__xpr__rel_jalr_addr12__x_0__</span></a></td>
+ <td><a class=fake_a onclick="HideOrShowByName('i_jalr__opc_jalr__xpr__rel_jalr_addr12__x_0___messages')">log</a></td>
+ <td> <a href='el:i_jalr'>i_jalr</a>(<a href='el:opc_jalr'>opc_jalr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_jalr_addr12'>rel_jalr_addr12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0><td style='display:none' colspan=5 name=i_jalr__opc_jalr__xpr__rel_jalr_addr12__x_0___messages>note: (BGN545): The instruction contains invalid operation ('CurPC') even after the high-level analysis. The semantic pattern will be commented out.</td></tr>
+<tr class=r1 name=status0>
+ <td>add x0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_add__x_0__x_0__x_0__'><span name=idots>i_alu__opc_add...</span><span name=iname style='display:none'>i_alu__opc_add__x_0__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_add'>opc_add</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>add x0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_add__x_0__x_0__xpr__'><span name=idots>i_alu__opc_add...</span><span name=iname style='display:none'>i_alu__opc_add__x_0__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_add'>opc_add</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>add x0, x1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_add__x_0__xpr__x_0__'><span name=idots>i_alu__opc_add...</span><span name=iname style='display:none'>i_alu__opc_add__x_0__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_add'>opc_add</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>add x0, x1, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_add__x_0__xpr__xpr__'><span name=idots>i_alu__opc_add...</span><span name=iname style='display:none'>i_alu__opc_add__x_0__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_add'>opc_add</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>add $xpr_0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_add__xpr__x_0__x_0__'><span name=idots>i_alu__opc_add...</span><span name=iname style='display:none'>i_alu__opc_add__xpr__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_add'>opc_add</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>add $xpr_0, x0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_add__xpr__x_0__xpr__'><span name=idots>i_alu__opc_add...</span><span name=iname style='display:none'>i_alu__opc_add__xpr__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_add'>opc_add</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>add $xpr_0, $xpr_1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_add__xpr__xpr__x_0__'><span name=idots>i_alu__opc_add...</span><span name=iname style='display:none'>i_alu__opc_add__xpr__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_add'>opc_add</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>add $xpr_0, $xpr_1, $xpr_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_add__xpr__xpr__xpr__'><span name=idots>i_alu__opc_add...</span><span name=iname style='display:none'>i_alu__opc_add__xpr__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_add'>opc_add</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>and x0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_and__x_0__x_0__x_0__'><span name=idots>i_alu__opc_and...</span><span name=iname style='display:none'>i_alu__opc_and__x_0__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_and'>opc_and</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>and x0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_and__x_0__x_0__xpr__'><span name=idots>i_alu__opc_and...</span><span name=iname style='display:none'>i_alu__opc_and__x_0__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_and'>opc_and</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>and x0, x1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_and__x_0__xpr__x_0__'><span name=idots>i_alu__opc_and...</span><span name=iname style='display:none'>i_alu__opc_and__x_0__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_and'>opc_and</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>and x0, x1, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_and__x_0__xpr__xpr__'><span name=idots>i_alu__opc_and...</span><span name=iname style='display:none'>i_alu__opc_and__x_0__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_and'>opc_and</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>and $xpr_0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_and__xpr__x_0__x_0__'><span name=idots>i_alu__opc_and...</span><span name=iname style='display:none'>i_alu__opc_and__xpr__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_and'>opc_and</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>and $xpr_0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_and__xpr__x_0__xpr__'><span name=idots>i_alu__opc_and...</span><span name=iname style='display:none'>i_alu__opc_and__xpr__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_and'>opc_and</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>and $xpr_0, x1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_and__xpr__xpr__x_0__'><span name=idots>i_alu__opc_and...</span><span name=iname style='display:none'>i_alu__opc_and__xpr__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_and'>opc_and</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>and $xpr_0, $xpr_1, $xpr_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_and__xpr__xpr__xpr__'><span name=idots>i_alu__opc_and...</span><span name=iname style='display:none'>i_alu__opc_and__xpr__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_and'>opc_and</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>or x0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_or__x_0__x_0__x_0__'><span name=idots>i_alu__opc_or_...</span><span name=iname style='display:none'>i_alu__opc_or__x_0__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_or'>opc_or</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>or x0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_or__x_0__x_0__xpr__'><span name=idots>i_alu__opc_or_...</span><span name=iname style='display:none'>i_alu__opc_or__x_0__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_or'>opc_or</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>or x0, x1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_or__x_0__xpr__x_0__'><span name=idots>i_alu__opc_or_...</span><span name=iname style='display:none'>i_alu__opc_or__x_0__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_or'>opc_or</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>or x0, x1, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_or__x_0__xpr__xpr__'><span name=idots>i_alu__opc_or_...</span><span name=iname style='display:none'>i_alu__opc_or__x_0__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_or'>opc_or</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>or $xpr_0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_or__xpr__x_0__x_0__'><span name=idots>i_alu__opc_or_...</span><span name=iname style='display:none'>i_alu__opc_or__xpr__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_or'>opc_or</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>or $xpr_0, x0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_or__xpr__x_0__xpr__'><span name=idots>i_alu__opc_or_...</span><span name=iname style='display:none'>i_alu__opc_or__xpr__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_or'>opc_or</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>or $xpr_0, $xpr_1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_or__xpr__xpr__x_0__'><span name=idots>i_alu__opc_or_...</span><span name=iname style='display:none'>i_alu__opc_or__xpr__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_or'>opc_or</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>or $xpr_0, $xpr_1, $xpr_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_or__xpr__xpr__xpr__'><span name=idots>i_alu__opc_or_...</span><span name=iname style='display:none'>i_alu__opc_or__xpr__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_or'>opc_or</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sll x0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sll__x_0__x_0__x_0__'><span name=idots>i_alu__opc_sll...</span><span name=iname style='display:none'>i_alu__opc_sll__x_0__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sll'>opc_sll</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sll x0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sll__x_0__x_0__xpr__'><span name=idots>i_alu__opc_sll...</span><span name=iname style='display:none'>i_alu__opc_sll__x_0__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sll'>opc_sll</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sll x0, x1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sll__x_0__xpr__x_0__'><span name=idots>i_alu__opc_sll...</span><span name=iname style='display:none'>i_alu__opc_sll__x_0__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sll'>opc_sll</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sll x0, x1, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sll__x_0__xpr__xpr__'><span name=idots>i_alu__opc_sll...</span><span name=iname style='display:none'>i_alu__opc_sll__x_0__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sll'>opc_sll</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sll $xpr_0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sll__xpr__x_0__x_0__'><span name=idots>i_alu__opc_sll...</span><span name=iname style='display:none'>i_alu__opc_sll__xpr__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sll'>opc_sll</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sll $xpr_0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sll__xpr__x_0__xpr__'><span name=idots>i_alu__opc_sll...</span><span name=iname style='display:none'>i_alu__opc_sll__xpr__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sll'>opc_sll</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sll $xpr_0, $xpr_1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sll__xpr__xpr__x_0__'><span name=idots>i_alu__opc_sll...</span><span name=iname style='display:none'>i_alu__opc_sll__xpr__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sll'>opc_sll</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sll $xpr_0, $xpr_1, $xpr_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sll__xpr__xpr__xpr__'><span name=idots>i_alu__opc_sll...</span><span name=iname style='display:none'>i_alu__opc_sll__xpr__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sll'>opc_sll</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>slt x0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_slt__x_0__x_0__x_0__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_slt__x_0__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_slt'>opc_slt</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>slt x0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_slt__x_0__x_0__xpr__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_slt__x_0__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_slt'>opc_slt</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>slt x0, x1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_slt__x_0__xpr__x_0__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_slt__x_0__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_slt'>opc_slt</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>slt x0, x1, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_slt__x_0__xpr__xpr__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_slt__x_0__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_slt'>opc_slt</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>slt $xpr_0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_slt__xpr__x_0__x_0__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_slt__xpr__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_slt'>opc_slt</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>slt $xpr_0, x0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_slt__xpr__x_0__xpr__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_slt__xpr__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_slt'>opc_slt</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>slt $xpr_0, $xpr_1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_slt__xpr__xpr__x_0__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_slt__xpr__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_slt'>opc_slt</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>slt $xpr_0, $xpr_1, $xpr_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_slt__xpr__xpr__xpr__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_slt__xpr__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_slt'>opc_slt</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>slt $xpr_0, $xpr_1, $xpr_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_slt__xpr__xpr__xpr__swappedCmpClone0__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_slt__xpr__xpr__xpr__swappedCmpClone0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_slt'>opc_slt</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sltu x0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sltu__x_0__x_0__x_0__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_sltu__x_0__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sltu'>opc_sltu</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sltu x0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sltu__x_0__x_0__xpr__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_sltu__x_0__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sltu'>opc_sltu</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sltu x0, x1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sltu__x_0__xpr__x_0__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_sltu__x_0__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sltu'>opc_sltu</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sltu x0, x1, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sltu__x_0__xpr__xpr__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_sltu__x_0__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sltu'>opc_sltu</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sltu $xpr_0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sltu__xpr__x_0__x_0__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_sltu__xpr__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sltu'>opc_sltu</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sltu $xpr_0, x0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sltu__xpr__x_0__xpr__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_sltu__xpr__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sltu'>opc_sltu</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sltu $xpr_0, x1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sltu__xpr__xpr__x_0__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_sltu__xpr__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sltu'>opc_sltu</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sltu $xpr_0, $xpr_1, $xpr_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sltu__xpr__xpr__xpr__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_sltu__xpr__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sltu'>opc_sltu</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sltu $xpr_0, $xpr_1, $xpr_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sltu__xpr__xpr__xpr__swappedCmpClone0__'><span name=idots>i_alu__opc_slt...</span><span name=iname style='display:none'>i_alu__opc_sltu__xpr__xpr__xpr__swappedCmpClone0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sltu'>opc_sltu</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sra x0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sra__x_0__x_0__x_0__'><span name=idots>i_alu__opc_sra...</span><span name=iname style='display:none'>i_alu__opc_sra__x_0__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sra'>opc_sra</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sra x0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sra__x_0__x_0__xpr__'><span name=idots>i_alu__opc_sra...</span><span name=iname style='display:none'>i_alu__opc_sra__x_0__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sra'>opc_sra</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sra x0, x1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sra__x_0__xpr__x_0__'><span name=idots>i_alu__opc_sra...</span><span name=iname style='display:none'>i_alu__opc_sra__x_0__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sra'>opc_sra</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sra x0, x1, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sra__x_0__xpr__xpr__'><span name=idots>i_alu__opc_sra...</span><span name=iname style='display:none'>i_alu__opc_sra__x_0__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sra'>opc_sra</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sra $xpr_0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sra__xpr__x_0__x_0__'><span name=idots>i_alu__opc_sra...</span><span name=iname style='display:none'>i_alu__opc_sra__xpr__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sra'>opc_sra</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sra $xpr_0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sra__xpr__x_0__xpr__'><span name=idots>i_alu__opc_sra...</span><span name=iname style='display:none'>i_alu__opc_sra__xpr__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sra'>opc_sra</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sra $xpr_0, $xpr_1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sra__xpr__xpr__x_0__'><span name=idots>i_alu__opc_sra...</span><span name=iname style='display:none'>i_alu__opc_sra__xpr__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sra'>opc_sra</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sra $xpr_0, $xpr_1, $xpr_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sra__xpr__xpr__xpr__'><span name=idots>i_alu__opc_sra...</span><span name=iname style='display:none'>i_alu__opc_sra__xpr__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sra'>opc_sra</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>srl x0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_srl__x_0__x_0__x_0__'><span name=idots>i_alu__opc_srl...</span><span name=iname style='display:none'>i_alu__opc_srl__x_0__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_srl'>opc_srl</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>srl x0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_srl__x_0__x_0__xpr__'><span name=idots>i_alu__opc_srl...</span><span name=iname style='display:none'>i_alu__opc_srl__x_0__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_srl'>opc_srl</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>srl x0, x1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_srl__x_0__xpr__x_0__'><span name=idots>i_alu__opc_srl...</span><span name=iname style='display:none'>i_alu__opc_srl__x_0__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_srl'>opc_srl</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>srl x0, x1, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_srl__x_0__xpr__xpr__'><span name=idots>i_alu__opc_srl...</span><span name=iname style='display:none'>i_alu__opc_srl__x_0__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_srl'>opc_srl</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>srl $xpr_0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_srl__xpr__x_0__x_0__'><span name=idots>i_alu__opc_srl...</span><span name=iname style='display:none'>i_alu__opc_srl__xpr__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_srl'>opc_srl</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>srl $xpr_0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_srl__xpr__x_0__xpr__'><span name=idots>i_alu__opc_srl...</span><span name=iname style='display:none'>i_alu__opc_srl__xpr__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_srl'>opc_srl</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>srl $xpr_0, $xpr_1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_srl__xpr__xpr__x_0__'><span name=idots>i_alu__opc_srl...</span><span name=iname style='display:none'>i_alu__opc_srl__xpr__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_srl'>opc_srl</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>srl $xpr_0, $xpr_1, $xpr_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_srl__xpr__xpr__xpr__'><span name=idots>i_alu__opc_srl...</span><span name=iname style='display:none'>i_alu__opc_srl__xpr__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_srl'>opc_srl</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sub x0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sub__x_0__x_0__x_0__'><span name=idots>i_alu__opc_sub...</span><span name=iname style='display:none'>i_alu__opc_sub__x_0__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sub'>opc_sub</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sub x0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sub__x_0__x_0__xpr__'><span name=idots>i_alu__opc_sub...</span><span name=iname style='display:none'>i_alu__opc_sub__x_0__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sub'>opc_sub</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sub x0, x1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sub__x_0__xpr__x_0__'><span name=idots>i_alu__opc_sub...</span><span name=iname style='display:none'>i_alu__opc_sub__x_0__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sub'>opc_sub</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sub x0, x1, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sub__x_0__xpr__xpr__'><span name=idots>i_alu__opc_sub...</span><span name=iname style='display:none'>i_alu__opc_sub__x_0__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sub'>opc_sub</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sub $xpr_0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sub__xpr__x_0__x_0__'><span name=idots>i_alu__opc_sub...</span><span name=iname style='display:none'>i_alu__opc_sub__xpr__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sub'>opc_sub</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sub $xpr_0, x0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sub__xpr__x_0__xpr__'><span name=idots>i_alu__opc_sub...</span><span name=iname style='display:none'>i_alu__opc_sub__xpr__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sub'>opc_sub</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sub $xpr_0, $xpr_1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sub__xpr__xpr__x_0__'><span name=idots>i_alu__opc_sub...</span><span name=iname style='display:none'>i_alu__opc_sub__xpr__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sub'>opc_sub</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sub $xpr_0, $xpr_1, $xpr_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_sub__xpr__xpr__xpr__'><span name=idots>i_alu__opc_sub...</span><span name=iname style='display:none'>i_alu__opc_sub__xpr__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_sub'>opc_sub</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>xor x0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_xor__x_0__x_0__x_0__'><span name=idots>i_alu__opc_xor...</span><span name=iname style='display:none'>i_alu__opc_xor__x_0__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_xor'>opc_xor</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>xor x0, x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_xor__x_0__x_0__xpr__'><span name=idots>i_alu__opc_xor...</span><span name=iname style='display:none'>i_alu__opc_xor__x_0__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_xor'>opc_xor</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>xor x0, x1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_xor__x_0__xpr__x_0__'><span name=idots>i_alu__opc_xor...</span><span name=iname style='display:none'>i_alu__opc_xor__x_0__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_xor'>opc_xor</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>xor x0, x1, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_xor__x_0__xpr__xpr__'><span name=idots>i_alu__opc_xor...</span><span name=iname style='display:none'>i_alu__opc_xor__x_0__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_xor'>opc_xor</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>xor $xpr_0, x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_xor__xpr__x_0__x_0__'><span name=idots>i_alu__opc_xor...</span><span name=iname style='display:none'>i_alu__opc_xor__xpr__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_xor'>opc_xor</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>xor $xpr_0, x0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_xor__xpr__x_0__xpr__'><span name=idots>i_alu__opc_xor...</span><span name=iname style='display:none'>i_alu__opc_xor__xpr__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_xor'>opc_xor</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>xor $xpr_0, $xpr_1, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_xor__xpr__xpr__x_0__'><span name=idots>i_alu__opc_xor...</span><span name=iname style='display:none'>i_alu__opc_xor__xpr__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_xor'>opc_xor</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>xor $xpr_0, $xpr_1, $xpr_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu__opc_xor__xpr__xpr__xpr__'><span name=idots>i_alu__opc_xor...</span><span name=iname style='display:none'>i_alu__opc_xor__xpr__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu'>i_alu</a>(<a href='el:opc_xor'>opc_xor</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>addi x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_addi__x_0__x_0__simm12__'><span name=idots>i_alu_i__opc_a...</span><span name=iname style='display:none'>i_alu_i__opc_addi__x_0__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_addi'>opc_addi</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>addi x0, x1, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_addi__x_0__xpr__simm12__'><span name=idots>i_alu_i__opc_a...</span><span name=iname style='display:none'>i_alu_i__opc_addi__x_0__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_addi'>opc_addi</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>addi $xpr_0, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_addi__xpr__x_0__simm12__'><span name=idots>i_alu_i__opc_a...</span><span name=iname style='display:none'>i_alu_i__opc_addi__xpr__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_addi'>opc_addi</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>addi $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_addi__xpr__xpr__simm12__'><span name=idots>i_alu_i__opc_a...</span><span name=iname style='display:none'>i_alu_i__opc_addi__xpr__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_addi'>opc_addi</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>andi x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_andi__x_0__x_0__simm12__'><span name=idots>i_alu_i__opc_a...</span><span name=iname style='display:none'>i_alu_i__opc_andi__x_0__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_andi'>opc_andi</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>andi x0, x1, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_andi__x_0__xpr__simm12__'><span name=idots>i_alu_i__opc_a...</span><span name=iname style='display:none'>i_alu_i__opc_andi__x_0__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_andi'>opc_andi</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>andi $xpr_0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_andi__xpr__x_0__simm12__'><span name=idots>i_alu_i__opc_a...</span><span name=iname style='display:none'>i_alu_i__opc_andi__xpr__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_andi'>opc_andi</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>andi $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_andi__xpr__xpr__simm12__'><span name=idots>i_alu_i__opc_a...</span><span name=iname style='display:none'>i_alu_i__opc_andi__xpr__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_andi'>opc_andi</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>ori x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_ori__x_0__x_0__simm12__'><span name=idots>i_alu_i__opc_o...</span><span name=iname style='display:none'>i_alu_i__opc_ori__x_0__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_ori'>opc_ori</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>ori x0, x1, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_ori__x_0__xpr__simm12__'><span name=idots>i_alu_i__opc_o...</span><span name=iname style='display:none'>i_alu_i__opc_ori__x_0__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_ori'>opc_ori</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>ori $xpr_0, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_ori__xpr__x_0__simm12__'><span name=idots>i_alu_i__opc_o...</span><span name=iname style='display:none'>i_alu_i__opc_ori__xpr__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_ori'>opc_ori</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>ori $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_ori__xpr__xpr__simm12__'><span name=idots>i_alu_i__opc_o...</span><span name=iname style='display:none'>i_alu_i__opc_ori__xpr__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_ori'>opc_ori</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>slti x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_slti__x_0__x_0__simm12__'><span name=idots>i_alu_i__opc_s...</span><span name=iname style='display:none'>i_alu_i__opc_slti__x_0__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_slti'>opc_slti</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>slti x0, x1, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_slti__x_0__xpr__simm12__'><span name=idots>i_alu_i__opc_s...</span><span name=iname style='display:none'>i_alu_i__opc_slti__x_0__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_slti'>opc_slti</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>slti $xpr_0, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_slti__xpr__x_0__simm12__'><span name=idots>i_alu_i__opc_s...</span><span name=iname style='display:none'>i_alu_i__opc_slti__xpr__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_slti'>opc_slti</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>slti $xpr_0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_slti__xpr__x_0__simm12__immSpecClone__imm_1__0__'><span name=idots>i_alu_i__opc_s...</span><span name=iname style='display:none'>i_alu_i__opc_slti__xpr__x_0__simm12__immSpecClone__imm_1__0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_slti'>opc_slti</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>slti $xpr_0, x0, 1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_slti__xpr__x_0__simm12__immSpecClone__imm_1__1__'><span name=idots>i_alu_i__opc_s...</span><span name=iname style='display:none'>i_alu_i__opc_slti__xpr__x_0__simm12__immSpecClone__imm_1__1__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_slti'>opc_slti</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>slti $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_slti__xpr__xpr__simm12__'><span name=idots>i_alu_i__opc_s...</span><span name=iname style='display:none'>i_alu_i__opc_slti__xpr__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_slti'>opc_slti</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sltiu x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_sltiu__x_0__x_0__simm12__'><span name=idots>i_alu_i__opc_s...</span><span name=iname style='display:none'>i_alu_i__opc_sltiu__x_0__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_sltiu'>opc_sltiu</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sltiu x0, x1, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_sltiu__x_0__xpr__simm12__'><span name=idots>i_alu_i__opc_s...</span><span name=iname style='display:none'>i_alu_i__opc_sltiu__x_0__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_sltiu'>opc_sltiu</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sltiu $xpr_0, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_sltiu__xpr__x_0__simm12__'><span name=idots>i_alu_i__opc_s...</span><span name=iname style='display:none'>i_alu_i__opc_sltiu__xpr__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_sltiu'>opc_sltiu</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sltiu $xpr_0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_sltiu__xpr__x_0__simm12__immSpecClone__imm_1__0__'><span name=idots>i_alu_i__opc_s...</span><span name=iname style='display:none'>i_alu_i__opc_sltiu__xpr__x_0__simm12__immSpecClone__imm_1__0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_sltiu'>opc_sltiu</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sltiu $xpr_0, x0, 1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_sltiu__xpr__x_0__simm12__immSpecClone__imm_1__1__'><span name=idots>i_alu_i__opc_s...</span><span name=iname style='display:none'>i_alu_i__opc_sltiu__xpr__x_0__simm12__immSpecClone__imm_1__1__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_sltiu'>opc_sltiu</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sltiu $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_sltiu__xpr__xpr__simm12__'><span name=idots>i_alu_i__opc_s...</span><span name=iname style='display:none'>i_alu_i__opc_sltiu__xpr__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_sltiu'>opc_sltiu</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>xori x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_xori__x_0__x_0__simm12__'><span name=idots>i_alu_i__opc_x...</span><span name=iname style='display:none'>i_alu_i__opc_xori__x_0__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_xori'>opc_xori</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>xori x0, x1, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_xori__x_0__xpr__simm12__'><span name=idots>i_alu_i__opc_x...</span><span name=iname style='display:none'>i_alu_i__opc_xori__x_0__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_xori'>opc_xori</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>xori $xpr_0, x0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_xori__xpr__x_0__simm12__'><span name=idots>i_alu_i__opc_x...</span><span name=iname style='display:none'>i_alu_i__opc_xori__xpr__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_xori'>opc_xori</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>xori $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_alu_i__opc_xori__xpr__xpr__simm12__'><span name=idots>i_alu_i__opc_x...</span><span name=iname style='display:none'>i_alu_i__opc_xori__xpr__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_alu_i'>i_alu_i</a>(<a href='el:opc_xori'>opc_xori</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bgt x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgt_alias__x_0__x_0__rel_addr12__'><span name=idots>i_bgt_alias__x...</span><span name=iname style='display:none'>i_bgt_alias__x_0__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgt_alias'>i_bgt_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bgtu x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgtu_alias__x_0__x_0__rel_addr12__'><span name=idots>i_bgtu_alias__...</span><span name=iname style='display:none'>i_bgtu_alias__x_0__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgtu_alias'>i_bgtu_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bgtu x0, x1, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgtu_alias__x_0__xpr__rel_addr12__'><span name=idots>i_bgtu_alias__...</span><span name=iname style='display:none'>i_bgtu_alias__x_0__xpr__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgtu_alias'>i_bgtu_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bgtz x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bgtz_alias__x_0__rel_addr12__'><span name=idots>i_bgtz_alias__...</span><span name=iname style='display:none'>i_bgtz_alias__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bgtz_alias'>i_bgtz_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bleu x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bleu_alias__x_0__x_0__rel_addr12__'><span name=idots>i_bleu_alias__...</span><span name=iname style='display:none'>i_bleu_alias__x_0__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bleu_alias'>i_bleu_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bleu x1, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bleu_alias__xpr__x_0__rel_addr12__'><span name=idots>i_bleu_alias__...</span><span name=iname style='display:none'>i_bleu_alias__xpr__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bleu_alias'>i_bleu_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bltz x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bltz_alias__x_0__rel_addr12__'><span name=idots>i_bltz_alias__...</span><span name=iname style='display:none'>i_bltz_alias__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bltz_alias'>i_bltz_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bnez x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_bnez_alias__x_0__rel_addr12__'><span name=idots>i_bnez_alias__...</span><span name=iname style='display:none'>i_bnez_alias__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_bnez_alias'>i_bnez_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>blt x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_blt__x_0__x_0__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_blt__x_0__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_blt'>opc_blt</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bltu x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bltu__x_0__x_0__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bltu__x_0__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bltu'>opc_bltu</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>bltu x1, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bltu__xpr__x_0__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bltu__xpr__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bltu'>opc_bltu</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>bne x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_branch__opc_bne__x_0__x_0__rel_addr12__'><span name=idots>i_branch__opc_...</span><span name=iname style='display:none'>i_branch__opc_bne__x_0__x_0__rel_addr12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_branch'>i_branch</a>(<a href='el:opc_bne'>opc_bne</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_addr12'>rel_addr12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>li x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_li_alias__x_0__simm12__'><span name=idots>i_li_alias__x_...</span><span name=iname style='display:none'>i_li_alias__x_0__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_li_alias'>i_li_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>li $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_li_alias__xpr__simm12__'><span name=idots>i_li_alias__xp...</span><span name=iname style='display:none'>i_li_alias__xpr__simm12__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_li_alias'>i_li_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>lb x0, $imm_0 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lb__x_0__simm12__x_0__'><span name=idots>i_load__opc_lb...</span><span name=iname style='display:none'>i_load__opc_lb__x_0__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lb'>opc_lb</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>lb x0, $imm_0 ( $xpr_1 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lb__x_0__simm12__xpr__'><span name=idots>i_load__opc_lb...</span><span name=iname style='display:none'>i_load__opc_lb__x_0__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lb'>opc_lb</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>lb $xpr_0, $imm_1 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lb__xpr__simm12__x_0__'><span name=idots>i_load__opc_lb...</span><span name=iname style='display:none'>i_load__opc_lb__xpr__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lb'>opc_lb</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>lb $xpr_0, $imm_1 ( $xpr_2 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lb__xpr__simm12__xpr__'><span name=idots>i_load__opc_lb...</span><span name=iname style='display:none'>i_load__opc_lb__xpr__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lb'>opc_lb</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>lbu x0, $imm_0 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lbu__x_0__simm12__x_0__'><span name=idots>i_load__opc_lb...</span><span name=iname style='display:none'>i_load__opc_lbu__x_0__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lbu'>opc_lbu</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>lbu x0, $imm_0 ( $xpr_1 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lbu__x_0__simm12__xpr__'><span name=idots>i_load__opc_lb...</span><span name=iname style='display:none'>i_load__opc_lbu__x_0__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lbu'>opc_lbu</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>lbu $xpr_0, $imm_1 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lbu__xpr__simm12__x_0__'><span name=idots>i_load__opc_lb...</span><span name=iname style='display:none'>i_load__opc_lbu__xpr__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lbu'>opc_lbu</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>lbu $xpr_0, $imm_1 ( $xpr_2 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lbu__xpr__simm12__xpr__'><span name=idots>i_load__opc_lb...</span><span name=iname style='display:none'>i_load__opc_lbu__xpr__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lbu'>opc_lbu</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>lh x0, $imm_0 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lh__x_0__simm12__x_0__'><span name=idots>i_load__opc_lh...</span><span name=iname style='display:none'>i_load__opc_lh__x_0__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lh'>opc_lh</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>lh x0, $imm_0 ( $xpr_1 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lh__x_0__simm12__xpr__'><span name=idots>i_load__opc_lh...</span><span name=iname style='display:none'>i_load__opc_lh__x_0__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lh'>opc_lh</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>lh $xpr_0, $imm_1 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lh__xpr__simm12__x_0__'><span name=idots>i_load__opc_lh...</span><span name=iname style='display:none'>i_load__opc_lh__xpr__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lh'>opc_lh</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>lh $xpr_0, $imm_1 ( $xpr_2 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lh__xpr__simm12__xpr__'><span name=idots>i_load__opc_lh...</span><span name=iname style='display:none'>i_load__opc_lh__xpr__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lh'>opc_lh</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>lhu x0, $imm_0 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lhu__x_0__simm12__x_0__'><span name=idots>i_load__opc_lh...</span><span name=iname style='display:none'>i_load__opc_lhu__x_0__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lhu'>opc_lhu</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>lhu x0, $imm_0 ( $xpr_1 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lhu__x_0__simm12__xpr__'><span name=idots>i_load__opc_lh...</span><span name=iname style='display:none'>i_load__opc_lhu__x_0__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lhu'>opc_lhu</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>lhu $xpr_0, $imm_1 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lhu__xpr__simm12__x_0__'><span name=idots>i_load__opc_lh...</span><span name=iname style='display:none'>i_load__opc_lhu__xpr__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lhu'>opc_lhu</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>lhu $xpr_0, $imm_1 ( $xpr_2 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lhu__xpr__simm12__xpr__'><span name=idots>i_load__opc_lh...</span><span name=iname style='display:none'>i_load__opc_lhu__xpr__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lhu'>opc_lhu</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>lw x0, $imm_0 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lw__x_0__simm12__x_0__'><span name=idots>i_load__opc_lw...</span><span name=iname style='display:none'>i_load__opc_lw__x_0__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lw'>opc_lw</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>lw x0, $imm_0 ( $xpr_1 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lw__x_0__simm12__xpr__'><span name=idots>i_load__opc_lw...</span><span name=iname style='display:none'>i_load__opc_lw__x_0__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lw'>opc_lw</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>lw $xpr_0, $imm_1 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lw__xpr__simm12__x_0__'><span name=idots>i_load__opc_lw...</span><span name=iname style='display:none'>i_load__opc_lw__xpr__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lw'>opc_lw</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>lw $xpr_0, $imm_1 ( $xpr_2 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_load__opc_lw__xpr__simm12__xpr__'><span name=idots>i_load__opc_lw...</span><span name=iname style='display:none'>i_load__opc_lw__xpr__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_load'>i_load</a>(<a href='el:opc_lw'>opc_lw</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>mv x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_mv_alias__x_0__x_0__'><span name=idots>i_mv_alias__x_...</span><span name=iname style='display:none'>i_mv_alias__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_mv_alias'>i_mv_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>mv x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_mv_alias__x_0__xpr__'><span name=idots>i_mv_alias__x_...</span><span name=iname style='display:none'>i_mv_alias__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_mv_alias'>i_mv_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>mv $xpr_0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_mv_alias__xpr__x_0__'><span name=idots>i_mv_alias__xp...</span><span name=iname style='display:none'>i_mv_alias__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_mv_alias'>i_mv_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>mv $xpr_0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_mv_alias__xpr__xpr__'><span name=idots>i_mv_alias__xp...</span><span name=iname style='display:none'>i_mv_alias__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_mv_alias'>i_mv_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>neg x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_neg_alias__x_0__x_0__'><span name=idots>i_neg_alias__x...</span><span name=iname style='display:none'>i_neg_alias__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_neg_alias'>i_neg_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>neg x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_neg_alias__x_0__xpr__'><span name=idots>i_neg_alias__x...</span><span name=iname style='display:none'>i_neg_alias__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_neg_alias'>i_neg_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>neg $xpr_0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_neg_alias__xpr__x_0__'><span name=idots>i_neg_alias__x...</span><span name=iname style='display:none'>i_neg_alias__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_neg_alias'>i_neg_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>neg $xpr_0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_neg_alias__xpr__xpr__'><span name=idots>i_neg_alias__x...</span><span name=iname style='display:none'>i_neg_alias__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_neg_alias'>i_neg_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>nop</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_nop_alias__'><span name=idots>i_nop_alias__</span><span name=iname style='display:none'>i_nop_alias__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_nop_alias'>i_nop_alias</a>  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>not x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_not_alias__x_0__x_0__'><span name=idots>i_not_alias__x...</span><span name=iname style='display:none'>i_not_alias__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_not_alias'>i_not_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>not x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_not_alias__x_0__xpr__'><span name=idots>i_not_alias__x...</span><span name=iname style='display:none'>i_not_alias__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_not_alias'>i_not_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>not $xpr_0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_not_alias__xpr__x_0__'><span name=idots>i_not_alias__x...</span><span name=iname style='display:none'>i_not_alias__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_not_alias'>i_not_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>not $xpr_0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_not_alias__xpr__xpr__'><span name=idots>i_not_alias__x...</span><span name=iname style='display:none'>i_not_alias__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_not_alias'>i_not_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>seqz x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_seqz_alias__x_0__x_0__'><span name=idots>i_seqz_alias__...</span><span name=iname style='display:none'>i_seqz_alias__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_seqz_alias'>i_seqz_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>seqz x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_seqz_alias__x_0__xpr__'><span name=idots>i_seqz_alias__...</span><span name=iname style='display:none'>i_seqz_alias__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_seqz_alias'>i_seqz_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>seqz $xpr_0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_seqz_alias__xpr__x_0__'><span name=idots>i_seqz_alias__...</span><span name=iname style='display:none'>i_seqz_alias__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_seqz_alias'>i_seqz_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>seqz $xpr_0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_seqz_alias__xpr__xpr__'><span name=idots>i_seqz_alias__...</span><span name=iname style='display:none'>i_seqz_alias__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_seqz_alias'>i_seqz_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sgtz x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_sgtz_alias__x_0__x_0__'><span name=idots>i_sgtz_alias__...</span><span name=iname style='display:none'>i_sgtz_alias__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_sgtz_alias'>i_sgtz_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sgtz x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_sgtz_alias__x_0__xpr__'><span name=idots>i_sgtz_alias__...</span><span name=iname style='display:none'>i_sgtz_alias__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_sgtz_alias'>i_sgtz_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sgtz $xpr_0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_sgtz_alias__xpr__x_0__'><span name=idots>i_sgtz_alias__...</span><span name=iname style='display:none'>i_sgtz_alias__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_sgtz_alias'>i_sgtz_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sgtz $xpr_0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_sgtz_alias__xpr__xpr__'><span name=idots>i_sgtz_alias__...</span><span name=iname style='display:none'>i_sgtz_alias__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_sgtz_alias'>i_sgtz_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>slli x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_shift__opc_slli__x_0__x_0__shamt__'><span name=idots>i_shift__opc_s...</span><span name=iname style='display:none'>i_shift__opc_slli__x_0__x_0__shamt__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_shift'>i_shift</a>(<a href='el:opc_slli'>opc_slli</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:shamt'>shamt</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>slli x0, x1, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_shift__opc_slli__x_0__xpr__shamt__'><span name=idots>i_shift__opc_s...</span><span name=iname style='display:none'>i_shift__opc_slli__x_0__xpr__shamt__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_shift'>i_shift</a>(<a href='el:opc_slli'>opc_slli</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:shamt'>shamt</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>slli $xpr_0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_shift__opc_slli__xpr__x_0__shamt__'><span name=idots>i_shift__opc_s...</span><span name=iname style='display:none'>i_shift__opc_slli__xpr__x_0__shamt__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_shift'>i_shift</a>(<a href='el:opc_slli'>opc_slli</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:shamt'>shamt</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>slli $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_shift__opc_slli__xpr__xpr__shamt__'><span name=idots>i_shift__opc_s...</span><span name=iname style='display:none'>i_shift__opc_slli__xpr__xpr__shamt__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_shift'>i_shift</a>(<a href='el:opc_slli'>opc_slli</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:shamt'>shamt</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>srai x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_shift__opc_srai__x_0__x_0__shamt__'><span name=idots>i_shift__opc_s...</span><span name=iname style='display:none'>i_shift__opc_srai__x_0__x_0__shamt__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_shift'>i_shift</a>(<a href='el:opc_srai'>opc_srai</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:shamt'>shamt</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>srai x0, x1, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_shift__opc_srai__x_0__xpr__shamt__'><span name=idots>i_shift__opc_s...</span><span name=iname style='display:none'>i_shift__opc_srai__x_0__xpr__shamt__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_shift'>i_shift</a>(<a href='el:opc_srai'>opc_srai</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:shamt'>shamt</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>srai $xpr_0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_shift__opc_srai__xpr__x_0__shamt__'><span name=idots>i_shift__opc_s...</span><span name=iname style='display:none'>i_shift__opc_srai__xpr__x_0__shamt__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_shift'>i_shift</a>(<a href='el:opc_srai'>opc_srai</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:shamt'>shamt</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>srai $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_shift__opc_srai__xpr__xpr__shamt__'><span name=idots>i_shift__opc_s...</span><span name=iname style='display:none'>i_shift__opc_srai__xpr__xpr__shamt__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_shift'>i_shift</a>(<a href='el:opc_srai'>opc_srai</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:shamt'>shamt</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>srli x0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_shift__opc_srli__x_0__x_0__shamt__'><span name=idots>i_shift__opc_s...</span><span name=iname style='display:none'>i_shift__opc_srli__x_0__x_0__shamt__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_shift'>i_shift</a>(<a href='el:opc_srli'>opc_srli</a>,<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>,<a href='el:shamt'>shamt</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>srli x0, x1, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_shift__opc_srli__x_0__xpr__shamt__'><span name=idots>i_shift__opc_s...</span><span name=iname style='display:none'>i_shift__opc_srli__x_0__xpr__shamt__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_shift'>i_shift</a>(<a href='el:opc_srli'>opc_srli</a>,<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>,<a href='el:shamt'>shamt</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>srli $xpr_0, x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_shift__opc_srli__xpr__x_0__shamt__'><span name=idots>i_shift__opc_s...</span><span name=iname style='display:none'>i_shift__opc_srli__xpr__x_0__shamt__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_shift'>i_shift</a>(<a href='el:opc_srli'>opc_srli</a>,<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>,<a href='el:shamt'>shamt</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>srli $xpr_0, $xpr_1, $imm_2</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_shift__opc_srli__xpr__xpr__shamt__'><span name=idots>i_shift__opc_s...</span><span name=iname style='display:none'>i_shift__opc_srli__xpr__xpr__shamt__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_shift'>i_shift</a>(<a href='el:opc_srli'>opc_srli</a>,<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>,<a href='el:shamt'>shamt</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sltz x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_sltz_alias__x_0__x_0__'><span name=idots>i_sltz_alias__...</span><span name=iname style='display:none'>i_sltz_alias__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_sltz_alias'>i_sltz_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sltz x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_sltz_alias__x_0__xpr__'><span name=idots>i_sltz_alias__...</span><span name=iname style='display:none'>i_sltz_alias__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_sltz_alias'>i_sltz_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sltz $xpr_0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_sltz_alias__xpr__x_0__'><span name=idots>i_sltz_alias__...</span><span name=iname style='display:none'>i_sltz_alias__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_sltz_alias'>i_sltz_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sltz $xpr_0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_sltz_alias__xpr__xpr__'><span name=idots>i_sltz_alias__...</span><span name=iname style='display:none'>i_sltz_alias__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_sltz_alias'>i_sltz_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>snez x0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_snez_alias__x_0__x_0__'><span name=idots>i_snez_alias__...</span><span name=iname style='display:none'>i_snez_alias__x_0__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_snez_alias'>i_snez_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>snez x0, x1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_snez_alias__x_0__xpr__'><span name=idots>i_snez_alias__...</span><span name=iname style='display:none'>i_snez_alias__x_0__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_snez_alias'>i_snez_alias</a>(<a href='el:x_0'>x_0</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>snez $xpr_0, x0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_snez_alias__xpr__x_0__'><span name=idots>i_snez_alias__...</span><span name=iname style='display:none'>i_snez_alias__xpr__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_snez_alias'>i_snez_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>snez $xpr_0, $xpr_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_snez_alias__xpr__xpr__'><span name=idots>i_snez_alias__...</span><span name=iname style='display:none'>i_snez_alias__xpr__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_snez_alias'>i_snez_alias</a>(<a href='el:xpr'>xpr</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sb x0, $imm_0 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sb__x_0__simm12__x_0__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sb__x_0__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sb'>opc_sb</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sb x0, $imm_0 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sb__x_0__simm12__x_0__legalConstClonei32__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sb__x_0__simm12__x_0__legalConstClonei32__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sb'>opc_sb</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sb x0, $imm_0 ( $xpr_1 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sb__x_0__simm12__xpr__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sb__x_0__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sb'>opc_sb</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sb x0, $imm_0 ( $xpr_1 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sb__x_0__simm12__xpr__legalConstClonei32__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sb__x_0__simm12__xpr__legalConstClonei32__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sb'>opc_sb</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sb $xpr_0, $imm_1 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sb__xpr__simm12__x_0__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sb__xpr__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sb'>opc_sb</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sb $xpr_0, $imm_1 ( $xpr_2 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sb__xpr__simm12__xpr__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sb__xpr__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sb'>opc_sb</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sh x0, $imm_0 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sh__x_0__simm12__x_0__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sh__x_0__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sh'>opc_sh</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sh x0, $imm_0 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sh__x_0__simm12__x_0__legalConstClonei32__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sh__x_0__simm12__x_0__legalConstClonei32__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sh'>opc_sh</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sh x0, $imm_0 ( $xpr_1 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sh__x_0__simm12__xpr__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sh__x_0__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sh'>opc_sh</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sh x0, $imm_0 ( $xpr_1 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sh__x_0__simm12__xpr__legalConstClonei32__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sh__x_0__simm12__xpr__legalConstClonei32__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sh'>opc_sh</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sh $xpr_0, $imm_1 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sh__xpr__simm12__x_0__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sh__xpr__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sh'>opc_sh</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sh $xpr_0, $imm_1 ( $xpr_2 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sh__xpr__simm12__xpr__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sh__xpr__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sh'>opc_sh</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sw x0, $imm_0 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sw__x_0__simm12__x_0__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sw__x_0__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sw'>opc_sw</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sw x0, $imm_0 ( $xpr_1 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sw__x_0__simm12__xpr__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sw__x_0__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sw'>opc_sw</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>sw $xpr_0, $imm_1 ( x0 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sw__xpr__simm12__x_0__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sw__xpr__simm12__x_0__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sw'>opc_sw</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>sw $xpr_0, $imm_1 ( $xpr_2 )</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_store__opc_sw__xpr__simm12__xpr__'><span name=idots>i_store__opc_s...</span><span name=iname style='display:none'>i_store__opc_sw__xpr__simm12__xpr__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_store'>i_store</a>(<a href='el:opc_sw'>opc_sw</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm12'>simm12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td>auipc x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_upper_imm__opc_auipc__x_0__simm20__'><span name=idots>i_upper_imm__o...</span><span name=iname style='display:none'>i_upper_imm__opc_auipc__x_0__simm20__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_upper_imm'>i_upper_imm</a>(<a href='el:opc_auipc'>opc_auipc</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm20'>simm20</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>auipc $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_upper_imm__opc_auipc__xpr__simm20__'><span name=idots>i_upper_imm__o...</span><span name=iname style='display:none'>i_upper_imm__opc_auipc__xpr__simm20__</span></a></td>
+ <td><a class=fake_a onclick="HideOrShowByName('i_upper_imm__opc_auipc__xpr__simm20___messages')">log</a></td>
+ <td> <a href='el:i_upper_imm'>i_upper_imm</a>(<a href='el:opc_auipc'>opc_auipc</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm20'>simm20</a>)  </td>
+</tr>
+<tr class=r1 name=status0><td style='display:none' colspan=5 name=i_upper_imm__opc_auipc__xpr__simm20___messages>note: (BGN545): The instruction contains invalid operation ('CurPC') even after the high-level analysis. The semantic pattern will be commented out.</td></tr>
+<tr class=r0 name=status0>
+ <td>lui x0, 0</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_upper_imm__opc_lui__x_0__simm20__'><span name=idots>i_upper_imm__o...</span><span name=iname style='display:none'>i_upper_imm__opc_lui__x_0__simm20__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_upper_imm'>i_upper_imm</a>(<a href='el:opc_lui'>opc_lui</a>,<a href='el:x_0'>x_0</a>,<a href='el:simm20'>simm20</a>)  </td>
+</tr>
+<tr class=r1 name=status0>
+ <td>lui $xpr_0, $imm_1</td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#i_upper_imm__opc_lui__xpr__simm20__'><span name=idots>i_upper_imm__o...</span><span name=iname style='display:none'>i_upper_imm__opc_lui__xpr__simm20__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:i_upper_imm'>i_upper_imm</a>(<a href='el:opc_lui'>opc_lui</a>,<a href='el:xpr'>xpr</a>,<a href='el:simm20'>simm20</a>)  </td>
+</tr>
+<tr class=r0 name=status0>
+ <td></td>
+ <td class=status0>usable</td>
+ <td><a href='semantic.htm#e_movi32__'><span name=idots>e_movi32__</span><span name=iname style='display:none'>e_movi32__</span></a></td>
+ <td>-</td>
+ <td> <a href='el:'></a>  </td>
+</tr>
+<tr class=r1 name=status3>
+ <td>halt</td>
+ <td class=status3>removed</td>
+ <td><a href='semantic.htm#i_halt__opc_halt__'><span name=idots>i_halt__opc_ha...</span><span name=iname style='display:none'>i_halt__opc_halt__</span></a></td>
+ <td><a class=fake_a onclick="HideOrShowByName('i_halt__opc_halt___messages')">log</a></td>
+ <td> <a href='el:i_halt'>i_halt</a>(<a href='el:opc_halt'>opc_halt</a>)  </td>
+</tr>
+<tr class=r1 name=status3><td style='display:none' colspan=5 name=i_halt__opc_halt___messages>Instruction contains a call to codasip_halt() that is used only for simulator generation. Instruction removed in extractor pass 'Preparing for LLC extractor'.</td></tr>
+<tr class=r0 name=status3>
+ <td>syscall</td>
+ <td class=status3>removed</td>
+ <td><a href='semantic.htm#i_syscall__opc_syscall__'><span name=idots>i_syscall__opc...</span><span name=iname style='display:none'>i_syscall__opc_syscall__</span></a></td>
+ <td><a class=fake_a onclick="HideOrShowByName('i_syscall__opc_syscall___messages')">log</a></td>
+ <td> <a href='el:i_syscall'>i_syscall</a>(<a href='el:opc_syscall'>opc_syscall</a>)  </td>
+</tr>
+<tr class=r0 name=status3><td style='display:none' colspan=5 name=i_syscall__opc_syscall___messages>Instruction contains a call to codasip_syscall() that is used only for simulator generation. Instruction removed in extractor pass 'Preparing for LLC extractor'.</td></tr>
+<tr class=r1 name=status3>
+ <td>jalr x0, $imm_0 ( $xpr_1 )</td>
+ <td class=status3>removed</td>
+ <td><a href='semantic.htm#i_jalr__opc_jalr__x_0__rel_jalr_addr12__xpr__'><span name=idots>i_jalr__opc_ja...</span><span name=iname style='display:none'>i_jalr__opc_jalr__x_0__rel_jalr_addr12__xpr__</span></a></td>
+ <td><a class=fake_a onclick="HideOrShowByName('i_jalr__opc_jalr__x_0__rel_jalr_addr12__xpr___messages')">log</a></td>
+ <td> <a href='el:i_jalr'>i_jalr</a>(<a href='el:opc_jalr'>opc_jalr</a>,<a href='el:x_0'>x_0</a>,<a href='el:rel_jalr_addr12'>rel_jalr_addr12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r1 name=status3><td style='display:none' colspan=5 name=i_jalr__opc_jalr__x_0__rel_jalr_addr12__xpr___messages>note: (BGN511): Invalid jump address computation. Address of a jump must be computed from only one input operand.</td></tr>
+<tr class=r0 name=status3>
+ <td>jalr $xpr_0, $imm_1 ( $xpr_2 )</td>
+ <td class=status3>removed</td>
+ <td><a href='semantic.htm#i_jalr__opc_jalr__xpr__rel_jalr_addr12__xpr__'><span name=idots>i_jalr__opc_ja...</span><span name=iname style='display:none'>i_jalr__opc_jalr__xpr__rel_jalr_addr12__xpr__</span></a></td>
+ <td><a class=fake_a onclick="HideOrShowByName('i_jalr__opc_jalr__xpr__rel_jalr_addr12__xpr___messages')">log</a></td>
+ <td> <a href='el:i_jalr'>i_jalr</a>(<a href='el:opc_jalr'>opc_jalr</a>,<a href='el:xpr'>xpr</a>,<a href='el:rel_jalr_addr12'>rel_jalr_addr12</a>,<a href='el:xpr'>xpr</a>)  </td>
+</tr>
+<tr class=r0 name=status3><td style='display:none' colspan=5 name=i_jalr__opc_jalr__xpr__rel_jalr_addr12__xpr___messages>note: (BGN511): Invalid jump address computation. Address of a jump must be computed from only one input operand.</td></tr>
+<tr class=r1 name=status3>
+ <td>jr x0</td>
+ <td class=status3>removed</td>
+ <td><a href='semantic.htm#i_jr_alias__x_0__'><span name=idots>i_jr_alias__x_...</span><span name=iname style='display:none'>i_jr_alias__x_0__</span></a></td>
+ <td><a class=fake_a onclick="HideOrShowByName('i_jr_alias__x_0___messages')">log</a></td>
+ <td> <a href='el:i_jr_alias'>i_jr_alias</a>(<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r1 name=status3><td style='display:none' colspan=5 name=i_jr_alias__x_0___messages>note: (BGN507): Invalid adjustment of the jump destination.</td></tr>
+<tr class=r0 name=status3>
+ <td>call_reg x0</td>
+ <td class=status3>removed</td>
+ <td><a href='semantic.htm#i_call_reg_alias__x_0__'><span name=idots>i_call_reg_ali...</span><span name=iname style='display:none'>i_call_reg_alias__x_0__</span></a></td>
+ <td><a class=fake_a onclick="HideOrShowByName('i_call_reg_alias__x_0___messages')">log</a></td>
+ <td> <a href='el:i_call_reg_alias'>i_call_reg_alias</a>(<a href='el:x_0'>x_0</a>)  </td>
+</tr>
+<tr class=r0 name=status3><td style='display:none' colspan=5 name=i_call_reg_alias__x_0___messages>note: (BGN507): Invalid adjustment of the jump destination.</td></tr>
+
+</tbody>
+</table>
+
+<!--CONTENT_END-->
+
+</body>
+</html>
+

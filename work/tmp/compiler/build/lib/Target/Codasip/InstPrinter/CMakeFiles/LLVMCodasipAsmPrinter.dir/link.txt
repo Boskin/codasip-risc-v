@@ -1,0 +1,2 @@
+C:/Codasip/MinGW-1.5.1/bin/ar.exe qc ../../../libLLVMCodasipAsmPrinter.a  CMakeFiles/LLVMCodasipAsmPrinter.dir/CodasipInstPrinter.cpp.obj
+C:/Codasip/MinGW-1.5.1/bin/ranlib.exe ../../../libLLVMCodasipAsmPrinter.a

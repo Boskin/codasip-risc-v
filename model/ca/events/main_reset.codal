@@ -1,0 +1,29 @@
+#include "debug.hcodal"
+
+event reset {
+    semantics {
+        codasip_info(INFO_GENERAL, "Resetting...");
+    };
+};
+
+event main {
+    use pipe_control;
+    use fe;
+    use id;
+    use ex;
+    use me;
+    use wb;
+
+    semantics {
+        codasip_info(INFO_PIPE, "\n-----\n");
+    };
+
+    timing {
+        wb();
+        me();
+        ex();
+        id();
+        fe();
+        pipe_control();
+    };
+};

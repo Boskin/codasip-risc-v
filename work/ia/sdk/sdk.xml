@@ -1,0 +1,1 @@
+<sdk codasip-version="6.8.2-1.win.7.EVALUATION" version="1.0"><model design-path="RISC_V5.ia" id="RISC_V5.ia" prefix="RISC_V5-ia-"><library name="newlib" /><library name="compiler-rt" /><library name="startup" /></model></sdk>

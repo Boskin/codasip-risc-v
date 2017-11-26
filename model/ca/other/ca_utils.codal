@@ -1,0 +1,21 @@
+#include "config.hcodal"
+#include "ca_defines.hcodal"
+#include "debug.hcodal"
+
+void print_pipeline() {
+    codasip_print(INFO_PIPE, "ID: ");
+    codasip_disassembler(INFO_PIPE, r_id_instr, r_id_pc);
+    codasip_print(INFO_PIPE, "\n");
+
+    codasip_print(INFO_PIPE, "EX: ");
+    codasip_disassembler(INFO_PIPE, r_ex_instr, r_ex_pc);
+    codasip_print(INFO_PIPE, "\n");
+
+    codasip_print(INFO_PIPE, "ME: ");
+    codasip_disassembler(INFO_PIPE, r_me_instr, r_me_pc);
+    codasip_print(INFO_PIPE, "\n");
+
+    codasip_print(INFO_PIPE, "WB: ");
+    codasip_disassembler(INFO_PIPE, r_wb_instr, r_wb_pc);
+    codasip_print(INFO_PIPE, "\n");
+}

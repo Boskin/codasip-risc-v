@@ -1,0 +1,7 @@
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/profiler/CMakeFiles/profiler.dir
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/profiler/CMakeFiles/edit_cache.dir
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/profiler/CMakeFiles/rebuild_cache.dir
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/profiler/CMakeFiles/install.dir
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/profiler/CMakeFiles/list_install_components.dir
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/profiler/CMakeFiles/install/local.dir
+C:/Users/Boskin/codasip/RISC_V5/work/tmp/profiler/CMakeFiles/install/strip.dir

@@ -1,0 +1,387 @@
+#include "config.hcodal"
+#include "ca_defines.hcodal"
+#include "opcodes.hcodal"
+
+element i_hw_halt {
+    use opc_halt as opc;
+
+    assembler {opc};
+    binary {opc};
+
+    semantics {
+        s_id_src_a_mux = SRC_A_XPR;
+        s_id_src_b_mux = SRC_B_XPR;
+        s_id_imm = 0;
+        s_id_mem_op = MEM_NOP;
+        s_id_jump_op = JUMP_FALSE;
+        s_id_xpr_dest_src = WRITE_DISABLE;
+        s_id_alu_op = ALU_ADD;
+    };
+};
+
+element i_hw_syscall {
+    use opc_syscall as opc;
+
+    assembler {opc};
+    binary {opc};
+
+    semantics {
+        s_id_src_a_mux = SRC_A_XPR;
+        s_id_src_b_mux = SRC_B_XPR;
+        s_id_imm = 0;
+        s_id_mem_op = MEM_NOP;
+        s_id_jump_op = JUMP_FALSE;
+        s_id_xpr_dest_src = WRITE_DISABLE;
+        s_id_alu_op = ALU_ADD;
+    };
+};
+
+element i_hw_alu {
+    use opc_alu as opc;
+
+    assembler {opc};
+    binary {opc};
+
+    semantics {
+        s_id_src_a_mux = SRC_A_XPR;
+        s_id_src_b_mux = SRC_B_XPR;
+        s_id_imm = 0;
+        s_id_mem_op = MEM_NOP;
+        s_id_jump_op = JUMP_FALSE;
+        // Write to the destination
+        s_id_xpr_dest_src = WRITE_ALU;
+
+
+        switch(opc) {
+        case OPC_SLL:
+            s_id_alu_op = ALU_SLL;
+            break;
+
+        case OPC_SRL:
+            s_id_alu_op = ALU_SRL;
+            break;
+
+        case OPC_SRA:
+            s_id_alu_op = ALU_SRA;
+            break;
+
+        case OPC_ADD:
+            s_id_alu_op = ALU_ADD;
+            break;
+
+        case OPC_SUB:
+            s_id_alu_op = ALU_SUB;
+            break;
+
+        case OPC_AND:
+            s_id_alu_op = ALU_AND;
+            break;
+
+        case OPC_OR:
+            s_id_alu_op = ALU_OR;
+            break;
+
+        case OPC_XOR:
+            s_id_alu_op = ALU_XOR;
+            break;
+
+        case OPC_SLT:
+            s_id_alu_op = ALU_SLT;
+            break;
+
+        case OPC_SLTU:
+            s_id_alu_op= ALU_SLTU;
+            break;
+
+        default:
+            codasip_assert(false, "Default case in decoder i_alu: %d", opc);
+        }
+    };
+};
+
+element i_hw_alu_i {
+    use opc_alu_i as opc;
+
+    assembler {opc};
+    binary {opc};
+
+    semantics {
+        s_id_src_a_mux = SRC_A_XPR;
+        s_id_src_b_mux = SRC_B_IMM;
+        s_id_imm = (int32)s_id_itype_simm12;
+        s_id_mem_op = MEM_NOP;
+        s_id_jump_op = JUMP_FALSE;
+        // Write to the destination
+        s_id_xpr_dest_src = WRITE_ALU;
+
+
+        switch(opc) {
+        case OPC_ADDI:
+            s_id_alu_op = ALU_ADD;
+            break;
+
+        case OPC_ANDI:
+            s_id_alu_op = ALU_AND;
+            break;
+
+        case OPC_ORI:
+            s_id_alu_op = ALU_OR;
+            break;
+
+        case OPC_XORI:
+            s_id_alu_op = ALU_XOR;
+            break;
+
+        case OPC_SLTI:
+            s_id_alu_op = ALU_SLT;
+            break;
+
+        case OPC_SLTIU:
+            s_id_alu_op = ALU_SLTU;
+            break;
+
+        default:
+            s_id_alu_op = ALU_ADD;
+            codasip_assert(false, "Default case in decoder i_hw_alu: %d", opc);
+        }
+    };
+};
+
+element i_hw_shift {
+    use opc_shift as opc;
+
+    assembler {opc};
+    binary {opc};
+
+    semantics {
+        s_id_src_a_mux = SRC_A_XPR;
+        s_id_src_b_mux = SRC_B_IMM;
+        s_id_imm = (uint32)s_id_shamnt5;
+        s_id_mem_op = MEM_NOP;
+        s_id_jump_op = JUMP_FALSE;
+        s_id_xpr_dest_src = WRITE_ALU;
+
+        switch(opc) {
+        case OPC_SLLI:
+            s_id_alu_op = ALU_SLL;
+            break;
+
+        case OPC_SRLI:
+            s_id_alu_op = ALU_SRL;
+            break;
+
+        case OPC_SRAI:
+            s_id_alu_op = ALU_SRA;
+            break;
+
+        default:
+            s_id_alu_op = ALU_SLL;
+            codasip_assert(false, "Default case in decoder in hw_shift: %d",
+                opc);
+        }
+    };
+};
+
+element i_hw_branch {
+    use opc_branch as opc;
+    assembler {opc};
+    binary {opc};
+
+    semantics {
+        s_id_src_a_mux = SRC_A_XPR;
+        s_id_src_b_mux = SRC_B_XPR;
+        s_id_imm = (int32)((int32)s_id_btype_simm12 << 1);
+        s_id_mem_op = MEM_NOP;
+        s_id_jump_op = JUMP_COND;
+        s_id_xpr_dest_src = WRITE_DISABLE;
+
+        switch(opc) {
+        case OPC_BEQ:
+            s_id_alu_op = ALU_SUB;
+            break;
+
+        case OPC_BNE:
+            s_id_alu_op = ALU_XNOR;
+            break;
+
+        case OPC_BLT:
+            s_id_alu_op = ALU_SGE;
+            break;
+
+        case OPC_BLTU:
+            s_id_alu_op = ALU_SGEU;
+            break;
+
+        case OPC_BGE:
+            s_id_alu_op = ALU_SLT;
+            break;
+
+        case OPC_BGEU:
+            s_id_alu_op = ALU_SLTU;
+            break;
+
+        default:
+            s_id_alu_op = ALU_SUB;
+            codasip_assert(false, "Default case in decoder i_branch: %d", opc);
+        }
+    };
+};
+
+element i_hw_jal {
+    use opc_jal as opc;
+
+    assembler {opc};
+    binary {opc};
+
+    semantics {
+        s_id_src_a_mux = SRC_A_XPR;
+        s_id_src_b_mux = SRC_B_XPR;
+        s_id_imm = 0;
+        s_id_mem_op = MEM_NOP;
+        s_id_jump_op = JUMP_TRUE;
+        s_id_xpr_dest_src = WRITE_DISABLE;
+        s_id_alu_op = ALU_ADD;
+    };
+};
+
+element i_hw_jalr {
+    use opc_jalr as opc;
+
+    assembler {opc};
+    binary {opc};
+
+    semantics {
+        s_id_src_a_mux = SRC_A_XPR;
+        s_id_src_b_mux = SRC_B_XPR;
+        s_id_imm = 0;
+        s_id_mem_op = MEM_NOP;
+        s_id_jump_op = JUMP_TRUE;
+        s_id_xpr_dest_src = WRITE_DISABLE;
+        s_id_alu_op = ALU_ADD;
+    };
+};
+
+element i_hw_load {
+    use opc_load as opc;
+
+    assembler {opc};
+    binary {opc};
+
+    semantics {
+        /* s_id_src_a_mux = SRC_A_XPR;
+        s_id_src_b_mux = SRC_B_XPR;
+        s_id_imm = 0;
+        s_id_alu_op = ALU_ADD;
+        s_id_jump_op = JUMP_FALSE;
+        s_id_xpr_dest_src = WRITE_DISABLE;
+        s_id_mem_op = MEM_NOP; */
+        s_id_src_a_mux = SRC_A_XPR;
+        s_id_src_b_mux = SRC_B_IMM;
+        s_id_imm = (int32)s_id_itype_simm12;
+        s_id_alu_op = ALU_ADD;
+        s_id_jump_op = JUMP_FALSE;
+        s_id_xpr_dest_src = WRITE_MEM;
+
+        switch(opc) {
+        case OPC_LW:
+            s_id_mem_op = MEM_LD;
+            break;
+
+        case OPC_LH:
+            s_id_mem_op = MEM_LDHS;
+            break;
+
+        case OPC_LHU:
+            s_id_mem_op = MEM_LDHU;
+            break;
+
+        case OPC_LB:
+            s_id_mem_op = MEM_LDBS;
+            break;
+
+        case OPC_LBU:
+            s_id_mem_op = MEM_LDBU;
+            break;
+        default:
+            s_id_mem_op = MEM_LD;
+            codasip_assert(false, "Default case in HW load: %d\n", opc);
+        }
+    };
+};
+
+element i_hw_store {
+    use opc_store as opc;
+
+    assembler {opc};
+    binary {opc};
+
+    semantics {
+        s_id_src_a_mux = SRC_A_XPR;
+        s_id_src_b_mux = SRC_B_XPR;
+        s_id_imm = (int32)s_id_stype_simm12;
+        s_id_jump_op = JUMP_FALSE;
+        s_id_xpr_dest_src = WRITE_DISABLE;
+        s_id_alu_op = ALU_ADD;
+
+        switch(opc) {
+        case OPC_SW:
+            s_id_mem_op = MEM_ST;
+            break;
+
+        case OPC_SH:
+            s_id_mem_op = MEM_STH;
+            break;
+
+        case OPC_SB:
+            s_id_mem_op = MEM_STB;
+            break;
+
+        default:
+            s_id_mem_op = MEM_ST;
+            codasip_assert(false, "Default case in i_hw_store in decoder: %d",
+                opc);
+        }
+    };
+};
+
+element i_hw_upper_imm {
+    use opc_upper_imm as opc;
+
+    assembler {opc};
+    binary {opc};
+
+    semantics {
+        s_id_src_b_mux = SRC_B_IMM;
+        s_id_imm = (uint32)((uint32)s_id_utype_uimm20 << 12);
+        s_id_jump_op = JUMP_FALSE;
+        s_id_xpr_dest_src = WRITE_ALU;
+        s_id_alu_op = ALU_ADD;
+
+        switch(opc) {
+        case OPC_LUI:
+            s_id_src_a_mux = SRC_A_XPR;
+            break;
+
+        case OPC_AUIPC:
+            s_id_src_a_mux = SRC_A_PC;
+            break;
+
+        default:
+            s_id_src_a_mux = SRC_A_XPR;
+            codasip_assert(false, "Default case in i_hw_upper_imm in decoder: %d",
+                opc);
+        }
+    };
+};
+
+set isa_hw = i_hw_halt,
+             i_hw_syscall,
+             i_hw_alu,
+             i_hw_alu_i,
+             i_hw_shift,
+             i_hw_branch,
+             i_hw_jal,
+             i_hw_jalr,
+             i_hw_load,
+             i_hw_store,
+             i_hw_upper_imm;

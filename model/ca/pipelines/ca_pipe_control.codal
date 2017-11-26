@@ -1,0 +1,51 @@
+#include "config.hcodal"
+#include "ca_defines.hcodal"
+#include "debug.hcodal"
+
+event pipe_control : pipeline(pipe.FE) {
+    semantics {
+#pragma simulator
+        {
+            print_pipeline();
+        }
+
+        if(s_fe_stall) {
+            pipe.FE.stall();
+            codasip_info(INFO_PIPE, "pipeline FE stall\n");
+        } else if(s_fe_clear) {
+
+        }
+
+        if(s_id_stall) {
+            pipe.ID.stall();
+            codasip_info(INFO_PIPE, "pipeline ID stall\n");
+        } else if(s_id_clear) {
+            pipe.ID.clear();
+            codasip_info(INFO_PIPE, "pipeline ID clear\n");
+        }
+
+        if(s_ex_stall) {
+            pipe.EX.stall();
+            codasip_info(INFO_PIPE, "pipeline EX stall\n");
+        } else if(s_ex_clear) {
+            pipe.EX.clear();
+            codasip_info(INFO_PIPE, "pipeline EX clear\n");
+        }
+
+        if(s_me_stall) {
+            pipe.ME.stall();
+            codasip_info(INFO_PIPE, "pipeline ME stall\n");
+        } else if(s_me_clear) {
+            pipe.ME.clear();
+            codasip_info(INFO_PIPE, "pipeline ME clear\n");
+        }
+
+        if(s_wb_stall) {
+            pipe.WB.stall();
+            codasip_info(INFO_PIPE, "pipeline WB stall\n");
+        } else if(s_wb_clear) {
+            pipe.WB.clear();
+            codasip_info(INFO_PIPE, "pipeline WB clear\n");
+        }
+    };
+};

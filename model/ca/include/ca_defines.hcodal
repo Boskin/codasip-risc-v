@@ -1,0 +1,82 @@
+//#ifndef CA_DEFINES_HCODAL
+//#define CA_DEFINES_HCODAL
+
+#define BRANCH_MUX_W bitsizeof(enum branch_mux)
+enum branch_mux {
+    BRANCH_TAKE,
+    BRANCH_NO_TAKE,
+};
+
+#define SRC_A_MUX_W bitsizeof(enum src_a_mux)
+enum src_a_mux {
+    SRC_A_XPR,
+    SRC_A_PC,
+};
+
+#define SRC_B_MUX_W bitsizeof(enum src_b_mux)
+enum src_b_mux {
+    SRC_B_XPR,
+    SRC_B_IMM,
+    SRC_B_INSTR_SIZE,
+};
+
+#define ALU_OP_W bitsizeof(enum alu_op_c)
+enum alu_op_c {
+    ALU_ADD,
+    ALU_SUB,
+    ALU_AND,
+    ALU_OR,
+    ALU_XOR,
+    ALU_XNOR, // For BNE
+    ALU_SLL,
+    ALU_SRL,
+    ALU_SRA,
+    ALU_SLT,
+    ALU_SLTU,
+    ALU_SGE, // For BLT
+    ALU_SGEU, // For BLTU
+};
+
+#define MEM_OP_W bitsizeof(enum mem_op)
+enum mem_op {
+    MEM_NOP,
+    MEM_ST,
+    MEM_STH,
+    MEM_STB,
+    MEM_LD,
+    MEM_LDHS,
+    MEM_LDHU,
+    MEM_LDBS,
+    MEM_LDBU,
+};
+
+#define JUMP_OP_W bitsizeof(enum jump_op)
+enum jump_op {
+    JUMP_FALSE,
+    JUMP_TRUE,
+    JUMP_COND,
+};
+
+#define WRITE_OP_W bitsizeof(enum write_op)
+enum write_op {
+    WRITE_DISABLE,
+    WRITE_ALU,
+    WRITE_MEM,
+};
+
+// Forwarding for the opperands of an execution
+#define EX_FORWARD_MUX_W bitsizeof(enum ex_forward_mux)
+enum ex_forward_mux {
+    EX_FORWARD_NONE,
+    EX_FORWARD_ME,
+    EX_FORWARD_WB,
+};
+
+// Forwarding for store instructions
+#define ME_FORWARD_MUX_W bitsizeof(enum me_forward_mux)
+enum me_forward_mux {
+    ME_FORWARD_NONE,
+    ME_FORWARD_WB,
+};
+
+//#endif

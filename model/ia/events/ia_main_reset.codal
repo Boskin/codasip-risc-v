@@ -1,0 +1,73 @@
+/**
+* Copyright (c) 2017 Keith Graham
+*
+* Permission is granted to anyone to use this software for any purpose,
+* including commercial applications, and to alter it and redistribute it
+* freely, subject to the following restrictions:
+*
+* 1. The origin of this software must not be misrepresented; you must not
+*    claim that you wrote the original software.
+* 2. Altered source versions must be plainly marked as such, and must not be
+*    misrepresented as being the original software.
+* 3. This notice may not be removed or altered from any source distribution.
+*/
+
+// -------------------------------------------------------------
+// Include statements
+// -------------------------------------------------------------
+
+#include "config.hcodal"
+#include "debug.hcodal"
+
+
+// -------------------------------------------------------------
+// Main event
+// -------------------------------------------------------------
+
+event main
+{
+    // specify to use the RISC-V ISA
+    use riscv_isa;
+
+    // local instruction buffer
+    register bit[RISCV_INSTR_W] r_instruction_buffer;
+
+    semantics
+    {
+        // Read an instruction from memory
+        r_instruction_buffer = if_code[r_pc];
+
+        // Print fetched instruction
+        codasip_print(INFO_GENERAL, "\n-----------------------------------------\n");
+        codasip_disassembler(INFO_GENERAL, r_instruction_buffer, r_pc);
+        codasip_print(INFO_GENERAL, "\n-----------------------------------------\n");
+
+        // Increment the program counter
+        r_pc += RISCV_INSTR_SIZE;
+    };
+
+    decoders
+    {
+        { riscv_isa(r_instruction_buffer); }
+    };
+};
+
+// -------------------------------------------------------------
+// Reset event
+// -------------------------------------------------------------
+
+event reset
+{
+    semantics
+    {
+        int i;
+
+        codasip_info(INFO_GENERAL, "Restting...");
+
+        // Initialize register values and the program counter
+        for (i = 0; i < RF_XPR_SIZE; i++)
+        {
+            rf_xpr[i] = 0;
+        }
+    };
+};

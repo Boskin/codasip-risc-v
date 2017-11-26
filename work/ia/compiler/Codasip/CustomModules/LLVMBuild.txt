@@ -1,0 +1,16 @@
+;===- ./lib/Target/Codasip/CustomModules/LLVMBuild.txt -----------*- Conf -*--===;
+;
+; This is an LLVMBuild description file for the components in this subdirectory.
+;
+; For more information on the LLVMBuild system, please see:
+;
+;   http://llvm.org/docs/LLVMBuild.html
+;
+;===------------------------------------------------------------------------===;
+
+[component_0]
+type = Library
+name = CodasipCustomModules
+parent = Codasip
+required_libraries = Target
+add_to_library_groups = Codasip

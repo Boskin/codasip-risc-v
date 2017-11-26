@@ -1,0 +1,209 @@
+#include "config.hcodal"
+#include "ca_defines.hcodal"
+
+event ex : pipeline(pipe.EX) {
+    use ex_output;
+    use ex_branch;
+
+    semantics {
+        s_ex_forward_a = EX_FORWARD_NONE;
+        s_ex_forward_b = EX_FORWARD_NONE;
+
+        s_ex_stall = s_me_stall;
+
+        /* if(r_ex_xpr_a != 0) {
+            if(r_ex_xpr_a == r_me_xpr_dest) {
+                if(r_me_xpr_dest_src == WRITE_ALU) {
+                    s_ex_forward_a = EX_FORWARD_ME;
+                } else if(r_me_xpr_dest_src == WRITE_MEM) {
+                    s_ex_forward_a = EX_FORWARD_NONE;
+                    s_ex_stall = 1;
+                } else {
+                    s_ex_forward_a = EX_FORWARD_NONE;
+                }
+            } else if(r_ex_xpr_a == r_wb_xpr_dest) {
+                s_ex_forward_a = EX_FORWARD_WB;
+            } else {
+                s_ex_forward_a = EX_FORWARD_NONE;
+            }
+        } else {
+            s_ex_forward_a = EX_FORWARD_NONE;
+        }
+
+        if(r_ex_xpr_b != 0) {
+            if(r_ex_xpr_b == r_me_xpr_dest) {
+                if(r_me_xpr_dest_src == WRITE_ALU) {
+                    s_ex_forward_b = EX_FORWARD_ME;
+                } else if(r_me_xpr_dest_src == WRITE_MEM) {
+                    s_ex_forward_b = EX_FORWARD_NONE;
+                    s_ex_stall = 1;
+                } else {
+                    s_ex_forward_b = EX_FORWARD_NONE;
+                }
+            } else if(r_ex_xpr_b == r_wb_xpr_dest) {
+                s_ex_forward_b = EX_FORWARD_WB;
+            } else {
+                s_ex_forward_b = EX_FORWARD_NONE;
+            }
+        } else {
+            s_ex_forward_b = EX_FORWARD_NONE;
+        } */
+
+        switch(s_ex_forward_a) {
+        case EX_FORWARD_NONE:
+            s_ex_xpr_data_a_forward = r_ex_xpr_data_a;
+            break;
+
+        case EX_FORWARD_ME:
+            s_ex_xpr_data_a_forward = r_me_alu_out;
+            break;
+
+        case EX_FORWARD_WB:
+            s_ex_xpr_data_a_forward = r_wb_data_out;
+            break;
+
+        default:
+            s_ex_xpr_data_a_forward = r_ex_xpr_data_a;
+            codasip_assert(false, "Default case in forward_a in ex: %d",
+                s_ex_forward_a);
+        }
+
+        switch(s_ex_forward_b) {
+        case EX_FORWARD_NONE:
+            s_ex_xpr_data_b_forward = r_ex_xpr_data_b;
+            break;
+
+        case EX_FORWARD_ME:
+            s_ex_xpr_data_b_forward = r_me_alu_out;
+            break;
+
+        case EX_FORWARD_WB:
+            s_ex_xpr_data_b_forward = r_wb_data_out;
+            break;
+
+        default:
+            s_ex_xpr_data_b_forward = r_ex_xpr_data_b;
+            codasip_assert(false, "Default case in forward_b in ex: %d",
+                s_ex_forward_b);
+        }
+
+        switch(r_ex_src_a_mux) {
+        case SRC_A_XPR:
+            s_ex_alu_in_a = s_ex_xpr_data_a_forward;
+            break;
+
+        case SRC_A_PC:
+            s_ex_alu_in_a = r_ex_pc;
+            break;
+
+        default:
+            s_ex_alu_in_a = SRC_A_XPR;
+            codasip_assert(false, "Default case in ex_src_a in ex: %d",
+                r_ex_src_a_mux);
+        }
+
+        switch(r_ex_src_b_mux) {
+        case SRC_B_XPR:
+            s_ex_alu_in_b = s_ex_xpr_data_b_forward;
+            break;
+
+        case SRC_B_IMM:
+            s_ex_alu_in_b = r_ex_imm;
+            break;
+
+        case SRC_B_INSTR_SIZE:
+            s_ex_alu_in_b = RISCV_INSTR_SIZE;
+            break;
+
+        default:
+            s_ex_alu_in_b = SRC_B_XPR;
+            codasip_assert(false, "Default case in event ex in src b mux: %d",
+                r_ex_src_b_mux);
+        }
+
+        switch(r_ex_alu_op) {
+        case ALU_ADD:
+            s_ex_alu_out = s_ex_alu_in_a + s_ex_alu_in_b;
+            break;
+
+        case ALU_SUB:
+            s_ex_alu_out = s_ex_alu_in_a - s_ex_alu_in_b;
+            break;
+
+        case ALU_AND:
+            s_ex_alu_out = s_ex_alu_in_a & s_ex_alu_in_b;
+            break;
+
+        case ALU_OR:
+            s_ex_alu_out = s_ex_alu_in_a | s_ex_alu_in_b;
+            break;
+
+        case ALU_XOR:
+            s_ex_alu_out = s_ex_alu_in_a ^ s_ex_alu_in_b;
+            break;
+
+        case ALU_XNOR:
+            s_ex_alu_out = ~(s_ex_alu_in_a ^ s_ex_alu_in_b);
+            break;
+
+        case ALU_SLL:
+            s_ex_alu_out = s_ex_alu_in_a << (uint5)s_ex_alu_in_b;
+            break;
+
+        case ALU_SRL:
+            s_ex_alu_out = (uint32)s_ex_alu_in_a >> (uint5)s_ex_alu_in_b;
+            break;
+
+        case ALU_SRA:
+            s_ex_alu_out = (int32)s_ex_alu_in_a >> (uint5)s_ex_alu_in_b;
+            break;
+
+        case ALU_SLT:
+            s_ex_alu_out = s_ex_alu_in_a < s_ex_alu_in_b;
+            break;
+
+        case ALU_SLTU:
+            s_ex_alu_out = (uint32)s_ex_alu_in_a < (uint32)s_ex_alu_in_b;
+            break;
+
+        case ALU_SGE:
+            s_ex_alu_out = s_ex_alu_in_a >= s_ex_alu_in_b;
+            break;
+
+        case ALU_SGEU:
+            s_ex_alu_out = (uint32)s_ex_alu_in_a >= (uint32)s_ex_alu_in_b;
+            break;
+
+        default:
+            s_ex_alu_out = ALU_ADD;
+            codasip_assert(false, "Default case in event ex in alu op: %d",
+               r_ex_alu_op);
+        }
+    };
+
+    timing {
+        ex_branch();
+        ex_output();
+    };
+};
+
+event ex_branch : pipeline(pipe.EX) {
+    semantics {
+        s_ex_branch_target = r_ex_pc + r_ex_imm;
+        s_ex_zero = s_ex_alu_out == (int32)0;
+        s_ex_take_branch = (s_ex_zero && (r_ex_jump_op == JUMP_COND)) ||
+            (r_ex_jump_op == JUMP_TRUE);
+    };
+};
+
+event ex_output : pipeline(pipe.EX) {
+    semantics {
+        r_me_pc = r_ex_pc;
+        r_me_instr = r_ex_instr;
+        r_me_xpr_dest = r_ex_xpr_dest;
+        r_me_xpr_dest_src = r_ex_xpr_dest_src;
+        r_me_mem_op = r_ex_mem_op;
+        r_me_alu_data_b = s_ex_alu_in_b;
+        r_me_alu_out = s_ex_alu_out;
+    };
+};

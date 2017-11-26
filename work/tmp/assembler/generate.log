@@ -1,0 +1,19 @@
+-- The C compiler identification is GNU 4.8.3
+-- The CXX compiler identification is GNU 4.8.3
+-- Check for working C compiler: C:/Codasip/MinGW-1.5.1/bin/gcc.exe
+-- Check for working C compiler: C:/Codasip/MinGW-1.5.1/bin/gcc.exe -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: C:/Codasip/MinGW-1.5.1/bin/g++.exe
+-- Check for working CXX compiler: C:/Codasip/MinGW-1.5.1/bin/g++.exe -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found FLEX: C:/Codasip/MinGW-1.5.1/bin/flex.exe (found version "2.5.35") 
+-- Found BISON: C:/Codasip/MinGW-1.5.1/bin/bison.exe (found version "2.4.2") 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Boskin/codasip/RISC_V5/work/tmp/assembler

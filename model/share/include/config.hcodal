@@ -1,0 +1,71 @@
+/**
+* Copyright (c) 2017 Keith Graham
+*
+* Permission is granted to anyone to use this software for any purpose,
+* including commercial applications, and to alter it and redistribute it
+* freely, subject to the following restrictions:
+*
+* 1. The origin of this software must not be misrepresented; you must not
+*    claim that you wrote the original software.
+* 2. Altered source versions must be plainly marked as such, and must not be
+*    misrepresented as being the original software.
+* 3. This notice may not be removed or altered from any source distribution.
+*/
+
+
+#define BOOT_START          0       // Program start address
+
+#define RF_XPR_W            5       // Width of General Purpose Register File, 5-bits equates to 32 registers
+#define RF_XPR_SIZE         32      // Number of General Purpose Register File, 32 which corresponds to an index requiring 5-bits
+#define XPR_ZERO            0       // Index of Zero value General Purpose Register
+#define XPR_RA              1       // Index of Return address in the General Purpose Register File
+#define XPR_SP              2       // Index of Stack Pointer in the General Purpose Register File
+#define XPR_FP              8       // Index of Frame Pointer in the General Purpose Register File
+#define XPR_GP              3       // Index of Global Pointer in the General Purpose Register File
+#define XPR_TP              4       // Index of Thread Pointer in the General Purpose Register File
+#define XPR_FUNC_ARG        10       // Beginning of Function Argument passing registers in GPR file
+#define XPR_RET_ARG         10       // Beginning of Function Return passing registers in GPR file
+#define XPR_RES_REG         6       // Register reserved for the assembler and compiler
+
+#define ENDIAN              LITTLE  // RISC-V is a Little Endianness CPU architecture
+
+#define MADDR_W             32      // Width of memory address
+#define MWORD_W             32      // Width of memory data - This RISC-V implementation is for a 32-bit architecture
+#define LAU_W               8       // Widch of the least addressable unit in memory in terms of bits, 1 byte
+
+#define RISCV_INSTR_W       32      // Witdth of instruction
+#define RISCV_INSTR_SIZE    4       // Size of instruction in terms of bytes
+#define OPC_W               7
+#define RTYPE_OPC_W         17      // R-type OPC = funct7 + funct3 + opcode for 17 bits
+#define ITYPE_OPC_W         10      // I-type OPC = funct3 + opcode for 10 bits
+#define STYPE_OPC_W         10      // S-type OPC = funct3 + opcode for 10 bits
+#define UTYPE_OPC_W         7       // U-type OPC = opcode for 7 bits
+
+#define UNUSED              0       // Unused bits should default to a zero, 0
+#define DONT_CARE           0       // Set don't care to deassert, 0
+
+#define IMM12_W             12      // Width of 12-bit immediates
+#define IMM20_W             20      // Width of 20-bit immediates
+#define ZIMM_W              5       // Width of immediate for CSR instructions
+#define CSR_W               12      // Width of binary address of CSR instruction
+
+#define HALF_ALIGN          1       // Shift 1 to make relative addresses Half word aligned
+
+#define SHAMT5_W            5       // Width off immediate shift value
+
+#define ZERO_REG            0:bit[5]    // define Zero Reg for alias instructions
+#define ONE_REG             1:bit[5]    // define One Reg for alias instructions
+#define RES_REG             XPR_RES_REG:bit[5]  // define the assembler Reserved Reg for alias / emulation instructions
+#define RET_REG             XPR_RA:bit[5]   // define return index register for alias instructions based on RA define
+#define ZERO_IMM12          0:bit[12]   // define Zero 12-bit immediate for alias instructions
+#define MINUS_ONE_12        0xfff:bit[12]       // define Minus 1 immediate for alias instructions
+#define ONE_IMM12           1:bit[12]   // define 1 immediate for alias instructions
+
+//#define SHIFT_IMM_OPCODE    0b0010011   // Main opcode for shift immediate
+
+#define BUS_MASK            (~0x3u) // Word align mask
+
+#define RF_XPR_RP           2       // Two RF read ports for rs1 and rs2
+#define RF_XPR_WP           1       // One RF write port
+
+

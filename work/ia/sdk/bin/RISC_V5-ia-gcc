@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+basedir="${0//\\//}"
+[ "${basedir:1:1}" = ":" ] && basedir="/${basedir/:/}"
+basedir=$(readlink -f "$basedir")
+basedir=$(dirname "$basedir")
+
+exec "${basedir}/RISC_V5-ia-clang" "$@"

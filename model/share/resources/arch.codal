@@ -1,0 +1,74 @@
+/**
+* Copyright (c) 2017 Keith Graham
+*
+* Permission is granted to anyone to use this software for any purpose,
+* including commercial applications, and to alter it and redistribute it
+* freely, subject to the following restrictions:
+*
+* 1. The origin of this software must not be misrepresented; you must not
+*    claim that you wrote the original software.
+* 2. Altered source versions must be plainly marked as such, and must not be
+*    misrepresented as being the original software.
+* 3. This notice may not be removed or altered from any source distribution.
+*/
+
+// -------------------------------------------------------------
+// Include statements
+// -------------------------------------------------------------
+
+#include "config.hcodal"
+
+// -------------------------------------------------------------
+// Program Counter
+// -------------------------------------------------------------
+
+pc register bit[MADDR_W] r_pc
+{
+    reset = true;
+    default = BOOT_START;
+};
+
+// -------------------------------------------------------------
+// Register file
+// -------------------------------------------------------------
+
+arch register_file bit[MWORD_W] rf_xpr
+{
+    dataports = { RF_XPR_RP, RF_XPR_WP };
+    size = RF_XPR_SIZE;
+    reset = true;
+    default = 0;
+};
+
+
+// -------------------------------------------------------------
+// Instruction address space
+// -------------------------------------------------------------
+
+address_space as_all
+{
+    // To be the same as defined in the instruction fetch and data interfaces
+    bits = { MADDR_W, MWORD_W, LAU_W };
+
+    // List of all interfaces that are used to access this memory space
+    interfaces = {
+        PROGRAM : if_code,
+        DATA : if_data
+    };
+
+    // Type of address space used.  Program, Data, or ALL
+    type = ALL;
+
+    // Memory organization
+    endianness = ENDIAN;
+
+};
+
+// -------------------------------------------------------------
+// Schedule class latencies
+// -------------------------------------------------------------
+
+schedule_class sc_load
+{
+    latency = 2;
+};
