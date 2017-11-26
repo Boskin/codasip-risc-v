@@ -97,7 +97,7 @@ event ex : pipeline(pipe.EX) {
             break;
 
         default:
-            s_ex_alu_in_a = SRC_A_XPR;
+            s_ex_alu_in_a = s_ex_xpr_data_a_forward;
             codasip_assert(false, "Default case in ex_src_a in ex: %d",
                 r_ex_src_a_mux);
         }
@@ -116,7 +116,7 @@ event ex : pipeline(pipe.EX) {
             break;
 
         default:
-            s_ex_alu_in_b = SRC_B_XPR;
+            s_ex_alu_in_b = s_ex_xpr_data_b_forward;
             codasip_assert(false, "Default case in event ex in src b mux: %d",
                 r_ex_src_b_mux);
         }
@@ -175,7 +175,7 @@ event ex : pipeline(pipe.EX) {
             break;
 
         default:
-            s_ex_alu_out = ALU_ADD;
+            s_ex_alu_out = 0;
             codasip_assert(false, "Default case in event ex in alu op: %d",
                r_ex_alu_op);
         }

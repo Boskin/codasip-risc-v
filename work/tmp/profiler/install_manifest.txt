@@ -1,1 +1,0 @@
-c:/users/boskin/codasip/risc_v5/work/ca/sdk/bin/RISC_V5-ca-profiler.exe

@@ -268,13 +268,6 @@ element i_hw_load {
     binary {opc};
 
     semantics {
-        /* s_id_src_a_mux = SRC_A_XPR;
-        s_id_src_b_mux = SRC_B_XPR;
-        s_id_imm = 0;
-        s_id_alu_op = ALU_ADD;
-        s_id_jump_op = JUMP_FALSE;
-        s_id_xpr_dest_src = WRITE_DISABLE;
-        s_id_mem_op = MEM_NOP; */
         s_id_src_a_mux = SRC_A_XPR;
         s_id_src_b_mux = SRC_B_IMM;
         s_id_imm = (int32)s_id_itype_simm12;

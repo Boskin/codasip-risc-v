@@ -1,2 +1,0 @@
-;schedule_class, class_index, name
-schedule_class, 0, sc_load

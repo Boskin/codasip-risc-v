@@ -1,2 +1,0 @@
-C:/Codasip/MinGW-1.5.1/bin/ar.exe qc ../../../libLLVMCodasipInfo.a  CMakeFiles/LLVMCodasipInfo.dir/CodasipTargetInfo.cpp.obj
-C:/Codasip/MinGW-1.5.1/bin/ranlib.exe ../../../libLLVMCodasipInfo.a

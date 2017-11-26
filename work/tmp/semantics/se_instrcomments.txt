@@ -1,3 +1,0 @@
-;empty
-comment, i_halt__opc_halt__, "Instruction contains a call to codasip_halt() that is used only for simulator generation. Instruction removed in extractor pass 'Preparing for LLC extractor'."
-comment, i_syscall__opc_syscall__, "Instruction contains a call to codasip_syscall() that is used only for simulator generation. Instruction removed in extractor pass 'Preparing for LLC extractor'."

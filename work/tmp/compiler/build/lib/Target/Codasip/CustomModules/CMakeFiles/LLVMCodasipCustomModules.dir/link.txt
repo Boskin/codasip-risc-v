@@ -1,2 +1,0 @@
-C:/Codasip/MinGW-1.5.1/bin/ar.exe qc ../../../libLLVMCodasipCustomModules.a  CMakeFiles/LLVMCodasipCustomModules.dir/dummy.cpp.obj
-C:/Codasip/MinGW-1.5.1/bin/ranlib.exe ../../../libLLVMCodasipCustomModules.a

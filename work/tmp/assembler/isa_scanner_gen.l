@@ -1,5 +1,0 @@
-%%
-<INITIAL,IN_MACRO_CALL>
-{
-}
-%%

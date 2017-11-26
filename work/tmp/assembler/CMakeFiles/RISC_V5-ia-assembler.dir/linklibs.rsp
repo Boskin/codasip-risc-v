@@ -1,1 +1,0 @@
- -LC:/Codasip/Studio-6.8.2/tools/lib  -lasmutilsl -lasmcommonl -lasmsymboll -lasmfixedl -lmemobjfilel -lelfbuildl -lelfreadl -lgetoptl -lfilesysteml -lthreadsl -lutility -lassembler_messagesl -lmessagesl -lformatl -lws2_32 -llicappl -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-
-script="${0//\\//}"
-[ "${script:1:1}" = ":" ] && script="/${script/:/}"
-script=$(readlink -f "$script")
-basedir=$(dirname "$script")
-
-exec "${script}.real" -EL -dT "${basedir}/../lib/ldscripts/default.lds" "$@"

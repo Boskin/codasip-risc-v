@@ -3,42 +3,24 @@
 #include "debug.hcodal"
 
 event fe : pipeline(pipe.FE) {
-    use fe_output;
-    use fe_clear_ctl;
-
     semantics {
         s_fe_clear = 0;
-        s_fe_stall = s_id_stall;
+        s_fe_stall = 0;
 
         if_code.request(CP_CMD_READ, r_pc);
-        if_code.finish(CP_CMD_READ, s_fe_instr);
+        //if_code.finish(CP_CMD_READ, s_fe_instr);
 
         r_id_pc = r_pc;
+        // r_id_instr = s_fe_instr;
         if(s_ex_take_branch) {
             r_pc = s_ex_branch_target;
         } else {
             r_pc += RISCV_INSTR_SIZE;
         }
-    };
 
-    timing {
-        fe_clear_ctl();
-        fe_output();
-    };
-};
-
-event fe_clear_ctl : pipeline(pipe.FE) {
-    semantics {
-        s_id_clear = s_ex_take_branch;
+        r_id_clear = s_ex_take_branch;
         s_ex_clear = s_ex_take_branch;
         s_me_clear = s_ex_stall;
         s_wb_clear = s_me_stall;
-    };
-};
-
-event fe_output : pipeline(pipe.FE) {
-    semantics {
-        r_id_pc = r_pc;
-        r_id_instr = s_fe_instr;
     };
 };
