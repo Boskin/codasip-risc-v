@@ -6,18 +6,15 @@ event ex : pipeline(pipe.EX) {
     use ex_branch;
 
     semantics {
-        s_ex_forward_a = EX_FORWARD_NONE;
-        s_ex_forward_b = EX_FORWARD_NONE;
+        uint1 s_ex_stall_a;
+        uint1 s_ex_stall_b;
 
-        s_ex_stall = s_me_stall;
-
-        /* if(r_ex_xpr_a != 0) {
+        if(r_ex_xpr_a != 0) {
             if(r_ex_xpr_a == r_me_xpr_dest) {
                 if(r_me_xpr_dest_src == WRITE_ALU) {
                     s_ex_forward_a = EX_FORWARD_ME;
                 } else if(r_me_xpr_dest_src == WRITE_MEM) {
                     s_ex_forward_a = EX_FORWARD_NONE;
-                    s_ex_stall = 1;
                 } else {
                     s_ex_forward_a = EX_FORWARD_NONE;
                 }
@@ -30,13 +27,15 @@ event ex : pipeline(pipe.EX) {
             s_ex_forward_a = EX_FORWARD_NONE;
         }
 
+        s_ex_stall_a = r_ex_xpr_a != 0 && r_ex_xpr_a == r_me_xpr_dest &&
+            r_me_xpr_dest_src == WRITE_MEM;
+
         if(r_ex_xpr_b != 0) {
             if(r_ex_xpr_b == r_me_xpr_dest) {
                 if(r_me_xpr_dest_src == WRITE_ALU) {
                     s_ex_forward_b = EX_FORWARD_ME;
                 } else if(r_me_xpr_dest_src == WRITE_MEM) {
                     s_ex_forward_b = EX_FORWARD_NONE;
-                    s_ex_stall = 1;
                 } else {
                     s_ex_forward_b = EX_FORWARD_NONE;
                 }
@@ -47,7 +46,12 @@ event ex : pipeline(pipe.EX) {
             }
         } else {
             s_ex_forward_b = EX_FORWARD_NONE;
-        } */
+        }
+
+        s_ex_stall_b = r_ex_xpr_b != 0 && r_ex_xpr_b == r_me_xpr_dest &&
+            r_me_xpr_dest_src == WRITE_MEM;
+
+        s_ex_stall = s_ex_stall_a | s_ex_stall_b;
 
         switch(s_ex_forward_a) {
         case EX_FORWARD_NONE:
@@ -123,11 +127,11 @@ event ex : pipeline(pipe.EX) {
 
         switch(r_ex_alu_op) {
         case ALU_ADD:
-            s_ex_alu_out = s_ex_alu_in_a + s_ex_alu_in_b;
+            s_ex_alu_out = (int32)s_ex_alu_in_a + (int32)s_ex_alu_in_b;
             break;
 
         case ALU_SUB:
-            s_ex_alu_out = s_ex_alu_in_a - s_ex_alu_in_b;
+            s_ex_alu_out = (int32)s_ex_alu_in_a - (int32)s_ex_alu_in_b;
             break;
 
         case ALU_AND:
@@ -159,15 +163,15 @@ event ex : pipeline(pipe.EX) {
             break;
 
         case ALU_SLT:
-            s_ex_alu_out = s_ex_alu_in_a < s_ex_alu_in_b;
+            s_ex_alu_out = (int32)s_ex_alu_in_a < (int32)s_ex_alu_in_b;
             break;
 
         case ALU_SLTU:
-            s_ex_alu_out = (uint32)s_ex_alu_in_a < (uint32)s_ex_alu_in_b;
+            s_ex_alu_out = ((uint32)s_ex_alu_in_a) < (uint32)s_ex_alu_in_b;
             break;
 
         case ALU_SGE:
-            s_ex_alu_out = s_ex_alu_in_a >= s_ex_alu_in_b;
+            s_ex_alu_out = (int32)s_ex_alu_in_a >= (int32)s_ex_alu_in_b;
             break;
 
         case ALU_SGEU:

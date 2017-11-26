@@ -10,11 +10,12 @@ event id : pipeline(pipe.ID) {
     semantics {
         uint32 id_instr_temp;
         if_code.finish(CP_CMD_READ, id_instr_temp);
+        s_id_instr = r_id_clear == 1 ? (uint32)0 : id_instr_temp;
         s_id_stall = s_ex_stall;
 
-        s_id_opcode = id_instr_temp[6..0];
-        s_id_rtype_opcode = id_instr_temp[31..25] :: id_instr_temp[14..12] ::
-            id_instr_temp[6..0];
+        s_id_opcode = s_id_instr[6..0];
+        s_id_rtype_opcode = s_id_instr[31..25] :: s_id_instr[14..12] ::
+            s_id_instr[6..0];
 
         switch(s_id_opcode) {
         // R-type
@@ -51,21 +52,20 @@ event id : pipeline(pipe.ID) {
             // codasip_assert(false, "Default case in event id: %d", s_id_opcode);
         }
 
-        s_id_shamnt5 = id_instr_temp[24..20];
-        s_id_itype_simm12 = id_instr_temp[31..20];
-        s_id_stype_simm12 = id_instr_temp[31..25] :: id_instr_temp[11..7];
-        s_id_btype_simm12 = id_instr_temp[31..31] :: id_instr_temp[7..7] ::
-            id_instr_temp[30..25] :: id_instr_temp[11..8];
-        s_id_jtype_simm20 = id_instr_temp[31..31] :: id_instr_temp[19..12] ::
-            id_instr_temp[20..20] :: id_instr_temp[30..21];
-        s_id_utype_uimm20 = id_instr_temp[31..12];
+        s_id_shamnt5 = s_id_instr[24..20];
+        s_id_itype_simm12 = s_id_instr[31..20];
+        s_id_stype_simm12 = s_id_instr[31..25] :: s_id_instr[11..7];
+        s_id_btype_simm12 = s_id_instr[31..31] :: s_id_instr[7..7] ::
+            s_id_instr[30..25] :: s_id_instr[11..8];
+        s_id_jtype_simm20 = s_id_instr[31..31] :: s_id_instr[19..12] ::
+            s_id_instr[20..20] :: s_id_instr[30..21];
+        s_id_utype_uimm20 = s_id_instr[31..12];
 
-        s_id_xpr_a = id_instr_temp[19..15];
-        s_id_xpr_b = id_instr_temp[24..20];
-        s_id_xpr_dest = id_instr_temp[11..7];
+        s_id_xpr_a = s_id_instr[19..15];
+        s_id_xpr_b = s_id_instr[24..20];
+        s_id_xpr_dest = s_id_instr[11..7];
 
-        codasip_info(INFO_GENERAL, "%d\n", s_id_xpr_a);
-        r_ex_instr = id_instr_temp;
+
     };
 
     decoders {isa_hw(s_id_extended_opcode);};
@@ -78,6 +78,7 @@ event id : pipeline(pipe.ID) {
 event id_output : pipeline(pipe.ID) {
     semantics {
         r_ex_pc = r_id_pc;
+        r_ex_instr = s_id_instr;
 
         r_ex_xpr_a = s_id_xpr_a;
         r_ex_xpr_b = s_id_xpr_b;

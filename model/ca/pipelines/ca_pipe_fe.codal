@@ -18,6 +18,7 @@ event fe : pipeline(pipe.FE) {
             r_pc += RISCV_INSTR_SIZE;
         }
 
+        s_id_clear = s_ex_take_branch;
         r_id_clear = s_ex_take_branch;
         s_ex_clear = s_ex_take_branch;
         s_me_clear = s_ex_stall;
