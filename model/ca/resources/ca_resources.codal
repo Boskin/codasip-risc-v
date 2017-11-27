@@ -64,6 +64,7 @@ signal bit[ZIMM_W] s_id_zimm;
 // Control signals to be assigned in the decoder
 signal bit[SRC_A_MUX_W] s_id_src_a_mux;
 signal bit[SRC_B_MUX_W] s_id_src_b_mux;
+signal bit[BR_ALU_MUX_W] s_id_br_alu_src;
 // ALU OP
 signal bit[ALU_OP_W] s_id_alu_op;
 // Memory op

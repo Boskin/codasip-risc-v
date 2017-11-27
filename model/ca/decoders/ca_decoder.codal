@@ -234,9 +234,9 @@ element i_hw_jal {
     binary {opc};
 
     semantics {
-        s_id_src_a_mux = SRC_A_XPR;
-        s_id_src_b_mux = SRC_B_XPR;
-        s_id_imm = 0;
+        s_id_src_a_mux = SRC_A_PC;
+        s_id_src_b_mux = SRC_B_INSTR_SIZE;
+        s_id_imm = ((int32)(int20)s_id_jtype_simm20 << 1);
         s_id_mem_op = MEM_NOP;
         s_id_jump_op = JUMP_TRUE;
         s_id_xpr_dest_src = WRITE_DISABLE;

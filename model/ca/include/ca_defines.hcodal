@@ -20,6 +20,12 @@ enum src_b_mux {
     SRC_B_INSTR_SIZE,
 };
 
+#define BR_ALU_MUX_W bitsizeof(enum br_alu_mux)
+enum br_alu_mux {
+    BR_ALU_PC,
+    BR_ALU_XPR_A,
+};
+
 #define ALU_OP_W bitsizeof(enum alu_op_c)
 enum alu_op_c {
     ALU_ADD,
