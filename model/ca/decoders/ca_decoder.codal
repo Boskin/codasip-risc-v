@@ -11,6 +11,7 @@ element i_hw_halt {
     semantics {
         s_id_src_a_mux = SRC_A_XPR;
         s_id_src_b_mux = SRC_B_XPR;
+        s_id_br_alu_src_mux = BR_ALU_PC;
         s_id_imm = 0;
         s_id_mem_op = MEM_NOP;
         s_id_jump_op = JUMP_FALSE;
@@ -28,6 +29,7 @@ element i_hw_syscall {
     semantics {
         s_id_src_a_mux = SRC_A_XPR;
         s_id_src_b_mux = SRC_B_XPR;
+        s_id_br_alu_src_mux = BR_ALU_PC;
         s_id_imm = 0;
         s_id_mem_op = MEM_NOP;
         s_id_jump_op = JUMP_FALSE;
@@ -45,6 +47,7 @@ element i_hw_alu {
     semantics {
         s_id_src_a_mux = SRC_A_XPR;
         s_id_src_b_mux = SRC_B_XPR;
+        s_id_br_alu_src_mux = BR_ALU_PC;
         s_id_imm = 0;
         s_id_mem_op = MEM_NOP;
         s_id_jump_op = JUMP_FALSE;
@@ -108,6 +111,7 @@ element i_hw_alu_i {
     semantics {
         s_id_src_a_mux = SRC_A_XPR;
         s_id_src_b_mux = SRC_B_IMM;
+        s_id_br_alu_src_mux = BR_ALU_PC;
         s_id_imm = (int32)(int12)s_id_itype_simm12;
         s_id_mem_op = MEM_NOP;
         s_id_jump_op = JUMP_FALSE;
@@ -156,6 +160,7 @@ element i_hw_shift {
     semantics {
         s_id_src_a_mux = SRC_A_XPR;
         s_id_src_b_mux = SRC_B_IMM;
+        s_id_br_alu_src_mux = BR_ALU_PC;
         s_id_imm = (uint32)s_id_shamnt5;
         s_id_mem_op = MEM_NOP;
         s_id_jump_op = JUMP_FALSE;
@@ -190,7 +195,8 @@ element i_hw_branch {
     semantics {
         s_id_src_a_mux = SRC_A_XPR;
         s_id_src_b_mux = SRC_B_XPR;
-        s_id_imm = (int32)((int32)(int12)s_id_btype_simm12 << 1);
+        s_id_br_alu_src_mux = BR_ALU_PC;
+        s_id_imm = ((int32)(int12)s_id_btype_simm12 << 1);
         s_id_mem_op = MEM_NOP;
         s_id_jump_op = JUMP_COND;
         s_id_xpr_dest_src = WRITE_DISABLE;
@@ -236,10 +242,11 @@ element i_hw_jal {
     semantics {
         s_id_src_a_mux = SRC_A_PC;
         s_id_src_b_mux = SRC_B_INSTR_SIZE;
+        s_id_br_alu_src_mux = BR_ALU_PC;
         s_id_imm = ((int32)(int20)s_id_jtype_simm20 << 1);
         s_id_mem_op = MEM_NOP;
         s_id_jump_op = JUMP_TRUE;
-        s_id_xpr_dest_src = WRITE_DISABLE;
+        s_id_xpr_dest_src = WRITE_ALU;
         s_id_alu_op = ALU_ADD;
     };
 };
@@ -252,11 +259,12 @@ element i_hw_jalr {
 
     semantics {
         s_id_src_a_mux = SRC_A_XPR;
-        s_id_src_b_mux = SRC_B_XPR;
-        s_id_imm = 0;
+        s_id_src_b_mux = SRC_B_IMM;
+        s_id_br_alu_src_mux = BR_ALU_XPR_A;
+        s_id_imm = ((int32)(int12)s_id_itype_simm12 << 1);
         s_id_mem_op = MEM_NOP;
         s_id_jump_op = JUMP_TRUE;
-        s_id_xpr_dest_src = WRITE_DISABLE;
+        s_id_xpr_dest_src = WRITE_ALU;
         s_id_alu_op = ALU_ADD;
     };
 };
@@ -270,7 +278,8 @@ element i_hw_load {
     semantics {
         s_id_src_a_mux = SRC_A_XPR;
         s_id_src_b_mux = SRC_B_IMM;
-        s_id_imm = (int32)s_id_itype_simm12;
+        s_id_br_alu_src_mux = BR_ALU_PC;
+        s_id_imm = (int32)(int12)s_id_itype_simm12;
         s_id_alu_op = ALU_ADD;
         s_id_jump_op = JUMP_FALSE;
         s_id_xpr_dest_src = WRITE_MEM;
@@ -310,8 +319,9 @@ element i_hw_store {
 
     semantics {
         s_id_src_a_mux = SRC_A_XPR;
-        s_id_src_b_mux = SRC_B_XPR;
-        s_id_imm = (int32)s_id_stype_simm12;
+        s_id_src_b_mux = SRC_B_IMM;
+        s_id_br_alu_src_mux = BR_ALU_PC;
+        s_id_imm = (int32)(int12)s_id_stype_simm12;
         s_id_jump_op = JUMP_FALSE;
         s_id_xpr_dest_src = WRITE_DISABLE;
         s_id_alu_op = ALU_ADD;
@@ -345,14 +355,15 @@ element i_hw_upper_imm {
 
     semantics {
         s_id_src_b_mux = SRC_B_IMM;
-        s_id_imm = (uint32)((uint32)s_id_utype_uimm20 << 12);
+        s_id_br_alu_src_mux = BR_ALU_PC;
+        s_id_imm = ((uint32)s_id_utype_uimm20 << 12);
         s_id_jump_op = JUMP_FALSE;
         s_id_xpr_dest_src = WRITE_ALU;
         s_id_alu_op = ALU_ADD;
 
         switch(opc) {
         case OPC_LUI:
-            s_id_src_a_mux = SRC_A_XPR;
+            s_id_src_a_mux = SRC_A_ZERO;
             break;
 
         case OPC_AUIPC:
@@ -360,7 +371,7 @@ element i_hw_upper_imm {
             break;
 
         default:
-            s_id_src_a_mux = SRC_A_XPR;
+            s_id_src_a_mux = SRC_A_ZERO;
             codasip_assert(false, "Default case in i_hw_upper_imm in decoder: %d",
                 opc);
         }

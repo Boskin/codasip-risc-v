@@ -64,7 +64,7 @@ signal bit[ZIMM_W] s_id_zimm;
 // Control signals to be assigned in the decoder
 signal bit[SRC_A_MUX_W] s_id_src_a_mux;
 signal bit[SRC_B_MUX_W] s_id_src_b_mux;
-signal bit[BR_ALU_MUX_W] s_id_br_alu_src;
+signal bit[BR_ALU_MUX_W] s_id_br_alu_src_mux;
 // ALU OP
 signal bit[ALU_OP_W] s_id_alu_op;
 // Memory op
@@ -92,6 +92,7 @@ register bit[RF_XPR_W] r_ex_xpr_a {pipeline = pipe.EX;};
 register bit[RF_XPR_W] r_ex_xpr_b {pipeline = pipe.EX;};
 register bit[SRC_A_MUX_W] r_ex_src_a_mux {pipeline = pipe.EX;};
 register bit[SRC_B_MUX_W] r_ex_src_b_mux {pipeline = pipe.EX;};
+register bit[BR_ALU_MUX_W] r_ex_br_alu_src_mux {pipeline = pipe.EX;};
 
 signal bit[EX_FORWARD_MUX_W] s_ex_forward_a;
 signal bit[MWORD_W] s_ex_xpr_data_a_forward;

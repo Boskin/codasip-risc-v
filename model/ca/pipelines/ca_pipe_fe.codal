@@ -5,7 +5,7 @@
 event fe : pipeline(pipe.FE) {
     semantics {
         s_fe_clear = 0;
-        s_fe_stall = 0;
+        s_fe_stall = s_id_stall;
 
         if_code.request(CP_CMD_READ, r_pc);
         //if_code.finish(CP_CMD_READ, s_fe_instr);

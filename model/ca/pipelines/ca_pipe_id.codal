@@ -85,6 +85,7 @@ event id_output : pipeline(pipe.ID) {
 
         r_ex_src_a_mux = s_id_src_a_mux;
         r_ex_src_b_mux = s_id_src_b_mux;
+        r_ex_br_alu_src_mux = s_id_br_alu_src_mux;
 
         r_ex_xpr_dest = s_id_xpr_dest;
         r_ex_xpr_dest_src = s_id_xpr_dest_src;

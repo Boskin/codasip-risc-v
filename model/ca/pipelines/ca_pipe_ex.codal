@@ -100,6 +100,10 @@ event ex : pipeline(pipe.EX) {
             s_ex_alu_in_a = r_ex_pc;
             break;
 
+        case SRC_A_ZERO:
+            s_ex_alu_in_a = 0;
+            break;
+
         default:
             s_ex_alu_in_a = s_ex_xpr_data_a_forward;
             codasip_assert(false, "Default case in ex_src_a in ex: %d",
@@ -193,7 +197,8 @@ event ex : pipeline(pipe.EX) {
 
 event ex_branch : pipeline(pipe.EX) {
     semantics {
-        s_ex_branch_target = r_ex_pc + r_ex_imm;
+        s_ex_branch_target = (r_ex_br_alu_src_mux == BR_ALU_PC ? r_ex_pc :
+            s_ex_xpr_data_a_forward) + r_ex_imm;
         s_ex_zero = s_ex_alu_out == (int32)0;
         s_ex_take_branch = (s_ex_zero && (r_ex_jump_op == JUMP_COND)) ||
             (r_ex_jump_op == JUMP_TRUE);

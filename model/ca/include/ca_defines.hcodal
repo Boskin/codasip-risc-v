@@ -11,6 +11,7 @@ enum branch_mux {
 enum src_a_mux {
     SRC_A_XPR,
     SRC_A_PC,
+    SRC_A_ZERO,
 };
 
 #define SRC_B_MUX_W bitsizeof(enum src_b_mux)
