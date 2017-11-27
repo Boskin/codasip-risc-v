@@ -7,15 +7,18 @@ event fe : pipeline(pipe.FE) {
         s_fe_clear = 0;
         s_fe_stall = s_id_stall;
 
-        if_code.request(CP_CMD_READ, r_pc);
+
         //if_code.finish(CP_CMD_READ, s_fe_instr);
 
-        r_id_pc = r_pc;
-        // r_id_instr = s_fe_instr;
-        if(s_ex_take_branch) {
-            r_pc = s_ex_branch_target;
-        } else {
-            r_pc += RISCV_INSTR_SIZE;
+        if(!s_fe_stall) {
+            if_code.request(CP_CMD_READ, r_pc);
+            r_id_pc = r_pc;
+            // r_id_instr = s_fe_instr;
+            if(s_ex_take_branch) {
+                r_pc = s_ex_branch_target;
+            } else {
+                r_pc += RISCV_INSTR_SIZE;
+            }
         }
 
         s_id_clear = s_ex_take_branch;

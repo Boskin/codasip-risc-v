@@ -7,7 +7,7 @@ event wb : pipeline(pipe.WB) {
         s_wb_stall = 0;
         if(r_wb_xpr_dest_src != WRITE_DISABLE && r_wb_xpr_dest != 0) {
             rf_xpr[r_wb_xpr_dest] = r_wb_data_out;
-            codasip_print(INFO_GENERAL, "Wrote %d to x%d", r_wb_data_out,
+            codasip_print(INFO_GENERAL, "Wrote %d to x%d\n", r_wb_data_out,
                 r_wb_xpr_dest);
         }
     };

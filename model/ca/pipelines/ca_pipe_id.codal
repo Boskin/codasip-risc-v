@@ -9,9 +9,14 @@ event id : pipeline(pipe.ID) {
 
     semantics {
         uint32 id_instr_temp;
-        if_code.finish(CP_CMD_READ, id_instr_temp);
-        s_id_instr = r_id_clear == 1 ? (uint32)0 : id_instr_temp;
         s_id_stall = s_ex_stall;
+        if(!s_id_stall) {
+            if_code.finish(CP_CMD_READ, id_instr_temp);
+            s_id_instr = r_id_clear == 1 ? (uint32)0 : id_instr_temp;
+        } else {
+            s_id_instr = r_id_instr;
+        }
+
 
         s_id_opcode = s_id_instr[6..0];
         s_id_rtype_opcode = s_id_instr[31..25] :: s_id_instr[14..12] ::
@@ -79,6 +84,7 @@ event id_output : pipeline(pipe.ID) {
     semantics {
         r_ex_pc = r_id_pc;
         r_ex_instr = s_id_instr;
+        r_id_instr = s_id_instr;
 
         r_ex_xpr_a = s_id_xpr_a;
         r_ex_xpr_b = s_id_xpr_b;
