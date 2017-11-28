@@ -7,12 +7,14 @@ event me : pipeline(pipe.ME) {
     semantics {
         uint3 request_cmd;
         uint3 byte_count;
+        uint32 data_mask;
 
         s_me_stall = s_wb_stall;
         switch(r_me_mem_op) {
         case MEM_NOP:
             request_cmd = CP_CMD_NONE;
             byte_count = 0;
+            data_mask = 0;
             break;
 
         case MEM_ST:

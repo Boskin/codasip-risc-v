@@ -51,6 +51,8 @@ event id : pipeline(pipe.ID) {
         case 0b0011111:
         case 0b0111111:
         case 0b1011111:
+        case 0b0110111:
+        case 0b0010111:
         case 0b1101111:
             s_id_extended_opcode = UJ_OP_MASK(s_id_rtype_opcode);
             break;
