@@ -4,11 +4,50 @@
 
 event wb : pipeline(pipe.WB) {
     semantics {
+        uint32 mem_read;
+
         s_wb_stall = 0;
+
+        if(r_wb_mem_op == MEM_LD || r_wb_mem_op == MEM_LDHS ||
+            r_wb_mem_op == MEM_LDHU || r_wb_mem_op == MEM_LDBS ||
+            r_wb_mem_op == MEM_LDBU) {
+
+            if_data.finish(CP_CMD_READ, mem_read);
+
+            if(r_wb_mem_op == MEM_LDHS) {
+                s_wb_mem_read = (int32)(int16)mem_read;
+            } else if(r_wb_mem_op == MEM_LDBS) {
+                s_wb_mem_read = (int32)(int8)mem_read;
+            } else {
+                s_wb_mem_read = (int32)mem_read;
+            }
+
+        } else {
+            s_wb_mem_read = 0;
+        }
+
+        switch(r_wb_xpr_dest_src) {
+        case WRITE_DISABLE:
+            break;
+
+        case WRITE_ALU:
+            s_wb_data_out = r_wb_alu_out;
+            break;
+
+        case WRITE_MEM:
+            s_wb_data_out = s_wb_mem_read;
+            break;
+
+        default:
+            s_wb_data_out = 0;
+        }
+
         if(r_wb_xpr_dest_src != WRITE_DISABLE && r_wb_xpr_dest != 0) {
-            rf_xpr[r_wb_xpr_dest] = r_wb_data_out;
-            codasip_print(INFO_GENERAL, "Wrote %d to x%d\n", r_wb_data_out,
+            rf_xpr[r_wb_xpr_dest] = s_wb_data_out;
+            codasip_print(INFO_GENERAL, "Wrote %d to x%d\n", s_wb_data_out,
                 r_wb_xpr_dest);
         }
+
+
     };
 };

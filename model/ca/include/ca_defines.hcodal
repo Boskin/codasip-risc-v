@@ -34,7 +34,7 @@ enum alu_op_c {
     ALU_AND,
     ALU_OR,
     ALU_XOR,
-    ALU_XNOR, // For BNE
+    ALU_SEQ, // For BNE
     ALU_SLL,
     ALU_SRL,
     ALU_SRA,

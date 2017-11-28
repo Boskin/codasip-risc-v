@@ -26,6 +26,7 @@ register bit[1] r_id_clear;
 
 register bit[MADDR_W] r_id_pc {pipeline = pipe.ID;};
 register bit[RISCV_INSTR_W] r_id_instr {pipeline = pipe.ID;};
+register bit[RISCV_INSTR_W] r_id_instr_2 {pipeline = pipe.ID;};
 signal bit[RISCV_INSTR_W] s_id_instr;
 
 // Opcode (use to identify instruction type)
@@ -72,6 +73,9 @@ signal bit[MEM_OP_W] s_id_mem_op;
 signal bit[JUMP_OP_W] s_id_jump_op;
 // Register file write control
 signal bit[WRITE_OP_W] s_id_xpr_dest_src;
+
+signal bit[MWORD_W] s_id_xpr_data_a;
+signal bit[MWORD_W] s_id_xpr_data_b;
 
 /*****************/
 /* Execute stage */
@@ -125,9 +129,6 @@ register bit[RF_XPR_W] r_me_xpr_dest {pipeline = pipe.ME;};
 register bit[WRITE_OP_W] r_me_xpr_dest_src {pipeline = pipe.ME;};
 register bit[MEM_OP_W] r_me_mem_op {pipeline = pipe.ME;};
 register bit[MWORD_W] r_me_alu_out {pipeline = pipe.ME;};
-signal bit[MWORD_W] s_me_mem_read_raw;
-signal bit[MWORD_W] s_me_mem_read;
-signal bit[MWORD_W] s_me_data_out;
 
 /********************/
 /* Write-back stage */
@@ -139,6 +140,7 @@ register bit[MADDR_W] r_wb_pc {pipeline = pipe.WB;};
 register bit[RISCV_INSTR_W] r_wb_instr {pipeline = pipe.WB;};
 register bit[RF_XPR_W] r_wb_xpr_dest {pipeline = pipe.WB;};
 register bit[WRITE_OP_W] r_wb_xpr_dest_src {pipeline = pipe.WB;};
-register bit[MWORD_W] r_wb_data_out {pipeline = pipe.WB;};
+register bit[MEM_OP_W] r_wb_mem_op {pipeline = pipe.WB;};
 register bit[MWORD_W] r_wb_alu_out {pipeline = pipe.WB;};
-register bit[MWORD_W] r_wb_mem_read {pipeline = pipe.WB;};
+signal bit[MWORD_W] s_wb_mem_read;
+signal bit[MWORD_W] s_wb_data_out;

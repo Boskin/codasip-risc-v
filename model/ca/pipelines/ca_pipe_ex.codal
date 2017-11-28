@@ -9,7 +9,7 @@ event ex : pipeline(pipe.EX) {
         uint1 s_ex_stall_a;
         uint1 s_ex_stall_b;
 
-        if(r_ex_xpr_a != 0) {
+        /* if(r_ex_xpr_a != 0) {
             if(r_ex_xpr_a == r_me_xpr_dest) {
                 if(r_me_xpr_dest_src == WRITE_ALU) {
                     s_ex_forward_a = EX_FORWARD_ME;
@@ -51,7 +51,10 @@ event ex : pipeline(pipe.EX) {
         s_ex_stall_b = r_ex_xpr_b != 0 && r_ex_xpr_b == r_me_xpr_dest &&
             r_me_xpr_dest_src == WRITE_MEM;
 
-        s_ex_stall = s_ex_stall_a | s_ex_stall_b;
+        s_ex_stall = s_ex_stall_a | s_ex_stall_b; */
+
+        s_ex_forward_a = EX_FORWARD_NONE;
+        s_ex_forward_b = EX_FORWARD_NONE;
 
         switch(s_ex_forward_a) {
         case EX_FORWARD_NONE:
@@ -63,7 +66,7 @@ event ex : pipeline(pipe.EX) {
             break;
 
         case EX_FORWARD_WB:
-            s_ex_xpr_data_a_forward = r_wb_data_out;
+            s_ex_xpr_data_a_forward = s_wb_data_out;
             break;
 
         default:
@@ -82,7 +85,7 @@ event ex : pipeline(pipe.EX) {
             break;
 
         case EX_FORWARD_WB:
-            s_ex_xpr_data_b_forward = r_wb_data_out;
+            s_ex_xpr_data_b_forward = s_wb_data_out;
             break;
 
         default:
@@ -150,8 +153,8 @@ event ex : pipeline(pipe.EX) {
             s_ex_alu_out = s_ex_alu_in_a ^ s_ex_alu_in_b;
             break;
 
-        case ALU_XNOR:
-            s_ex_alu_out = ~(s_ex_alu_in_a ^ s_ex_alu_in_b);
+        case ALU_SEQ:
+            s_ex_alu_out = s_ex_alu_in_a == s_ex_alu_in_b;
             break;
 
         case ALU_SLL:
@@ -212,7 +215,7 @@ event ex_output : pipeline(pipe.EX) {
         r_me_xpr_dest = r_ex_xpr_dest;
         r_me_xpr_dest_src = r_ex_xpr_dest_src;
         r_me_mem_op = r_ex_mem_op;
-        r_me_alu_data_b = s_ex_alu_in_b;
+        r_me_alu_data_b = s_ex_xpr_data_b_forward;
         r_me_alu_out = s_ex_alu_out;
     };
 };

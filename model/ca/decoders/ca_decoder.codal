@@ -207,7 +207,7 @@ element i_hw_branch {
             break;
 
         case OPC_BNE:
-            s_id_alu_op = ALU_XNOR;
+            s_id_alu_op = ALU_SEQ;
             break;
 
         case OPC_BLT:

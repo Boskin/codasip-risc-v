@@ -5,6 +5,7 @@
 
 event id : pipeline(pipe.ID) {
     use isa_hw;
+    use id_hazards;
     use id_output;
 
     semantics {
@@ -13,8 +14,10 @@ event id : pipeline(pipe.ID) {
         if(!s_id_stall) {
             if_code.finish(CP_CMD_READ, id_instr_temp);
             s_id_instr = r_id_clear == 1 ? (uint32)0 : id_instr_temp;
+            r_id_instr = s_id_instr;
+            r_id_instr_2 = r_id_instr;
         } else {
-            s_id_instr = r_id_instr;
+            s_id_instr = r_id_instr_2;
         }
 
 
@@ -76,7 +79,103 @@ event id : pipeline(pipe.ID) {
     decoders {isa_hw(s_id_extended_opcode);};
 
     timing {
+        id_hazards();
         id_output();
+    };
+};
+
+event id_hazards : pipeline(pipe.ID) {
+    semantics {
+        uint1 stall_a;
+        uint1 stall_b;
+
+        if(s_id_xpr_a != 0 && s_id_src_a_mux == SRC_A_XPR) {
+            if(s_id_xpr_a == r_ex_xpr_dest) {
+                if(r_ex_xpr_dest_src == WRITE_ALU) {
+                    s_id_xpr_data_a = s_ex_alu_out;
+                    stall_a = 0;
+                } else if(r_ex_xpr_dest_src == WRITE_MEM) {
+                    s_id_xpr_data_a = 0;
+                    stall_a = 1;
+                } else {
+                    s_id_xpr_data_a = rf_xpr[s_id_xpr_a];
+                    stall_a = 0;
+                }
+            } else if(s_id_xpr_a == r_me_xpr_dest) {
+                if(r_me_xpr_dest_src == WRITE_ALU) {
+                    s_id_xpr_data_a = r_me_alu_out;
+                    stall_a = 0;
+                } else if(r_me_xpr_dest_src == WRITE_MEM) {
+                    s_id_xpr_data_a = 0;
+                    stall_a = 1;
+                } else {
+                    s_id_xpr_data_a = rf_xpr[s_id_xpr_a];
+                    stall_a = 0;
+                }
+            } else if(s_id_xpr_a == r_wb_xpr_dest) {
+                if(r_wb_xpr_dest_src == WRITE_ALU) {
+                    s_id_xpr_data_a = r_wb_alu_out;
+                    stall_a = 0;
+                } else if(r_wb_xpr_dest_src == WRITE_MEM) {
+                    s_id_xpr_data_a = s_wb_mem_read;
+                    stall_a = 0;
+                } else {
+                    s_id_xpr_data_a = rf_xpr[s_id_xpr_a];
+                    stall_a = 0;
+                }
+            } else {
+                s_id_xpr_data_a = rf_xpr[s_id_xpr_a];
+                stall_a = 0;
+            }
+        } else {
+            s_id_xpr_data_a = rf_xpr[s_id_xpr_a];
+            stall_a = 0;
+        }
+
+        if(s_id_xpr_b != 0 && s_id_src_b_mux == SRC_B_XPR) {
+            if(s_id_xpr_b == r_ex_xpr_dest) {
+                if(r_ex_xpr_dest_src == WRITE_ALU) {
+                    s_id_xpr_data_b = s_ex_alu_out;
+                    stall_b = 0;
+                } else if(r_ex_xpr_dest_src == WRITE_MEM) {
+                    s_id_xpr_data_b = 0;
+                    stall_b = 1;
+                } else {
+                    s_id_xpr_data_b = rf_xpr[s_id_xpr_b];
+                    stall_b = 0;
+                }
+            } else if(s_id_xpr_b == r_me_xpr_dest) {
+                if(r_me_xpr_dest_src == WRITE_ALU) {
+                    s_id_xpr_data_b = r_me_alu_out;
+                    stall_b = 0;
+                } else if(r_me_xpr_dest_src == WRITE_MEM) {
+                    s_id_xpr_data_b = 0;
+                    stall_b = 1;
+                } else {
+                    s_id_xpr_data_b = rf_xpr[s_id_xpr_b];
+                    stall_b = 0;
+                }
+            } else if(s_id_xpr_b == r_wb_xpr_dest) {
+                if(r_wb_xpr_dest_src == WRITE_ALU) {
+                    s_id_xpr_data_b = r_wb_alu_out;
+                    stall_b = 0;
+                } else if(r_wb_xpr_dest_src == WRITE_MEM) {
+                    s_id_xpr_data_b = s_wb_mem_read;
+                    stall_b = 0;
+                } else {
+                    s_id_xpr_data_b = rf_xpr[s_id_xpr_b];
+                    stall_b = 0;
+                }
+            } else {
+                s_id_xpr_data_b = rf_xpr[s_id_xpr_b];
+                stall_b = 0;
+            }
+        } else {
+            s_id_xpr_data_b = rf_xpr[s_id_xpr_b];
+            stall_b = 0;
+        }
+
+        s_ex_stall = stall_a | stall_b;
     };
 };
 
@@ -84,7 +183,6 @@ event id_output : pipeline(pipe.ID) {
     semantics {
         r_ex_pc = r_id_pc;
         r_ex_instr = s_id_instr;
-        r_id_instr = s_id_instr;
 
         r_ex_xpr_a = s_id_xpr_a;
         r_ex_xpr_b = s_id_xpr_b;
@@ -102,10 +200,12 @@ event id_output : pipeline(pipe.ID) {
 
         /* Writing to the registers in the WB stage doesn't happen fast enough,
          * so forward, if necessary */
-        r_ex_xpr_data_a = r_wb_xpr_dest == s_id_xpr_a ? r_wb_data_out :
+        /* r_ex_xpr_data_a = r_wb_xpr_dest == s_id_xpr_a ? s_wb_data_out :
             rf_xpr[s_id_xpr_a];
-        r_ex_xpr_data_b = r_wb_xpr_dest == s_id_xpr_b ? r_wb_data_out :
-            rf_xpr[s_id_xpr_b];
+        r_ex_xpr_data_b = r_wb_xpr_dest == s_id_xpr_b ? s_wb_data_out :
+            rf_xpr[s_id_xpr_b]; */
+        r_ex_xpr_data_a = s_id_xpr_data_a;
+        r_ex_xpr_data_b = s_id_xpr_data_b;
 
         r_ex_imm = s_id_imm;
 

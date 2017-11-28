@@ -29,7 +29,7 @@ interface if_code
     bits = { MADDR_W, MWORD_W, LAU_W };
 
     // Specifies type of interface.  CPU is to be the MASTER
-    type = CLB:MASTER;
+    type = MEMORY:MASTER;
 
     // Read-only interface
     flag = R;
@@ -48,7 +48,7 @@ interface if_data
     bits = { MADDR_W, MWORD_W, LAU_W };
 
     // Specifies type of interface.  CPU is to be the MASTER
-    type = CLB:MASTER;
+    type = MEMORY:MASTER;
 
     // Read/Write interface
     flag = RW;
