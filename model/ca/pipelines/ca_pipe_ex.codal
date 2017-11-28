@@ -215,6 +215,7 @@ event ex_output : pipeline(pipe.EX) {
         r_me_xpr_dest = r_ex_xpr_dest;
         r_me_xpr_dest_src = r_ex_xpr_dest_src;
         r_me_mem_op = r_ex_mem_op;
+        r_me_xpr_b = r_ex_xpr_b;
         r_me_alu_data_b = s_ex_xpr_data_b_forward;
         r_me_alu_out = s_ex_alu_out;
     };

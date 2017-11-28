@@ -58,10 +58,6 @@ signal bit[IMM20_W] s_id_utype_uimm20;
 
 signal bit[MWORD_W] s_id_imm;
 
-// For CSR instructions
-signal bit[CSR_W] s_id_csr;
-signal bit[ZIMM_W] s_id_zimm;
-
 // Control signals to be assigned in the decoder
 signal bit[SRC_A_MUX_W] s_id_src_a_mux;
 signal bit[SRC_B_MUX_W] s_id_src_b_mux;
@@ -124,7 +120,9 @@ signal bit[1] s_me_clear;
 
 register bit[MADDR_W] r_me_pc {pipeline = pipe.ME;};
 register bit[RISCV_INSTR_W] r_me_instr {pipeline = pipe.ME;};
+register bit[RF_XPR_W] r_me_xpr_b {pipeline = pipe.ME;};
 register bit[MWORD_W] r_me_alu_data_b {pipeline = pipe.ME;};
+signal bit[MWORD_W] s_me_data_write;
 register bit[RF_XPR_W] r_me_xpr_dest {pipeline = pipe.ME;};
 register bit[WRITE_OP_W] r_me_xpr_dest_src {pipeline = pipe.ME;};
 register bit[MEM_OP_W] r_me_mem_op {pipeline = pipe.ME;};
