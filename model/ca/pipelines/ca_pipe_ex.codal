@@ -6,53 +6,7 @@ event ex : pipeline(pipe.EX) {
     use ex_branch;
 
     semantics {
-        uint1 s_ex_stall_a;
-        uint1 s_ex_stall_b;
-
-        /* if(r_ex_xpr_a != 0) {
-            if(r_ex_xpr_a == r_me_xpr_dest) {
-                if(r_me_xpr_dest_src == WRITE_ALU) {
-                    s_ex_forward_a = EX_FORWARD_ME;
-                } else if(r_me_xpr_dest_src == WRITE_MEM) {
-                    s_ex_forward_a = EX_FORWARD_NONE;
-                } else {
-                    s_ex_forward_a = EX_FORWARD_NONE;
-                }
-            } else if(r_ex_xpr_a == r_wb_xpr_dest) {
-                s_ex_forward_a = EX_FORWARD_WB;
-            } else {
-                s_ex_forward_a = EX_FORWARD_NONE;
-            }
-        } else {
-            s_ex_forward_a = EX_FORWARD_NONE;
-        }
-
-        s_ex_stall_a = r_ex_xpr_a != 0 && r_ex_xpr_a == r_me_xpr_dest &&
-            r_me_xpr_dest_src == WRITE_MEM;
-
-        if(r_ex_xpr_b != 0) {
-            if(r_ex_xpr_b == r_me_xpr_dest) {
-                if(r_me_xpr_dest_src == WRITE_ALU) {
-                    s_ex_forward_b = EX_FORWARD_ME;
-                } else if(r_me_xpr_dest_src == WRITE_MEM) {
-                    s_ex_forward_b = EX_FORWARD_NONE;
-                } else {
-                    s_ex_forward_b = EX_FORWARD_NONE;
-                }
-            } else if(r_ex_xpr_b == r_wb_xpr_dest) {
-                s_ex_forward_b = EX_FORWARD_WB;
-            } else {
-                s_ex_forward_b = EX_FORWARD_NONE;
-            }
-        } else {
-            s_ex_forward_b = EX_FORWARD_NONE;
-        }
-
-        s_ex_stall_b = r_ex_xpr_b != 0 && r_ex_xpr_b == r_me_xpr_dest &&
-            r_me_xpr_dest_src == WRITE_MEM;
-
-        s_ex_stall = s_ex_stall_a | s_ex_stall_b; */
-
+        s_ex_stall = s_me_stall;
         s_ex_forward_a = EX_FORWARD_NONE;
         s_ex_forward_b = EX_FORWARD_NONE;
 

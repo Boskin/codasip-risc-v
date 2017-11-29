@@ -5,9 +5,14 @@ event me : pipeline(pipe.ME) {
     use me_output;
 
     semantics {
+        uint32 base_address;
+        uint2 base_offset;
         uint3 request_cmd;
         uint3 byte_count;
         uint32 addr_mask;
+
+        base_address = r_me_alu_out & ~0x3u;
+        base_offset = r_me_alu_out & 0x3u;
 
         if(r_me_xpr_b == r_wb_xpr_dest) {
             s_me_data_write = s_wb_data_out;
@@ -70,9 +75,9 @@ event me : pipeline(pipe.ME) {
         }
 
         if(request_cmd == CP_CMD_READ) {
-            if_data.request(CP_CMD_READ, r_me_alu_out & addr_mask, 0, byte_count);
+            if_data.request(CP_CMD_READ, base_address, base_offset, byte_count);
         } else if(request_cmd == CP_CMD_WRITE) {
-            if_data.request(CP_CMD_WRITE, r_me_alu_out & addr_mask, 0, byte_count);
+            if_data.request(CP_CMD_WRITE, base_address, base_offset, byte_count);
             if_data.finish(CP_CMD_WRITE, s_me_data_write);
         }
     };

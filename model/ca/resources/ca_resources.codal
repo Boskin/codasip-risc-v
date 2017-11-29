@@ -23,6 +23,7 @@ signal bit[RISCV_INSTR_W] s_fe_instr;
 signal bit[1] s_id_stall;
 signal bit[1] s_id_clear;
 register bit[1] r_id_clear;
+register bit[1] r_id_stall;
 
 register bit[MADDR_W] r_id_pc {pipeline = pipe.ID;};
 register bit[RISCV_INSTR_W] r_id_instr {pipeline = pipe.ID;};
