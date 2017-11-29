@@ -91,7 +91,7 @@ event id_hazards : pipeline(pipe.ID) {
         uint1 stall_a;
         uint1 stall_b;
 
-        if(s_id_xpr_a != 0 && s_id_src_a_mux == SRC_A_XPR) {
+        if(s_id_xpr_a != 0) {
             if(s_id_xpr_a == r_ex_xpr_dest) {
                 if(r_ex_xpr_dest_src == WRITE_ALU) {
                     s_id_xpr_data_a = s_ex_alu_out;
@@ -134,7 +134,7 @@ event id_hazards : pipeline(pipe.ID) {
             stall_a = 0;
         }
 
-        if(s_id_xpr_b != 0 && s_id_src_b_mux == SRC_B_XPR) {
+        if(s_id_xpr_b != 0) {
             if(s_id_xpr_b == r_ex_xpr_dest) {
                 if(r_ex_xpr_dest_src == WRITE_ALU) {
                     s_id_xpr_data_b = s_ex_alu_out;

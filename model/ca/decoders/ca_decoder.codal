@@ -258,10 +258,10 @@ element i_hw_jalr {
     binary {opc};
 
     semantics {
-        s_id_src_a_mux = SRC_A_XPR;
-        s_id_src_b_mux = SRC_B_IMM;
+        s_id_src_a_mux = SRC_A_PC;
+        s_id_src_b_mux = SRC_B_INSTR_SIZE;
         s_id_br_alu_src_mux = BR_ALU_XPR_A;
-        s_id_imm = ((int32)(int12)s_id_itype_simm12 << 1);
+        s_id_imm = ((int32)(int12)s_id_itype_simm12);
         s_id_mem_op = MEM_NOP;
         s_id_jump_op = JUMP_TRUE;
         s_id_xpr_dest_src = WRITE_ALU;
