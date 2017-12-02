@@ -1,11 +1,20 @@
 #include "config.hcodal"
 #include "ca_defines.hcodal"
+#include "opcodes.hcodal"
+#include "debug.hcodal"
 
 event ex : pipeline(pipe.EX) {
     use ex_output;
     use ex_branch;
 
     semantics {
+        if(OPCODE(r_ex_instr) == OPC_HALT) {
+            codasip_halt();
+            codasip_info(INFO_GENERAL, "Halt: return value=%d\n",
+                rf_xpr[XPR_RET_ARG] & 0xff);
+            codasip_store_exit_code(rf_xpr[XPR_RET_ARG] & 0xff);
+        }
+
         s_ex_stall = s_me_stall;
         s_ex_forward_a = EX_FORWARD_NONE;
         s_ex_forward_b = EX_FORWARD_NONE;
