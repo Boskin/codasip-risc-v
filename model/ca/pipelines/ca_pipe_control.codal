@@ -9,21 +9,6 @@ event pipe_control : pipeline(pipe.FE) {
             print_pipeline();
         }
 
-        /* if(s_fe_stall) {
-            pipe.FE.stall();
-            codasip_info(INFO_PIPE, "pipeline FE stall\n");
-        } else if(s_fe_clear) {
-
-        }
-
-        if(s_id_stall) {
-            pipe.ID.stall();
-            codasip_info(INFO_PIPE, "pipeline ID stall\n");
-        } else if(s_id_clear) {
-            pipe.ID.clear();
-            codasip_info(INFO_PIPE, "pipeline ID clear\n");
-        } */
-
         if(s_ex_stall) {
             pipe.EX.stall();
             codasip_info(INFO_PIPE, "pipeline EX stall\n");

@@ -8,6 +8,7 @@ event ex : pipeline(pipe.EX) {
     use ex_branch;
 
     semantics {
+        // Check for HALT
         if(OPCODE(r_ex_instr) == OPC_HALT) {
             codasip_halt();
             codasip_info(INFO_GENERAL, "Halt: return value=%d\n",
@@ -15,51 +16,13 @@ event ex : pipeline(pipe.EX) {
             codasip_store_exit_code(rf_xpr[XPR_RET_ARG] & 0xff);
         }
 
+        // Stalling logic
         s_ex_stall = s_me_stall;
-        s_ex_forward_a = EX_FORWARD_NONE;
-        s_ex_forward_b = EX_FORWARD_NONE;
 
-        switch(s_ex_forward_a) {
-        case EX_FORWARD_NONE:
-            s_ex_xpr_data_a_forward = r_ex_xpr_data_a;
-            break;
-
-        case EX_FORWARD_ME:
-            s_ex_xpr_data_a_forward = r_me_alu_out;
-            break;
-
-        case EX_FORWARD_WB:
-            s_ex_xpr_data_a_forward = s_wb_data_out;
-            break;
-
-        default:
-            s_ex_xpr_data_a_forward = r_ex_xpr_data_a;
-            codasip_assert(false, "Default case in forward_a in ex: %d",
-                s_ex_forward_a);
-        }
-
-        switch(s_ex_forward_b) {
-        case EX_FORWARD_NONE:
-            s_ex_xpr_data_b_forward = r_ex_xpr_data_b;
-            break;
-
-        case EX_FORWARD_ME:
-            s_ex_xpr_data_b_forward = r_me_alu_out;
-            break;
-
-        case EX_FORWARD_WB:
-            s_ex_xpr_data_b_forward = s_wb_data_out;
-            break;
-
-        default:
-            s_ex_xpr_data_b_forward = r_ex_xpr_data_b;
-            codasip_assert(false, "Default case in forward_b in ex: %d",
-                s_ex_forward_b);
-        }
-
+        // Select the value for opperand a
         switch(r_ex_src_a_mux) {
         case SRC_A_XPR:
-            s_ex_alu_in_a = s_ex_xpr_data_a_forward;
+            s_ex_alu_in_a = r_ex_xpr_data_a;
             break;
 
         case SRC_A_PC:
@@ -71,14 +34,15 @@ event ex : pipeline(pipe.EX) {
             break;
 
         default:
-            s_ex_alu_in_a = s_ex_xpr_data_a_forward;
+            s_ex_alu_in_a = r_ex_xpr_data_a;
             codasip_assert(false, "Default case in ex_src_a in ex: %d",
                 r_ex_src_a_mux);
         }
 
+        // Select the value for opperand b
         switch(r_ex_src_b_mux) {
         case SRC_B_XPR:
-            s_ex_alu_in_b = s_ex_xpr_data_b_forward;
+            s_ex_alu_in_b = r_ex_xpr_data_b;
             break;
 
         case SRC_B_IMM:
@@ -90,11 +54,12 @@ event ex : pipeline(pipe.EX) {
             break;
 
         default:
-            s_ex_alu_in_b = s_ex_xpr_data_b_forward;
+            s_ex_alu_in_b = r_ex_xpr_data_b;
             codasip_assert(false, "Default case in event ex in src b mux: %d",
                 r_ex_src_b_mux);
         }
 
+        // Evaluate the desired ALU operation
         switch(r_ex_alu_op) {
         case ALU_ADD:
             s_ex_alu_out = (int32)s_ex_alu_in_a + (int32)s_ex_alu_in_b;
@@ -163,9 +128,12 @@ event ex : pipeline(pipe.EX) {
 
 event ex_branch : pipeline(pipe.EX) {
     semantics {
+        // Compute the target jump/branch address
         s_ex_branch_target = (r_ex_br_alu_src_mux == BR_ALU_PC ? r_ex_pc :
-            s_ex_xpr_data_a_forward) + r_ex_imm;
+            r_ex_xpr_data_a) + r_ex_imm;
+        // Determine if the operation is 0
         s_ex_zero = s_ex_alu_out == (int32)0;
+        // Determine whether to take the jump or not
         s_ex_take_branch = (s_ex_zero && (r_ex_jump_op == JUMP_COND)) ||
             (r_ex_jump_op == JUMP_TRUE);
     };
@@ -173,13 +141,14 @@ event ex_branch : pipeline(pipe.EX) {
 
 event ex_output : pipeline(pipe.EX) {
     semantics {
+        // Load the ME registers
         r_me_pc = r_ex_pc;
         r_me_instr = r_ex_instr;
         r_me_xpr_dest = r_ex_xpr_dest;
         r_me_xpr_dest_src = r_ex_xpr_dest_src;
         r_me_mem_op = r_ex_mem_op;
         r_me_xpr_b = r_ex_xpr_b;
-        r_me_alu_data_b = s_ex_xpr_data_b_forward;
+        r_me_alu_data_b = r_ex_xpr_data_b;
         r_me_alu_out = s_ex_alu_out;
     };
 };

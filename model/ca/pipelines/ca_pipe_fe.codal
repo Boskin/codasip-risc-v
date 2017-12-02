@@ -4,13 +4,16 @@
 
 event fe : pipeline(pipe.FE) {
     semantics {
+        // Never clear this stage
         s_fe_clear = 0;
+        // Stall if ID is stalled
         s_fe_stall = s_id_stall;
 
+        // Only fetch an instruction if not stalling
         if(!s_fe_stall) {
             if_code.request(CP_CMD_READ, r_pc);
             r_id_pc = r_pc;
-            // r_id_instr = s_fe_instr;
+            // Determine the next PC
             if(s_ex_take_branch) {
                 r_pc = s_ex_branch_target;
             } else {
@@ -18,9 +21,11 @@ event fe : pipeline(pipe.FE) {
             }
         }
 
+        // Clear these if a branch is taken
         s_id_clear = s_ex_take_branch;
         r_id_clear = s_ex_take_branch;
         s_ex_clear = s_ex_take_branch;
+        // No reason to clear these stages
         s_me_clear = 0;
         s_wb_clear = 0;
     };

@@ -5,80 +5,71 @@ event me : pipeline(pipe.ME) {
     use me_output;
 
     semantics {
+        // Memory IO details
         uint32 base_address;
         uint2 base_offset;
         uint3 request_cmd;
         uint3 byte_count;
-        uint32 addr_mask;
 
+        // Compute base address and offset
         base_address = r_me_alu_out & ~0x3u;
         base_offset = r_me_alu_out & 0x3u;
 
-        if(r_me_xpr_b == r_wb_xpr_dest) {
-            s_me_data_write = s_wb_data_out;
-        } else {
-            s_me_data_write = r_me_alu_data_b;
-        }
-
+        // Stalling logic
         s_me_stall = s_wb_stall;
+
+        // Determine the memory operation
         switch(r_me_mem_op) {
         case MEM_NOP:
             request_cmd = CP_CMD_NONE;
             byte_count = 0;
-            addr_mask = 0;
             break;
 
         case MEM_ST:
             request_cmd = CP_CMD_WRITE;
             byte_count = 4;
-            addr_mask = ~0x3;
             break;
 
         case MEM_STH:
             request_cmd = CP_CMD_WRITE;
             byte_count = 2;
-            addr_mask = ~0x1;
             break;
 
         case MEM_STB:
             request_cmd = CP_CMD_WRITE;
             byte_count = 1;
-            addr_mask = ~0x0;
             break;
 
         case MEM_LD:
             request_cmd = CP_CMD_READ;
             byte_count = 4;
-            addr_mask = ~0x3;
             break;
 
         case MEM_LDHS:
         case MEM_LDHU:
             request_cmd = CP_CMD_READ;
             byte_count = 2;
-            addr_mask = ~0x1;
             break;
 
         case MEM_LDBS:
         case MEM_LDBU:
             request_cmd = CP_CMD_READ;
             byte_count = 1;
-            addr_mask = ~0x0;
             break;
 
         default:
             request_cmd = CP_CMD_NONE;
             byte_count = 0;
-            addr_mask = 0;
             codasip_assert(false, "Default case in event me in mem op: %d",
                 r_me_mem_op);
         }
 
+        // Request the memory operations
         if(request_cmd == CP_CMD_READ) {
             if_data.request(CP_CMD_READ, base_address, base_offset, byte_count);
         } else if(request_cmd == CP_CMD_WRITE) {
             if_data.request(CP_CMD_WRITE, base_address, base_offset, byte_count);
-            if_data.finish(CP_CMD_WRITE, s_me_data_write);
+            if_data.finish(CP_CMD_WRITE, r_me_alu_data_b);
         }
     };
 
@@ -89,6 +80,7 @@ event me : pipeline(pipe.ME) {
 
 event me_output : pipeline(pipe.ME) {
     semantics {
+        // Load the WB registers
         r_wb_pc = r_me_pc;
         r_wb_instr = r_me_instr;
         r_wb_xpr_dest = r_me_xpr_dest;
